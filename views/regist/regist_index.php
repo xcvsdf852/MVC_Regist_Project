@@ -131,7 +131,8 @@ if(isset($_SESSION['id']) && isset($_SESSION['EmpAccount']) && isset($_SESSION['
   </script>
 </head>
 <body>
-<?php include_once('header.html');?>
+
+<?php include_once('views/header.html');?>
 
 <div class = "row">
   <div class="col-md-2">

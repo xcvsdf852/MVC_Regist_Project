@@ -1,13 +1,13 @@
 <?php
 class AccountController extends Controller{
     
-    function login(){
+    function login(){ 到登入頁面
 
         $this->view("Account/ac_login");//是View底下的路徑
         // echo "Hello! $user->name";
     }
     
-    function check_user(){
+    function check_user(){ //登入功能
         $user = $this->model("User");//使用mldwls底下的User，New一個User物件
         $user->name = $_POST['txtUserName'];
         $user->password = $_POST['txtPassword'];
@@ -28,9 +28,33 @@ class AccountController extends Controller{
             // echo '{"callback":'.$arry_return["errorCod"].'}';
             // return;
         }
+    }
+    
+    function logout(){ //登出
+        $user = $this->model("logout");
+        $user->unset_session();
+        $this->view("Account/ac_login");
+    }
+    
+    function regist(){//到註冊頁面
+        $this->view("Account/ac_regist");
+    }
+    
+    function regist_account(){//註冊動作
+        // $this->view("Account/ac_login");
         
     }
     
+    function regist_isset_user(){
+        // echo $_POST['account'];
+        // exit;
+        $user = $this->model("isset_user");//使用mldwls底下的User，New一個User物件
+        $user->account = $_POST['account'];
+        $user->check_account_isset();
+    }
+    
+    
+
 }
 
 

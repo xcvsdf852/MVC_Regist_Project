@@ -34,7 +34,7 @@
          </div>
            <!--<button class="btn btn-lg btn-info btn-block" type="button" name="btnOK" id="btnOK" onClick="login()" >登入</button>-->
            <button class="btn btn-lg btn-info btn-block" type="submit" name="btnOK" id="btnOK" >登入</button>
-           <a class="btn btn-lg btn-warning btn-block" href="ac_regist.html" name="btnOK" id="btnOK" >註冊</a>
+           <a class="btn btn-lg btn-warning btn-block" href="regist" name="btnOK" id="btnOK" >註冊</a>
            <div style= "text-align : right">
              <a href="ac_forget.html">忘記密碼...</a>
            </div>
