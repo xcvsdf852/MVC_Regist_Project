@@ -1,3 +1,7 @@
+ <?php 
+ session_start();
+//  var_dump($_SESSION['error']);
+ ?>
   <html>
 
   <head>
@@ -24,19 +28,19 @@
 
 
  <div class="container">
-     <form class="form-signin" role="form" id="form1" name="form1" method="post">
+     <form class="form-signin" role="form" id="form1" name="form1" method="post" action="/homework0721_MVC/Account/regist_account" method="post">
          <h2 class="form-signin-heading" style= "text-align : center">記帳管理 - 註冊</h2>
          <label for="inputEmail" class="sr-only">輸入暱稱</label>
          
          <div id="name_set">
-            <input type="text" name="nickname" id="nickname" class="form-control" placeholder="輸入暱稱" autofocus="" onBlur="Checkname();">
+            <input type="text" name="nickname" id="nickname" class="form-control" placeholder="輸入暱稱" autofocus="" onBlur="Checkname();" value="<?php if(is_null($_SESSION['error']['nickname'])|| !isset($_SESSION['error'])){echo "";}else{echo $_SESSION['error']['nickname'];} ?>">
             <span id='name_message'></span>
          </div>
          
          <label for="inputEmail" class="sr-only">輸入帳號</label>
          <div id="account_set">
              <span id='account_message'></span>
-             <input type="email" name="txtUserName" id="txtUserName" class="form-control" placeholder="輸入Email帳號" autofocus=""  onBlur="User_Isset();"> 
+             <input type="email" name="txtUserName" id="txtUserName" class="form-control" placeholder="輸入Email帳號" autofocus=""  onBlur="User_Isset();" value="<?php if(is_null($_SESSION['error']['e_mail'])|| !isset($_SESSION['error'])){echo "";}else{echo $_SESSION['error']['e_mail'];} ?>"> 
              
          </div>
          <label for="inputPassword" class="sr-only">輸入密碼</label> 
@@ -52,9 +56,9 @@
              
          </div>
          <div style = "margin :10px 0px 10px 0px ">
-           <label class ="label label-danger"><?php echo  $errorMSG;?></label>
+           <label class ="label label-danger"><?php echo  $_SESSION['error']['mesg'];?></label>
          </div>
-           <button class="btn btn-lg btn-success btn-block" type="button" name="btnOK" id="btnOK" onclick ="User_Insert()">邁向理財的第一步
+           <button class="btn btn-lg btn-success btn-block" type="button" name="btnOK" id="btnOK"  onclick ="User_Insert()">邁向理財的第一步
              <span class="glyphicon glyphicon-usd" aria-hidden="true" ></span>
            </button>
           <input name="check" type="hidden" value="0" id="check" />

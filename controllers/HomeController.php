@@ -14,7 +14,7 @@ class HomeController extends Controller {
         // echo "Hello! $user->name";
     }
     function test($name) { //針對Controller父 裡面的model"../EasyMVC/models/$model.php";
-        $user = $this->model("test");//使用mldwls底下的User，New一個User物件
+        $user = $this->model("user_insert");//使用mldwls底下的User，New一個User物件
         $user->name = $name;
         $this->view("Home/test", $user);//是View底下的路徑
         // echo "Hello! $user->name";

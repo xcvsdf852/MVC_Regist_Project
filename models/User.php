@@ -170,7 +170,7 @@ class User {
             $arry_result["pwd"] = $this->password;
             $_SESSION['error'] = $arry_result;
         }
-        // 	$db->closeDB();
+        	$db->closeDB();
         // mysql_close ($conn);
     }
     function mesg_alert($mesg){

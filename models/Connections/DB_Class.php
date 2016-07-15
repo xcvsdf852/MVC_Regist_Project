@@ -4,11 +4,7 @@ class DB
     var $_dbConn = 0;
     var $_queryResource = 0;
     
-    function DB()
-    {
-        //do nothing
-    }
-    
+
     function connect_db($host, $user, $pwd, $dbname)
     {
         $dbConn = mysql_connect($host, $user, $pwd);
@@ -44,6 +40,11 @@ class DB
     function get_insert_id()
     {
         return mysql_insert_id($this->_dbConn);
+    } 
+    
+    function closeDB()
+    {
+        return mysql_close($this->_dbConn);
     } 
     
 }

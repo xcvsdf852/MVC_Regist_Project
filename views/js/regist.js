@@ -1,26 +1,14 @@
 //-------------------------------------------------------------------
 //載入新增會員
 //-------------------------------------------------------------------	
+	var istrue=false;
 function User_Insert(){
-	
-	if($("#check").val() != 1){
-		alert("請確實填寫帳號");
-		$("#txtUserName").focus();
-		return;
+	istrue=check();
+	if(istrue){
+        document.getElementById("form1").submit();
 	}
-	
-	if($("#check_name").val() != 1){
-		alert("請確實填寫暱稱");
-		$("#nickname").focus();
-		return;
-	}
-	
-	if($("#check_pass").val() != 1){
-		alert("請確實填寫密碼");
-		$("#pw").focus();
-		return;
-	}
-	
+  
+
 	// if($("#pw").val()==$("#pwCheck").val()){ 
 	// 	$.ajax({
 	// 		type: 'POST',
@@ -47,13 +35,38 @@ function User_Insert(){
 	// 		});
 	
 	// }else{alert("請確實填寫資料！");}
-	if($("#pw").val()!=$("#pwCheck").val()){ 
-		alert("密碼不相同，請重新填寫!");
-		return;
-	}
 	
 }
-		
+function check(){
+	if($("#check").val() != 1){
+		alert("請確實填寫帳號");
+		$("#txtUserName").focus();
+		istrue=false;
+		return false;
+	}
+	
+	if($("#check_name").val() != 1){
+		alert("請確實填寫暱稱");
+		$("#nickname").focus();
+		istrue=false;
+		return false;
+	}
+	
+	if($("#check_pass").val() != 1){
+		alert("請確實填寫密碼");
+		$("#pw").focus();
+		istrue=false;
+		return false;
+	}
+	if($("#pw").val()!=$("#pwCheck").val()){ 
+		alert("密碼不相同，請重新填寫!");
+		istrue=false;
+		return false;
+	}
+	return true;
+}
+
+
 
 //-------------------------------------------------------------------
 //提示密碼確認

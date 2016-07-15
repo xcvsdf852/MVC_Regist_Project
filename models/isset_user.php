@@ -50,6 +50,7 @@ class isset_user {
         	echo '{"callback":1}';
         	}
         // mysql_close ($conn);
+        $db->closeDB();
         }
     }
 }

@@ -28,7 +28,7 @@
          <label for="inputEmail" class="sr-only">輸入帳號</label>
          <input type="text" name="txtUserName" id="txtUserName" class="form-control" placeholder="輸入帳號" autofocus="" value = "<?php if(is_null($_SESSION['error']['account'])|| !isset($_SESSION['error'])){echo "";}else{echo $_SESSION['error']['account'];} ?>"> 
          <label for="inputPassword" class="sr-only">輸入密碼</label> 
-             <input type="password" name="txtPassword" id="txtPassword"  class="form-control" placeholder="輸入密碼" >
+             <input type="password" name="txtPassword" id="txtPassword"  class="form-control" placeholder="輸入密碼" value ="<?php if(is_null($_SESSION['error']['pwd'])|| !isset($_SESSION['error'])){echo "";}else{echo $_SESSION['error']['pwd'];} ?>">
          <div style = "margin :10px 0px 10px 0px ">
            <label class ="label label-danger"><?php echo  $_SESSION['error']['mesg'];?></label>
          </div>
