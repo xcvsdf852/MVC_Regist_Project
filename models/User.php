@@ -1,8 +1,6 @@
 <?php
 session_start(); 
 header("Content-Type:text/html; charset=utf-8");
-// require_once('homework0721_MVC/models/Connections/DB_connect.php');
-// require_once("Connections/DB_config.php");
 require_once("Connections/DB_Class.php");
 
 class User {

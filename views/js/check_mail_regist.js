@@ -10,7 +10,7 @@ function check_mail_regist(){
     		//成功的
             $.ajax({
     			type: 'POST',
-    			url: 'isset_user.php',
+    			url: 'regist_isset_user',
     			data:{
     			account:$("#txtUserName").val()
     			},

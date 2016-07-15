@@ -1,41 +1,13 @@
 //-------------------------------------------------------------------
 //載入新增會員
 //-------------------------------------------------------------------	
-	var istrue=false;
+var istrue=false;
 function User_Insert(){
 	istrue=check();
 	if(istrue){
         document.getElementById("form1").submit();
 	}
   
-
-	// if($("#pw").val()==$("#pwCheck").val()){ 
-	// 	$.ajax({
-	// 		type: 'POST',
-	// 		url: 'user_insert.php',
-	// 		data:{
- //           	nickname:$("#nickname").val(),
- //               pw:$("#pw").val(),
- //               pwCheck:$("#pwCheck").val(),
- //               e_mail:$("#txtUserName").val(),
- //               check:$("#check").val()
-	// 		},
-	// 		dataType: "json",
-	// 		success: function(data){
- //              if(data.callback==1){
- //                   alert("新增會員成功");
- //                  document.location.href="ac_login.html";
- //               }
- //               else if(data.callback==2){alert("新增會員失敗,資料庫設定錯誤(會員ID重複)");}
- //               else if(data.callback==3){alert("新增會員失敗,資料格式不符");}
- //               else if(data.callback==4){alert("新增會員失敗,資料傳輸失敗");}
- //               else if(data.callback==5){alert("新增會員失敗,沒有新增會員的權限");}
- //               else{alert("新增會員失敗,未登入");}
-	// 		}
-	// 		});
-	
-	// }else{alert("請確實填寫資料！");}
-	
 }
 function check(){
 	if($("#check").val() != 1){

@@ -1,13 +1,13 @@
 <?php
 class AccountController extends Controller{
-    
-    function login(){ //到登入頁面
+    #到登入頁面
+    function login(){ 
 
         $this->view("Account/ac_login");//是View底下的路徑
         // echo "Hello! $user->name";
     }
-    
-    function check_user(){ //登入功能
+    #登入功能
+    function check_user(){ 
         $user = $this->model("User");//使用mldwls底下的User，New一個User物件
         $user->name = $_POST['txtUserName'];
         $user->password = $_POST['txtPassword'];
@@ -18,13 +18,14 @@ class AccountController extends Controller{
             if(isset($_SESSION['error'])){
                 unset($_SESSION['error']);
             }
-            $this->view("regist/regist_index");//登入成功要導入記帳頁面
+            $this->view("Regist/regist_index");//登入成功要導入記帳頁面
         }else{
              $this->view("Account/ac_login");//失敗回登入頁面
         }
     }
     
-    function logout(){ //登出
+    #登出
+    function logout(){ 
         $user = $this->model("logout");
         $user->unset_session();
         $this->view("Account/ac_login");
@@ -34,11 +35,13 @@ class AccountController extends Controller{
         //檢查登入
     }
     
-    function regist(){//到註冊頁面
+    #到註冊頁面
+    function regist(){
         $this->view("Account/ac_regist");
     }
     
-    function regist_account(){//註冊動作
+    #註冊動作
+    function regist_account(){
         // var_dump($_POST);
         // { 'nickname' => string(8) "Eric_456"
         // 'txtUserName' => string(19) "xcvsdf456@gmail.com"
@@ -66,16 +69,52 @@ class AccountController extends Controller{
         }else{
              $this->view("Account/ac_regist");//失敗回登入頁面
         }
-        
-        
+
     }
-    
+    #檢查帳號是否註冊過
     function regist_isset_user(){
         // echo $_POST['account'];
         // exit;
-        $user = $this->model("isset_user");//使用mldwls底下的User，New一個User物件
+        $user = $this->model("isset_user");
         $user->account = $_POST['account'];
         $user->check_account_isset();
+    }
+    
+    #顯示修改密碼頁
+    function change_password(){ 
+        $this->view("Account/ac_ch_pass");
+    }
+    
+    #修改密碼功能
+    function ch_pass(){
+        // var_dump($_POST);
+        // exit;
+        // array(6) { 'txtUserName' => string(19) "xcvsdf789@gmail.com"
+        // 'oldPassword' => string(10) "aa12345678"
+        // 'pw' => string(11) "aa987654321"
+        // 'pwCheck' => string(11) "aa987654321"
+        // 'check_pass' => string(1) "1"
+        // 'check' => string(1) "1" }
+        
+        $user = $this->model("ch_pass");
+        
+        $user->oldPassword = $_POST['oldPassword'];
+        $user->pw = $_POST['pw'];
+        $user->pwCheck = $_POST['pwCheck'];
+        $user->e_mail = $_POST['txtUserName'];
+        $user->check = $_POST['check'];
+        
+        $arry_return = $user->ch_password();
+        
+        if($arry_return['isTrue']){
+            if(isset($_SESSION['error'])){
+                unset($_SESSION['error']);
+            }
+            // $this->view("Account/logout");//密碼修改成功，登出
+            header('Location: /homework0721_MVC/Account/logout');
+        }else{
+             $this->view("Account/ac_ch_pass");//失敗繼續在修改密碼頁
+        }
     }
     
     
