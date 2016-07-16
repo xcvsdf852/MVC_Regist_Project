@@ -1,5 +1,6 @@
 <?php
 session_start(); 
+// var_dump($_SESSION['error']);
 if(isset($_SESSION['id']) && isset($_SESSION['EmpAccount']) && isset($_SESSION['IsAdmin']))
 {
     if($_SESSION['IsAdmin']==1){$user="admin";}
@@ -138,7 +139,7 @@ if(isset($_SESSION['id']) && isset($_SESSION['EmpAccount']) && isset($_SESSION['
   <div class="col-md-2">
   </div>
   <div class="col-md-7">
-    <form action = "add_charge.php" method="post" id ="charge_form" >
+    <form action = "/homework0721_MVC/Regist/insert_charge" method="post" id ="charge_form" >
       <table class="table table-hover">
         <thead class="thead-inverse">
           <tr>

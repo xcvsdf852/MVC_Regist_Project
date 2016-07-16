@@ -28,7 +28,7 @@
 
 
  <div class="container">
-     <form class="form-signin" role="form" id="form1" name="form1" method="post" action="/homework0721_MVC/Account/regist_account" method="post">
+     <form class="form-signin" role="form" id="form1" name="form1" action="/homework0721_MVC/Account/regist_account" method="post">
          <h2 class="form-signin-heading" style= "text-align : center">記帳管理 - 註冊</h2>
          <label for="inputEmail" class="sr-only">輸入暱稱</label>
          
