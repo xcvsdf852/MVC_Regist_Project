@@ -29,6 +29,15 @@ class RegistController extends Controller {
     function show_list(){
         $this->view("Regist/regist_list_index");
     }
+    
+    #刪除紀錄 
+    // function  list_delete(){
+      
+    //     $user = $this->model("regist_list_delete");
+    //     $user->id = $_POST['id'];
+    //     $user->user_id = $_POST['user_id'];
+        
+    // }
 }
 
 ?>

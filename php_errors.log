@@ -4,3 +4,7 @@
 [17-Jul-2016 01:30:01 UTC] PHP Fatal error:  require_once(): Failed opening required 'Connections/DB_connect.php' (include_path='.:/usr/share/php:/usr/share/pear') in /home/ubuntu/workspace/homework0721_MVC/models/regist_list.php on line 4
 [17-Jul-2016 01:30:01 UTC] PHP Stack trace:
 [17-Jul-2016 01:30:01 UTC] PHP   1. {main}() /home/ubuntu/workspace/homework0721_MVC/models/regist_list.php:0
+[17-Jul-2016 02:10:22 UTC] PHP Warning:  mysql_close() expects parameter 1 to be resource, null given in /home/ubuntu/workspace/homework0721_MVC/models/regist_list_delete.php on line 69
+[17-Jul-2016 02:10:22 UTC] PHP Stack trace:
+[17-Jul-2016 02:10:22 UTC] PHP   1. {main}() /home/ubuntu/workspace/homework0721_MVC/models/regist_list_delete.php:0
+[17-Jul-2016 02:10:22 UTC] PHP   2. mysql_close() /home/ubuntu/workspace/homework0721_MVC/models/regist_list_delete.php:69

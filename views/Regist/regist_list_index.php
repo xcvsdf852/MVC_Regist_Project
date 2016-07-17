@@ -175,7 +175,8 @@ if(isset($_SESSION['id']) && isset($_SESSION['EmpAccount']) && isset($_SESSION['
   	
   }
 function  remove_post(id,user){
-  	$.post('regist_list_delete.php',{"id":id,"user_id":user},function(date){
+  	$.post('/homework0721_MVC/models/regist_list_delete.php',{"id":id,"user_id":user},function(date){
+//   	$.post('Regist/list_delete',{"id":id,"user_id":user},function(date){
   		if(date.isTrue==1){
   		// 	alert('刪除成功');
   			BootstrapDialog.show({
