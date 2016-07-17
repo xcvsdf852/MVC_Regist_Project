@@ -8,7 +8,6 @@ class RegistController extends Controller {
     }
     #新增消費紀錄
     function insert_charge(){
-
         $user = $this->model("add_charge");
         $user->POST_data = $_POST;
         // var_dump($user->POST_data);
@@ -25,10 +24,11 @@ class RegistController extends Controller {
             echo '<script>alert("'.$arry_return['mesg'].'");</script>';
             $this->view("Regist/regist_index");//導回首頁
         }
-        
-
     }
     
+    function show_list(){
+        $this->view("Regist/regist_list_index");
+    }
 }
 
 ?>
