@@ -1,0 +1,12 @@
+[18-Jul-2016 08:43:00 UTC] PHP Warning:  require_once(../Connections/DB_connect.php): failed to open stream: No such file or directory in /home/ubuntu/workspace/homework0721_MVC/models/package/get_receipt.php on line 3
+[18-Jul-2016 08:43:00 UTC] PHP Stack trace:
+[18-Jul-2016 08:43:00 UTC] PHP   1. {main}() /home/ubuntu/workspace/homework0721_MVC/models/package/get_receipt.php:0
+[18-Jul-2016 08:43:00 UTC] PHP Fatal error:  require_once(): Failed opening required '../Connections/DB_connect.php' (include_path='.:/usr/share/php:/usr/share/pear') in /home/ubuntu/workspace/homework0721_MVC/models/package/get_receipt.php on line 3
+[18-Jul-2016 08:43:00 UTC] PHP Stack trace:
+[18-Jul-2016 08:43:00 UTC] PHP   1. {main}() /home/ubuntu/workspace/homework0721_MVC/models/package/get_receipt.php:0
+[18-Jul-2016 08:43:06 UTC] PHP Warning:  require_once(../Connections/DB_connect.php): failed to open stream: No such file or directory in /home/ubuntu/workspace/homework0721_MVC/models/package/get_receipt.php on line 3
+[18-Jul-2016 08:43:06 UTC] PHP Stack trace:
+[18-Jul-2016 08:43:06 UTC] PHP   1. {main}() /home/ubuntu/workspace/homework0721_MVC/models/package/get_receipt.php:0
+[18-Jul-2016 08:43:06 UTC] PHP Fatal error:  require_once(): Failed opening required '../Connections/DB_connect.php' (include_path='.:/usr/share/php:/usr/share/pear') in /home/ubuntu/workspace/homework0721_MVC/models/package/get_receipt.php on line 3
+[18-Jul-2016 08:43:06 UTC] PHP Stack trace:
+[18-Jul-2016 08:43:06 UTC] PHP   1. {main}() /home/ubuntu/workspace/homework0721_MVC/models/package/get_receipt.php:0

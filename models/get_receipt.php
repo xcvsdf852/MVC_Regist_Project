@@ -1,7 +1,9 @@
 <?php
 session_start(); 
-require_once('../Connections/DB_connect.php'); 
-require_once('str_sql_replace.php'); 
+require_once("Connections/DB_Class.php");
+require_once('package/str_sql_replace.php'); 
+require_once('package/get_IP.php'); 
+require_once("Connections/DB_config.php");
 // var_dump($_POST);
 // exit;
 // { 'date' => string(5) "10503" }
@@ -29,7 +31,7 @@ $arry_date = getdays("$AD_year-$mon-01");//Array ( [0] => 2016-03-01 [1] => 2016
 
 
 //擷取網址
-include_once('simple_html_dom.php');
+include_once('package/simple_html_dom.php');
 $html = file_get_html('http://www.etax.nat.gov.tw/etw-main/front/ETW183W2_'.$date.'/');
 
 $num = array();
@@ -139,23 +141,26 @@ $sql =" SELECT id,receipt
 //=====================================================================================
 //進行連線
 //=====================================================================================
-$conn = @mysql_connect($hostname,$username ,$password );
-if (!$conn){
-    die('{"isTrue":0,"data":"資料庫連接失敗："'. mysql_error().'}');
-}
-mysql_select_db($database, $conn);
-mysql_query("set character set 'utf8'"); 
+$db = new DB();
+$db->connect_db($_DB['host'], $_DB['username'], $_DB['password'], $_DB['dbname']);
 
-$result = mysql_query($sql);
+// $result = mysql_query($sql);
+$result = $db->query($sql);
+
 $temp=array();
-while($row = mysql_fetch_assoc($result)){
+// while($row = mysql_fetch_assoc($result)){
+while($row = $db->fetch_array($result)){
     $temp[] = first_Award($row['id'],$row['receipt'],$First,$six,$num[0],$num[1]);//判斷六獎與頭獎是否中獎
     // echo $row['id']."<br>";
     // echo $row['receipt']."<br>";
 }
 
+// var_dump(empty($temp));//bool(true)
+// exit;
 // var_dump($temp);
 // exit;
+
+
 
 // var_dump($receiptObj);
 // exit;
@@ -171,23 +176,13 @@ $Award = array( "1"=> "特別獎 壹仟萬元",
                 );
 
 $return_temp=array();
-// if($temp){
-//     foreach($temp as $key => $Tval){
-//         if($temp[$key]){
-//             foreach($Tval as $value) {
-//                 // echo "中獎號碼 : ".$value->number."- 獎項 : ".$Award[$value->award]."</br>";
-//                 // var_dump($value);
-//                 $return_temp['isTrue'] = 1;
-//                 $return_temp['data'][]= "中獎號碼 : ".$value->number."- 獎項 : ".$Award[$value->award];
-//             }
-//         }else{
-//             $return_temp['isTrue'] = 2;
-//             $return_temp['data'][] = "未中獎號碼 : ".$value->number."!";
-//             // echo json_encode($return_temp);
-//         }
-//     }
-//     echo json_encode($return_temp);
-// }
+
+if(empty($temp)){
+    $return_temp['isTrue'] = 1;
+    $return_temp['data'][]= "無發票可兌獎";
+    echo json_encode($return_temp);
+    exit;
+}
 
 if($temp){
     foreach($temp as $Tval){
