@@ -172,7 +172,7 @@ class User {
         // mysql_close ($conn);
     }
     function mesg_alert($mesg){
-        echo '我有跑Alert'.$mesg;
+        // echo '我有跑Alert'.$mesg;
         echo "<script>alert('".$mesg."');</script>";
     }
 }

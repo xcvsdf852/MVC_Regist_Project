@@ -109,7 +109,8 @@ if(isset($_SESSION['id']) && isset($_SESSION['EmpAccount']) && isset($_SESSION['
       }        
     }
   	
-  	$.post('regist_list_save.php',{
+//   	$.post('regist_list_save.php',{
+    $.post('/homework0721_MVC/models/regist_list_save.php',{
   		"id":id,
   		"date":date,
   		"items":items,

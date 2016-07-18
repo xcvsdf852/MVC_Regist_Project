@@ -45,3 +45,14 @@ function check_mail_regist(){
       return true;
     }
   }
+  
+  function submit_form(){
+    if($("#check").val()==1){
+      document.getElementById("form1").submit();
+    }else{
+      alert("請再次確認信箱帳號!");
+      return;
+    }
+    
+  }
+  

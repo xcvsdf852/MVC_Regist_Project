@@ -117,6 +117,30 @@ class AccountController extends Controller{
         }
     }
     
+    #顯示忘記密碼頁
+    function forget_password(){
+        $this->view("Account/ac_forget");
+    }
+    #忘記密碼修改後寄信
+    function forget_password_send_mail(){
+        
+        $user = $this->model("password_send_mail");
+        $user->e_mail = $_POST['txtUserName'];
+        
+        $arry_return = $user->reset_password();
+        // exit;
+        if($arry_return['isTrue']){
+            if(isset($_SESSION['error'])){
+                unset($_SESSION['error']);
+            }
+             echo '<script>alert("'.$arry_return['mesg'].'");</script>';
+            $this->view("Account/ac_login");///密碼修改成功，登入畫面
+            // header('Location: /homework0721_MVC/Account/logout');
+        }else{
+            echo '<script>alert("'.$arry_return['mesg'].'");</script>';
+            $this->view("Account/ac_forget");//失敗回到忘記密碼頁
+        }
+    }
     
 
 }
