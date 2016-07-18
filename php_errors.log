@@ -8,3 +8,11 @@
 [17-Jul-2016 02:10:22 UTC] PHP Stack trace:
 [17-Jul-2016 02:10:22 UTC] PHP   1. {main}() /home/ubuntu/workspace/homework0721_MVC/models/regist_list_delete.php:0
 [17-Jul-2016 02:10:22 UTC] PHP   2. mysql_close() /home/ubuntu/workspace/homework0721_MVC/models/regist_list_delete.php:69
+[18-Jul-2016 07:18:18 UTC] PHP Warning:  mysql_close() expects parameter 1 to be resource, null given in /home/ubuntu/workspace/homework0721_MVC/models/statistics_json.php on line 117
+[18-Jul-2016 07:18:18 UTC] PHP Stack trace:
+[18-Jul-2016 07:18:18 UTC] PHP   1. {main}() /home/ubuntu/workspace/homework0721_MVC/models/statistics_json.php:0
+[18-Jul-2016 07:18:18 UTC] PHP   2. mysql_close() /home/ubuntu/workspace/homework0721_MVC/models/statistics_json.php:117
+[18-Jul-2016 07:18:24 UTC] PHP Warning:  mysql_close() expects parameter 1 to be resource, null given in /home/ubuntu/workspace/homework0721_MVC/models/statistics_json.php on line 117
+[18-Jul-2016 07:18:24 UTC] PHP Stack trace:
+[18-Jul-2016 07:18:24 UTC] PHP   1. {main}() /home/ubuntu/workspace/homework0721_MVC/models/statistics_json.php:0
+[18-Jul-2016 07:18:24 UTC] PHP   2. mysql_close() /home/ubuntu/workspace/homework0721_MVC/models/statistics_json.php:117

@@ -3,30 +3,10 @@
 class StatisticsController extends Controller {
     
      #顯示修改密碼頁
-    function regist_index(){ 
-        $this->view("Regist/regist_index");
+    function Statistics_index(){ 
+        $this->view("Statistics/statistics");
     }
-    #新增消費紀錄
-    function insert_charge(){
-        $user = $this->model("add_charge");
-        $user->POST_data = $_POST;
 
-        $arry_return = $user->charge();
-
-        if($arry_return['isTrue']){
-             echo '<script>alert("紀錄新增成功!");</script>';
-            if(isset($_SESSION['error'])){
-                unset($_SESSION['error']);
-            }
-            $this->view("Regist/regist_index");//登入成功要導入記帳頁面
-        }else{
-            echo '<script>alert("'.$arry_return['mesg'].'");</script>';
-            $this->view("Regist/regist_index");//導回首頁
-        }
-    }
-    
-
-  
 }
 
 ?>
