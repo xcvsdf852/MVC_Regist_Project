@@ -11,6 +11,9 @@ class logout{
         {unset($_SESSION['IsAdmin']); }
         if(isset($_SESSION['id']))
         {unset($_SESSION['id']); }
+        if(isset($_SESSION['error'])){
+                unset($_SESSION['error']);
+            }
         
     }
 }

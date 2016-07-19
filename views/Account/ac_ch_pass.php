@@ -1,18 +1,18 @@
 <?php
-session_start(); 
-// var_dump($_SESSION['error']);
-// echo $_SESSION['EmpAccount'];
-// $UserPermission=array();
-if(isset($_SESSION['id']) && isset($_SESSION['EmpAccount']) && isset($_SESSION['IsAdmin']))
-{
-    if($_SESSION['IsAdmin']==1){$user="admin";}
-    else{$user="user";}
-}else{
+// session_start(); 
+// // var_dump($_SESSION['error']);
+// // echo $_SESSION['EmpAccount'];
+// // $UserPermission=array();
+// if(isset($_SESSION['id']) && isset($_SESSION['EmpAccount']) && isset($_SESSION['IsAdmin']))
+// {
+//     if($_SESSION['IsAdmin']==1){$user="admin";}
+//     else{$user="user";}
+// }else{
 
-    echo "<script type='text/javascript'>alert('尚未登入');</script>";
-    // echo "<script type='text/javascript'>document.location.href='ac_login.html'</script>";
-    echo "<script type='text/javascript'>document.location.href='/homework0721_MVC/Account/login'</script>";
-}
+//     echo "<script type='text/javascript'>alert('尚未登入');</script>";
+//     // echo "<script type='text/javascript'>document.location.href='ac_login.html'</script>";
+//     echo "<script type='text/javascript'>document.location.href='/homework0721_MVC/Account/login'</script>";
+// }
 
 ?>
 

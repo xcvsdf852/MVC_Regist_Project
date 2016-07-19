@@ -22,7 +22,7 @@
 
 
  <div class="container">
-     <form class="form-signin" role="form" id="form1" name="form1" method="post" action="forget_password_send_mail">
+     <form class="form-signin" role="form" id="form1" name="form1" method="post" action="/homework0721_MVC/Account/forget_password_send_mail">
          <h2 class="form-signin-heading" style= "text-align : center">忘記密碼</h2>
          <label for="inputEmail" class="sr-only">輸入帳號</label>
          <div id="account_set">

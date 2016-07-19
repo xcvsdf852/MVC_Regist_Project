@@ -88,13 +88,13 @@ if($receipt != ""){
 }
 
 #備註檢查 字串型態 允許空值
-if( !isset($_POST['note']))
+if(!isset($_POST['note']))
 {
     echo '{"isTrue":0,"data":"資料傳輸失敗!"}';
 	exit();
 }
 $note = str_SQL_replace($_POST['note'] );
-if($note != ""){
+if($note != "" && $note != "0"){
     if(!filter_var($note, FILTER_SANITIZE_STRING))
         die('{"isTrue":0,"data":"資料格式錯誤!"}');
 }

@@ -1,4 +1,5 @@
-<?php session_start(); 
+<?php
+// session_start(); 
 // var_dump($_SESSION['error']);
 ?>
 <html>

@@ -7,18 +7,21 @@ class AccountController extends Controller{
         // echo "Hello! $user->name";
     }
     #登入功能
-    function check_user(){ 
+    function check_user(){
         $user = $this->model("User");//使用mldwls底下的User，New一個User物件
         $user->name = $_POST['txtUserName'];
         $user->password = $_POST['txtPassword'];
-        
+        // var_dump($_POST);
+        // exit;
         $arry_return = $user->check_login();
         // var_dump($arry_return);
+        // exit;
         if($arry_return['isTrue']){
             if(isset($_SESSION['error'])){
                 unset($_SESSION['error']);
             }
-            $this->view("Regist/regist_index");//登入成功要導入記帳頁面
+            // $this->view("Regist/regist_index");//登入成功要導入記帳頁面
+            header('Location: /homework0721_MVC/Regist/regist_index');
         }else{
              $this->view("Account/ac_login");//失敗回登入頁面
         }
@@ -28,12 +31,13 @@ class AccountController extends Controller{
     function logout(){ 
         $user = $this->model("logout");
         $user->unset_session();
-        $this->view("Account/ac_login");
+        // $this->view("Account/ac_login");
+         header('Location: /homework0721_MVC/Account/login');
     }
     
-    function check_login(){
-        //檢查登入
-    }
+    // function check_login(){
+    //     //檢查登入
+    // }
     
     #到註冊頁面
     function regist(){
@@ -135,7 +139,6 @@ class AccountController extends Controller{
             }
              echo '<script>alert("'.$arry_return['mesg'].'");</script>';
             $this->view("Account/ac_login");///密碼修改成功，登入畫面
-            // header('Location: /homework0721_MVC/Account/logout');
         }else{
             echo '<script>alert("'.$arry_return['mesg'].'");</script>';
             $this->view("Account/ac_forget");//失敗回到忘記密碼頁

@@ -32,13 +32,18 @@ if(trim($text_value)!=""){
 
 
 
+#搜尋條件  DATE(c.creat_date)這邊只用年月日排序 所以第一筆不會在最上面
+// $str_sql = "SELECT c.id, DATE_FORMAT(c.date,'%Y-%m-%d') as date, i.items_list, c.buy, c.receipt, c.note, c.items, c.user_id
+// FROM `charge` as c LEFT JOIN items as i ON c.items = i.items_id
+// WHERE c.is_enabled = 1 && c.user_id = '".$_SESSION['id']."' ".$str_where."
+// ORDER BY DATE(c.creat_date) DESC 
+// LIMIT ".(($P-1)*$P_number).",".$P_number.";";
 #搜尋條件
 $str_sql = "SELECT c.id, DATE_FORMAT(c.date,'%Y-%m-%d') as date, i.items_list, c.buy, c.receipt, c.note, c.items, c.user_id
 FROM `charge` as c LEFT JOIN items as i ON c.items = i.items_id
 WHERE c.is_enabled = 1 && c.user_id = '".$_SESSION['id']."' ".$str_where."
-ORDER BY DATE(c.creat_date) DESC 
+ORDER BY  c.creat_date DESC 
 LIMIT ".(($P-1)*$P_number).",".$P_number.";";
-
 
 // echo $str_sql;
 // exit;
