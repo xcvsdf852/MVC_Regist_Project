@@ -1,18 +1,4 @@
-<?php
-// session_start(); 
-// if(isset($_SESSION['id']) && isset($_SESSION['EmpAccount']) && isset($_SESSION['IsAdmin']))
-// {
-//     if($_SESSION['IsAdmin']==1){$user="admin";}
-//     else{$user="user";}
-// }else{
 
-//     echo "<script type='text/javascript'>alert('尚未登入');</script>";
-//     // echo "<script type='text/javascript'>document.location.href='ac_login.html'</script>";
-//     echo "<script type='text/javascript'>document.location.href='/homework0721_MVC/Account/login'</script>";
-// }
-
-
-?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -43,19 +29,20 @@
                 // console.log(time_str);
                 
                 if(time_str !="" && time_end =="" || time_str =="" && time_end !=""){
-                  BootstrapDialog.show({
-                        title: 'Oops 系統發生錯誤!',
-                        message: "注意起訖時間都必須填寫!!"
-                  }).setType(BootstrapDialog.TYPE_DANGER);;
+                  alert("注意起訖時間都必須填寫!!");
+                //   BootstrapDialog.show({
+                //         title: 'Oops 系統發生錯誤!',
+                //         message: "注意起訖時間都必須填寫!!"
+                //   }).setType(BootstrapDialog.TYPE_DANGER);;
                   return false;
                 }
                 
                 if(Date.parse(time_str).valueOf() > Date.parse(time_end).valueOf()){
-                  // alert("注意開始時間不能晚於結束時間！");
-                  BootstrapDialog.show({
-                        title: 'Oops 系統發生錯誤!',
-                        message: "注意開始時間不能晚於結束時間!!"
-                  }).setType(BootstrapDialog.TYPE_DANGER);;
+                   alert("注意開始時間不能晚於結束時間！");
+                //   BootstrapDialog.show({
+                //         title: 'Oops 系統發生錯誤!',
+                //         message: "注意開始時間不能晚於結束時間!!"
+                //   }).setType(BootstrapDialog.TYPE_DANGER);;
                   return false;
                 }
                 
@@ -93,10 +80,11 @@
                             }]
                          });
                     }else{
-                        BootstrapDialog.show({
-                            title: 'Oops 系統發生錯誤!',
-                            message: d.data
-                        }).setType(BootstrapDialog.TYPE_DANGER);;
+                        alert(d.data);
+                        // BootstrapDialog.show({
+                        //     title: 'Oops 系統發生錯誤!',
+                        //     message: d.data
+                        // }).setType(BootstrapDialog.TYPE_DANGER);
                         
                     }
                  },'json');

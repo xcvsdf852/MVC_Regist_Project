@@ -2,9 +2,7 @@
 class AccountController extends Controller{
     #到登入頁面
     function login(){ 
-
         $this->view("Account/ac_login");//是View底下的路徑
-        // echo "Hello! $user->name";
     }
     #登入功能
     function check_user(){
@@ -35,10 +33,6 @@ class AccountController extends Controller{
          header('Location: /homework0721_MVC/Account/login');
     }
     
-    // function check_login(){
-    //     //檢查登入
-    // }
-    
     #到註冊頁面
     function regist(){
         $this->view("Account/ac_regist");
@@ -47,13 +41,6 @@ class AccountController extends Controller{
     #註冊動作
     function regist_account(){
         // var_dump($_POST);
-        // { 'nickname' => string(8) "Eric_456"
-        // 'txtUserName' => string(19) "xcvsdf456@gmail.com"
-        // 'pw' => string(8) "12345678"
-        // 'pwCheck' => string(8) "12345678"
-        // 'check' => string(1) "1"
-        // 'check_pass' => string(1) "1"
-        // 'check_name' => string(1) "1" } 
         // exit;
         $user = $this->model("user_insert");
         
@@ -69,9 +56,10 @@ class AccountController extends Controller{
             if(isset($_SESSION['error'])){
                 unset($_SESSION['error']);
             }
+            echo '<script>alert("'.$arry_return['mesg'].'");</script>';
             $this->view("Account/ac_login");//註冊成功，導入燈入頁
         }else{
-             $this->view("Account/ac_regist");//失敗回登入頁面
+            $this->view("Account/ac_regist");//失敗繼續註冊頁
         }
 
     }
@@ -93,13 +81,7 @@ class AccountController extends Controller{
     function ch_pass(){
         // var_dump($_POST);
         // exit;
-        // array(6) { 'txtUserName' => string(19) "xcvsdf789@gmail.com"
-        // 'oldPassword' => string(10) "aa12345678"
-        // 'pw' => string(11) "aa987654321"
-        // 'pwCheck' => string(11) "aa987654321"
-        // 'check_pass' => string(1) "1"
-        // 'check' => string(1) "1" }
-        
+
         $user = $this->model("ch_pass");
         
         $user->oldPassword = $_POST['oldPassword'];
@@ -132,16 +114,18 @@ class AccountController extends Controller{
         $user->e_mail = $_POST['txtUserName'];
         
         $arry_return = $user->reset_password();
+        // var_dump($arry_return);
         // exit;
         if($arry_return['isTrue']){
             if(isset($_SESSION['error'])){
-                unset($_SESSION['error']);
+               unset($_SESSION['error']);
             }
-             echo '<script>alert("'.$arry_return['mesg'].'");</script>';
+            echo '<script>alert("'.$arry_return['mesg'].'");</script>';
             $this->view("Account/ac_login");///密碼修改成功，登入畫面
+            //  header('Location: /homework0721_MVC/Account/login');
         }else{
             echo '<script>alert("'.$arry_return['mesg'].'");</script>';
-            $this->view("Account/ac_forget");//失敗回到忘記密碼頁
+            $this->view("Account/ac_forget",$arry_return);//失敗回到忘記密碼頁
         }
     }
     

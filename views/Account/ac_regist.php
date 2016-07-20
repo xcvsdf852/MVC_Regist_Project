@@ -12,6 +12,8 @@
     <script src="/homework0721_MVC/views/js/jquery.js"></script>
     <script src="/homework0721_MVC/views/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="/homework0721_MVC/views/js/regist.js"></script>
+    <link href="/homework0721_MVC/views/css/bootstrap-dialog.min.css" rel="stylesheet">
+    <script type="text/javascript" src="/homework0721_MVC/views/js/bootstrap-dialog.min.js"></script>
     <style>
       .container {
          width:310px;
@@ -19,7 +21,6 @@
       
       input {
         margin-bottom :10px;
-        /*width:240px !important;  */
       }
     </style>
   </head>

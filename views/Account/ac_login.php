@@ -1,14 +1,21 @@
 <?php
-// session_start(); 
-// var_dump($_SESSION['error']);
+session_start(); 
+// var_dump($_SESSION['isTrue']);
+// var_dump($data);
+
 ?>
 <html>
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Lab - Login</title>
-    <link href="/homework0721_MVC/views/css/bootstrap.min.css" rel="stylesheet">
+    
     <script src="/homework0721_MVC/views/js/jquery.js"></script>
+    <script src="/homework0721_MVC/views/js/bootstrap.min.js"></script>
+    <!--<script type="text/javascript" src="/homework0721_MVC/views/js/bootstrap-dialog.min.js"></script>-->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <link href="/homework0721_MVC/views/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/homework0721_MVC/views/css/bootstrap-dialog.min.css" rel="stylesheet">
     <script type="text/javascript" src="/homework0721_MVC/views/js/login.js"></script>
     <style>
       .container {
@@ -18,6 +25,7 @@
         margin-bottom :10px;
       }
     </style>
+
   </head>
 
   <body>
@@ -33,7 +41,6 @@
          <div style = "margin :10px 0px 10px 0px ">
            <label class ="label label-danger"><?php echo  $_SESSION['error']['mesg'];?></label>
          </div>
-           <!--<button class="btn btn-lg btn-info btn-block" type="button" name="btnOK" id="btnOK" onClick="login()" >登入</button>-->
            <button class="btn btn-lg btn-info btn-block" type="submit" name="btnOK" id="btnOK" >登入</button>
            <a class="btn btn-lg btn-warning btn-block" href="regist" name="btnOK" id="btnOK" >註冊</a>
            <div style= "text-align : right">
@@ -42,7 +49,7 @@
        </form>
    </div>
 
-   <script src="/homework0721_MVC/views/js/bootstrap.min.js"></script>
+   
   </body>
 
 </html>

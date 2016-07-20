@@ -1,16 +1,4 @@
-<?php
-// session_start(); 
-// if(isset($_SESSION['id']) && isset($_SESSION['EmpAccount']) && isset($_SESSION['IsAdmin']))
-// {
-//     if($_SESSION['IsAdmin']==1){$user="admin";}
-//     else{$user="user";}
-// }else{
-//     echo "<script type='text/javascript'>alert('尚未登入');</script>";
-//      // echo "<script type='text/javascript'>document.location.href='ac_login.html'</script>";
-//     echo "<script type='text/javascript'>document.location.href='/homework0721_MVC/Account/login'</script>";
-// }
 
-?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -94,15 +82,15 @@
                i=0;
                     $.each(result.data, function(i){
                          if(result.isTrue == 1){
-                            
-                            console.log(result.data[i]);
+                            // console.log(result.data[i]);
                             $("#content").append('<p>'+result.data[i]+'</p>');
                             i++;
                         }else{
-                                BootstrapDialog.show({
-                                    title: 'Oops 系統發生錯誤!',
-                                    message: result.data
-                                }).setType(BootstrapDialog.TYPE_DANGER);
+                                alert(result.data);
+                                // BootstrapDialog.show({
+                                //     title: 'Oops 系統發生錯誤!',
+                                //     message: result.data
+                                // }).setType(BootstrapDialog.TYPE_DANGER);
                            }           
                         });
                     

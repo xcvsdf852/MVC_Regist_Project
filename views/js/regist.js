@@ -12,6 +12,10 @@ function User_Insert(){
 function check(){
 	if($("#check").val() != 1){
 		alert("請確實填寫帳號");
+		// BootstrapDialog.show({
+		// title: 'Oops 系統發生錯誤!',
+		// message: '請確實填寫帳號'
+		// }).setType(BootstrapDialog.TYPE_DANGER);
 		$("#txtUserName").focus();
 		istrue=false;
 		return false;
@@ -19,19 +23,31 @@ function check(){
 	
 	if($("#check_name").val() != 1){
 		alert("請確實填寫暱稱");
+		// BootstrapDialog.show({
+		// title: 'Oops 系統發生錯誤!',
+		// message: '請確實填寫暱稱'
+		// }).setType(BootstrapDialog.TYPE_DANGER);
 		$("#nickname").focus();
 		istrue=false;
 		return false;
 	}
 	
 	if($("#check_pass").val() != 1){
-		alert("請確實填寫密碼");
+		 alert("請確實填寫密碼");
+		// BootstrapDialog.show({
+		// title: 'Oops 系統發生錯誤!',
+		// message: '請確實填寫密碼'
+		// }).setType(BootstrapDialog.TYPE_DANGER);
 		$("#pw").focus();
 		istrue=false;
 		return false;
 	}
 	if($("#pw").val()!=$("#pwCheck").val()){ 
 		alert("密碼不相同，請重新填寫!");
+		// BootstrapDialog.show({
+		// title: 'Oops 系統發生錯誤!',
+		// message: '密碼不相同，請重新填寫!'
+		// }).setType(BootstrapDialog.TYPE_DANGER);
 		istrue=false;
 		return false;
 	}
@@ -70,6 +86,10 @@ function User_Isset(){
 		$("#account_message").attr("class","glyphicon glyphicon-remove form-control-feedback");
         $("#check").val(0);
         alert("請輸入正確email");
+		//BootstrapDialog.show({
+		// title: 'Oops 系統發生錯誤!',
+		// message: '請輸入正確email'
+		// }).setType(BootstrapDialog.TYPE_DANGER);
 	}else{
 		//成功的
         $.ajax({
@@ -87,7 +107,11 @@ function User_Isset(){
                     $("#account_set").attr("class","form-group has-error has-feedback");
                     $("#account_message").attr("class","glyphicon glyphicon-remove form-control-feedback");
                     alert("此帳號已有人註冊");
-                    $("#check").val(data.callback);
+    				//BootstrapDialog.show({
+					// title: 'Oops 系統發生錯誤!',
+					// message: '此帳號已有人註冊'
+					// }).setType(BootstrapDialog.TYPE_DANGER);
+    				//$("#check").val(data.callback);
                 }
                 else
                 {

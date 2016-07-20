@@ -9,34 +9,9 @@ require_once('package/get_IP.php');
 
 <?php
 // var_dump($_SESSION);
-// exit;
 
 // var_dump($_POST);
 // exit;
-// $_POST = array( 
-//     'data_1' => "2016-07-12",
-//     'items_1' =>  "1",
-//     'money_1' =>  "25",
-//     'receipt_1' =>  "",
-//     'note_1' =>  "123",
-//     'data_3' =>  "2016-07-12",
-//     'items_3' =>  "1",
-//     'money_3' =>  "300",
-//     'receipt_3' => "1234",
-//     'note_3' => "",
-//     'data_6' =>  "2016-07-13",
-//     'items_6' =>  "1",
-//     'money_6' =>  "250",
-//     'receipt_6' =>  "987654321",
-//     'note_6' =>  "",
-//     'data_7' => "2016-07-28",
-//     'items_7' =>  "1",
-//     'money_7' =>  "29",
-//     'receipt_7' =>  "12345678",
-//     'note_7' => "",
-//     'arry_num' => "1,3,6,7" );
-// var_dump($_POST);
-
 class add_charge{
     public $POST_data; 
     
@@ -55,7 +30,6 @@ class add_charge{
             # 時間
             if( !isset($this->POST_data['data_'.$value]) || empty($this->POST_data['data_'.$value]))
             {
-                // echo '<script>alert("get error");window.location="index.php";</script>';
                 $arry_result["isTrue"] = false;
                 $arry_result["errorCod"] = 2;
                 $arry_result["mesg"] = "新增消費紀錄失敗，資料傳輸失敗!";
@@ -79,7 +53,6 @@ class add_charge{
             #項目檢查 數字型態
             if( !isset($this->POST_data['items_'.$value]) || empty($this->POST_data['items_'.$value]))
             {
-                // echo '<script>alert("get error");window.location="index.php";</script>';
                 $arry_result["isTrue"] = false;
                 $arry_result["errorCod"] = 4;
                 $arry_result["mesg"] = "新增消費紀錄失敗，資料傳輸失敗!";
@@ -101,7 +74,6 @@ class add_charge{
             #金錢檢查 數字型態 不能小於零
             if( !isset($this->POST_data['money_'.$value]) || empty($this->POST_data['money_'.$value]) || $this->POST_data['money_'.$value] <= 0)
             {
-                // echo '<script>alert("get error");window.location="index.php";</script>';
                 $arry_result["isTrue"] = false;
                 $arry_result["errorCod"] = 6;
                 $arry_result["mesg"] = "新增消費紀錄失敗，資料傳輸失敗!";
@@ -124,7 +96,6 @@ class add_charge{
             #統一發票號碼檢查 字串型態 允許空值
             if( !isset($this->POST_data['receipt_'.$value]))
             {
-                // echo '<script>alert("get error");window.location="index.php";</script>';
                 $arry_result["isTrue"] = false;
                 $arry_result["errorCod"] = 8;
                 $arry_result["mesg"] = "新增消費紀錄失敗，資料傳輸失敗!";
@@ -148,7 +119,6 @@ class add_charge{
             #備註檢查 字串型態 允許空值
             if( !isset($this->POST_data['note_'.$value]))
             {
-                // echo '<script>alert("get error");window.location="index.php";</script>';
                 $arry_result["isTrue"] = false;
                 $arry_result["errorCod"] = 10;
                 $arry_result["mesg"] = "新增消費紀錄失敗，資料傳輸失敗!";
@@ -175,8 +145,6 @@ class add_charge{
         
         // echo $sql_str;
         $sql_str = substr_replace($sql_str, ';', -1, 1);
-        
-        // 
         $sql = "INSERT INTO `charge`(`date`,`items`,`buy`,`receipt`,`note`,`ip`,`user_id`,`creat_date`)
                 VALUES".$sql_str ;
         // echo $sql;
@@ -184,18 +152,10 @@ class add_charge{
         //=====================================================================================
         //進行連線
         //=====================================================================================
-        // $conn = @mysql_connect($hostname,$username ,$password );
-        // if (!$conn){
-        //     die("資料庫連接失敗：" . mysql_error());
-        // }
-        // mysql_select_db($database, $conn);
-        // mysql_query("set character set 'utf8'"); 
         $db = new DB();
         $db->connect_db($_DB['host'], $_DB['username'], $_DB['password'], $_DB['dbname']);
         
-        // $result = mysql_query($sql);
         $result = $db->query($sql);
-        //or die('<script>alert("SQL error");window.location="index.php";</script>');
         if(!$result){
             $arry_result["isTrue"] = false;
             $arry_result["errorCod"] = 12;
@@ -205,9 +165,6 @@ class add_charge{
             exit();
         }
         
-        // mysql_close ($conn);
-        // echo '<script>alert("紀錄新增成功");window.location="index.php";</script>';
-        // exit();
         $db->closeDB();
         $arry_result["isTrue"] = true;
         $arry_result["errorCod"] = 1;

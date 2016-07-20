@@ -81,7 +81,6 @@ class password_send_mail{
                 return $arry_result;
         	}
         }else{
-        // 	echo '{"isTrue":0,"data":"'. mysql_error().'"}';
             $arry_result["isTrue"] = false;
             $arry_result["errorCod"] = 4;
             $arry_result["mesg"] = "重置密碼失敗，請重新申請!";
@@ -97,8 +96,4 @@ class password_send_mail{
     }
 }
 
-
-// $teat = new password_send_mail();
-
-// $teat->reset_password();
 ?>

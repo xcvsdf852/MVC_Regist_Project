@@ -8,15 +8,11 @@ class User {
     public $password;
     function check_login(){
         require_once("Connections/DB_config.php");
-        // require_once("Connections/DB_Class.php");
         $Actions_result='';
         $arry_result = array();
         
         // echo $this->name."<br>";
         // echo $this->password."<br>";
-        // var_dump($_DB);
-        // echo $_DB['host']."<br>";
-        // echo $_DB['username']."<br>";
         // exit;
         //---------------------------------------------------------------------------------------------
         //在接受到POST情況下進行資料比對
@@ -49,12 +45,6 @@ class User {
         //=====================================================================================
         //進行連線
         //=====================================================================================
-            // $conn = @mysql_connect($hostname,$username ,$password );
-            // if (!$conn){
-            //     die("資料庫連接失敗：" . mysql_error());
-            // }
-            // mysql_select_db($database, $conn);
-            // mysql_query("set character set 'utf8'"); 
             $db = new DB();
             $db->connect_db($_DB['host'], $_DB['username'], $_DB['password'], $_DB['dbname']);
             
@@ -69,18 +59,10 @@ class User {
             ac_email='%s'",str_replace("'","\'",$EmpAccount));
             // echo $sql;
             // exit;
-            // $result = mysql_query($sql); 
-            // $count = mysql_fetch_assoc($result);
             $result = $db->query($sql);
             $count = $db->fetch_array($result);
             // var_dump($count);
             // exit;
-            // array(6) { 'ac_id' => string(1) "1" 
-            // 'ac_nick_name' => string(9) "管理者"
-            // 'ac_email' => string(19) "xcvsdf852@gmail.com" 
-            // 'ac_password' => string(32) "7c497868c9e6d3e4cf2e87396372cd3b" 
-            // 'is_admin' => string(1) "1" 'is_enabled' => string(1) "0" }
-            
             if(($EmpPwd== $count['ac_password'])&&($count['is_enabled']=='0')){
         
                 $_SESSION['id']=$count['ac_id'];
@@ -94,14 +76,11 @@ class User {
                 $arry_result["isTrue"] = true;
                 $arry_result["errorCod"] = 1;
                 $arry_result["mesg"] = "登入成功";
-                // echo '{"callback":1}';
                 return $arry_result;
                 
          
-        	}else if(($count['is_enabled']=='0')){//當密碼錯誤，但有權限時
+        	}else if(($count['is_enabled']=='0')){#當密碼錯誤，但有權限時
         		if($count['ac_password'] == ""|| ($count['ac_email']!=$EmpAccount) ){
-        // 			$Actions_result="not have the EmpAccount";
-                //  echo '{"callback":2}';
                     $arry_result["isTrue"] = false;
                     $arry_result["errorCod"] = 2;
                     $arry_result["mesg"] = "查無該帳號!";
@@ -110,8 +89,6 @@ class User {
                     $_SESSION['error'] = $arry_result;
                     return $arry_result;
         		}else if($count['ac_password']!= $EmpPwd){
-        // 			echo '{"callback":3}';
-        // 			$Actions_result="EmpPwd is error";
                     $arry_result["isTrue"] = false;
                     $arry_result["errorCod"] = 3;
                     $arry_result["mesg"] = "密碼有誤!";
@@ -120,8 +97,6 @@ class User {
                     $_SESSION['error'] = $arry_result;
                     return $arry_result;
         		}else{
-        // 			echo '{"callback":4}';
-        // 			$Actions_result='The EmpAccount not Enabled';
                     $arry_result["isTrue"] = false;
                     $arry_result["errorCod"] = 4;
                     $arry_result["mesg"] = "帳密有誤!";
@@ -132,8 +107,6 @@ class User {
         		}
                     $IsAdmin=$count['IsAdmin'];
         	}else{
-                // echo '{"callback":5}';
-                // $Actions_result='Not have the EmpAccount';$IsAdmin="";
                 $arry_result["isTrue"] = false;
                 $arry_result["errorCod"] = 5;
                 $arry_result["mesg"] = "帳號無權限!";
@@ -146,11 +119,6 @@ class User {
             //=====================================================================================
             //沒有接收到傳送資料的狀況
             //=====================================================================================
-        // 	echo '{"callback":6}';
-        // 	$EmpAccount="not get";
-        // 	$EmpPwd="not get";
-        // 	$IsAdmin="";
-        // 	$Actions_result='not get';
             $arry_result["isTrue"] = false;
             $arry_result["errorCod"] = 6;
             $arry_result["mesg"] = "資料傳輸有誤!";
@@ -169,11 +137,6 @@ class User {
             $_SESSION['error'] = $arry_result;
         }
         	$db->closeDB();
-        // mysql_close ($conn);
-    }
-    function mesg_alert($mesg){
-        // echo '我有跑Alert'.$mesg;
-        echo "<script>alert('".$mesg."');</script>";
     }
 }
 

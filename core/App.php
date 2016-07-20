@@ -15,25 +15,13 @@ class App {
         
         $controllerName = "{$url[0]}Controller";
         
-    //      if(!in_array($_GET["url"], $this->whiteAction)){
-    //         if (session_status() == PHP_SESSION_NONE) {
-    //             session_start();
-    //         }
-    // 		if(empty( $_SESSION['isLogin'] ) || $_SESSION['isLogin'] != 'true'){
-    // 		    header("Location: /home");
-    // 		}
-    //     }
-        
         if(!in_array($_GET["url"], $this->whiteAction)){
             if(isset($_SESSION['id']) && isset($_SESSION['EmpAccount']) && isset($_SESSION['IsAdmin']))
             {
                 if($_SESSION['IsAdmin']==1){$user="admin";}
                 else{$user="user";}
             }else{
-                // echo "<script type='text/javascript'>alert('尚未登入');</script>";
-                 // echo "<script type='text/javascript'>document.location.href='ac_login.html'</script>";
                 echo "<script type='text/javascript'>document.location.href='/homework0721_MVC/Account/login'</script>";
-                // header("Location: /homework0721_MVC/Account/login");
             }
         }       
         

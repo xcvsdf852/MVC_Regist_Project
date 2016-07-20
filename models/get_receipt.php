@@ -7,7 +7,7 @@ require_once("Connections/DB_config.php");
 // var_dump($_POST);
 // exit;
 // { 'date' => string(5) "10503" }
-$_POST["date"] = "10503";
+// $_POST["date"] = "10503";
 
 
 #項目檢查 數字型態

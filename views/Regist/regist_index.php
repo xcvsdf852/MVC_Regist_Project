@@ -1,17 +1,3 @@
-<?php
-// session_start(); 
-// // var_dump($_SESSION['error']);
-// if(isset($_SESSION['id']) && isset($_SESSION['EmpAccount']) && isset($_SESSION['IsAdmin']))
-// {
-//     if($_SESSION['IsAdmin']==1){$user="admin";}
-//     else{$user="user";}
-// }else{
-//     echo "<script type='text/javascript'>alert('尚未登入');</script>";
-//     // echo "<script type='text/javascript'>document.location.href='ac_login.html'</script>";
-//     echo "<script type='text/javascript'>document.location.href='/homework0721_MVC/Account/login'</script>";
-// }
-
-?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -29,10 +15,7 @@
     }
   </style>
   <script type="text/javascript">
-    // $(document).ready(function(){
-      
-    // });
-    
+
     function check_value(){
       var arry_num = new Array();
       var ispass = true;
@@ -46,11 +29,11 @@
         $("#arry_num").val(arry_num); 
         // console.log($("#data_"+num).val());
         if($("#data_"+num).val() == ""){
-          // BootstrapDialog.alert("日期不能是空白");
-           BootstrapDialog.show({
-            title: 'Oops 系統發生錯誤!',
-            message: "日期不能是空白!!"
-            }).setType(BootstrapDialog.TYPE_DANGER);
+          alert("日期不能是空白");
+          // BootstrapDialog.show({
+          //   title: 'Oops 系統發生錯誤!',
+          //   message: "日期不能是空白!!"
+          //   }).setType(BootstrapDialog.TYPE_DANGER);
            
            $("#data_"+num).focus();
            ispass = false;
@@ -58,22 +41,22 @@
          }
 
         if($("#money_"+num).val() == ""){
-          // alert("金額不能空白");
-          BootstrapDialog.show({
-            title: 'Oops 系統發生錯誤!',
-            message: "金額不能空白!!"
-            }).setType(BootstrapDialog.TYPE_DANGER);
+          alert("金額不能空白");
+          // BootstrapDialog.show({
+          //   title: 'Oops 系統發生錯誤!',
+          //   message: "金額不能空白!!"
+          //   }).setType(BootstrapDialog.TYPE_DANGER);
           
           $("#money_"+num).focus();
            ispass = false;
            return false;
         }
         if($("#money_"+num).val() <= 0){
-          // alert("金額不能小於零");
-           BootstrapDialog.show({
-            title: 'Oops 系統發生錯誤!',
-            message: "金額不能小於零!!"
-            }).setType(BootstrapDialog.TYPE_DANGER);
+          alert("金額不能小於零");
+          // BootstrapDialog.show({
+          //   title: 'Oops 系統發生錯誤!',
+          //   message: "金額不能小於零!!"
+          //   }).setType(BootstrapDialog.TYPE_DANGER);
            $("#money_"+num).focus();
            ispass = false;
            return false;
@@ -81,10 +64,11 @@
          if($("#receipt_"+num).val() != ""){
             var receipt=$("#receipt_"+num).val()
             if(receipt.length != 8){
-               BootstrapDialog.show({
-                title: 'Oops 系統發生錯誤!',
-                message: "發票號碼長度錯誤唷!!"
-                }).setType(BootstrapDialog.TYPE_DANGER);
+              alert("發票號碼長度錯誤唷!!");
+              // BootstrapDialog.show({
+              //   title: 'Oops 系統發生錯誤!',
+              //   message: "發票號碼長度錯誤唷!!"
+              //   }).setType(BootstrapDialog.TYPE_DANGER);
                $("#receipt_"+num).focus();
                ispass = false;
                return false;
