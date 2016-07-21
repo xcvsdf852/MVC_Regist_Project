@@ -8,13 +8,7 @@ require_once('package/get_IP.php');
 
 <?php
 // var_dump($_POST);
-// array(5) {
-//     'oldPassword' => string(9) "a12345678"
-//     'pw' => string(10) "aa12345678"
-//     'pwCheck' => string(10) "aa12345678"
-//     'e_mail' => string(19) "xcvsdf123@gmail.com"
-//     'check' => string(1) "1" } OK
-// exit;
+
 // var_dump($_SESSION);
 // exit;
 
@@ -30,7 +24,6 @@ class ch_pass{
         require_once("Connections/DB_config.php");
         if(!isset($this->check) || empty($this->check) || $this->check != 1 )
         {
-        // 	echo '{"callback":4}';
             $arry_result["isTrue"] = false;
             $arry_result["errorCod"] = 2;
             $arry_result["mesg"] = "修改密碼失敗，資料傳輸失敗!";
@@ -43,7 +36,6 @@ class ch_pass{
         //判斷是否有值傳進來
         if(!isset($this->e_mail) || empty($this->e_mail))
         {
-        // 	echo '{"callback":4}';
             $arry_result["isTrue"] = false;
             $arry_result["errorCod"] = 3;
             $arry_result["mesg"] = "修改密碼失敗，資料傳輸失敗!";
@@ -52,11 +44,9 @@ class ch_pass{
             return $arry_result;
         	exit();
         }
-        //e_mail正規表示法檢查
         $bool_isEmailtrue = preg_match('/^([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})$/', $this->e_mail);
         if(!$bool_isEmailtrue)
         {
-        // 	echo '{"callback":3}';
             $arry_result["isTrue"] = false;
             $arry_result["errorCod"] = 4;
             $arry_result["mesg"] = "修改密碼失敗，資料格式有誤!";
@@ -72,7 +62,7 @@ class ch_pass{
             ||!isset($_POST['oldPassword']) || empty($_POST['oldPassword'])
         )
         {
-        // 	echo '{"callback":4}';
+        
             $arry_result["isTrue"] = false;
             $arry_result["errorCod"] = 5;
             $arry_result["mesg"] = "修改密碼失敗，資料傳輸失敗!";
@@ -126,12 +116,6 @@ class ch_pass{
         //=====================================================================================
         //進行連線
         //=====================================================================================
-        // $conn = @mysql_connect($hostname,$username ,$password );
-        // if (!$conn){
-        //     die("資料庫連接失敗：" . mysql_error());
-        // }
-        // mysql_select_db($database, $conn);
-        // mysql_query("set character set 'utf8'"); 
         $db = new DB();
         $db->connect_db($_DB['host'], $_DB['username'], $_DB['password'], $_DB['dbname']);
         #檢查帳號密碼是否符合
@@ -186,10 +170,6 @@ class ch_pass{
                         ,str_replace("'","\'",$str_pw),
                         str_replace("'","\'",$str_e_mail)
                         );
-        // echo $sql;
-        // exit;
-        // $result = mysql_query($sql) 
-        // or die('{"callback":6}');
         $result = $db->query($sql);
         $count = $db->fetch_array($result);
         if(!$result){
@@ -203,8 +183,6 @@ class ch_pass{
             exit();
         }
         
-        // mysql_close ($conn);
-        // echo '{"callback":1}';
         $db->closeDB();
         $arry_result["isTrue"] = true;
         $arry_result["errorCod"] = 1;

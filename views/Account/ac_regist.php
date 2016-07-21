@@ -1,7 +1,8 @@
- <?php 
+<?php 
 //  session_start();
 //  var_dump($_SESSION['error']);
- ?>
+// var_dump($data);
+?>
   <html>
 
   <head>
@@ -22,14 +23,42 @@
       input {
         margin-bottom :10px;
       }
+      
     </style>
+    <?php
+    if(!empty($data)){
+        
+        if($data['isTrue']){
+            echo "<script>
+                $(document).ready(function(){
+                      BootstrapDialog.show({
+                      title: '執行操作成功!',
+                      message: '".$data['mesg']."'
+                      }).setType(BootstrapDialog.TYPE_SUCCESS);
+                });
+                  </script>
+                  ";
+        }else{
+            echo "<script>
+                $(document).ready(function(){
+                      BootstrapDialog.show({
+                      title: 'Oops 系統發生錯誤!',
+                      message: '".$data['mesg']."'
+                      }).setType(BootstrapDialog.TYPE_DANGER);
+                });
+                  </script>
+                  ";
+        }
+    }
+    
+    ?>
   </head>
 
   <body>
 
 
  <div class="container">
-     <form class="form-signin" role="form" id="form1" name="form1" action="/homework0721_MVC/Account/regist_account" method="post">
+     <form class="form-signin" role="form" id="form1" name="form1" action="regist_account" method="post">
          <h2 class="form-signin-heading" style= "text-align : center">記帳管理 - 註冊</h2>
          <label for="inputEmail" class="sr-only">輸入暱稱</label>
          

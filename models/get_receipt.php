@@ -30,7 +30,7 @@ $arry_date = getdays("$AD_year-$mon-01");//Array ( [0] => 2016-03-01 [1] => 2016
 // exit;
 
 
-//擷取網址
+#擷取網址
 include_once('package/simple_html_dom.php');
 $html = file_get_html('http://www.etax.nat.gov.tw/etw-main/front/ETW183W2_'.$date.'/');
 
@@ -120,7 +120,7 @@ function first_Award($id,$receipt,$First,$six,$Special_1,$Special_2){
     }
     
 }
-
+#根據傳入的日期 取得該日期月份的第一天 以及該月份下個月份的最後一天。 
 function getdays($day){
 	$firstday = date('Y-m-01',strtotime($day));
 	$lastday = date('Y-m-d',strtotime("$firstday +2 month -1 day"));
@@ -134,7 +134,6 @@ $sql =" SELECT id,receipt
         AND receipt <> ''
         AND user_id = '".$_SESSION['id']."'
         AND DATE_FORMAT(date,'%Y-%m-%d') BETWEEN '".$arry_date[0]."' AND '".$arry_date[1]."'";
-// 
 //  echo $sql;
 //  exit;
 
@@ -148,7 +147,7 @@ $db->connect_db($_DB['host'], $_DB['username'], $_DB['password'], $_DB['dbname']
 $result = $db->query($sql);
 
 $temp=array();
-// while($row = mysql_fetch_assoc($result)){
+
 while($row = $db->fetch_array($result)){
     $temp[] = first_Award($row['id'],$row['receipt'],$First,$six,$num[0],$num[1]);//判斷六獎與頭獎是否中獎
     // echo $row['id']."<br>";
@@ -189,14 +188,11 @@ if($temp){
             foreach($Tval as $value) {
                 $return_temp['isTrue'] = 1;
                 if($value->isTrue){
-                    // echo "中獎號碼 : ".$value->number."- 獎項 : ".$Award[$value->award]."</br>";
                     // var_dump($value);
-                    
                     $return_temp['data'][]= "中獎號碼 : ".$value->number."- 獎項 : ".$Award[$value->award];
                 }else{
-                    
                     $return_temp['data'][] = "未中獎號碼 : ".$value->number;
-                    // echo json_encode($return_temp
+                    // echo json_encode($return_temp);
                 }
             }
     }

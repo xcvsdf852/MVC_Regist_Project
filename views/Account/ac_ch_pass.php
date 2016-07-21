@@ -1,20 +1,3 @@
-<?php
-// session_start(); 
-// // var_dump($_SESSION['error']);
-// // echo $_SESSION['EmpAccount'];
-// // $UserPermission=array();
-// if(isset($_SESSION['id']) && isset($_SESSION['EmpAccount']) && isset($_SESSION['IsAdmin']))
-// {
-//     if($_SESSION['IsAdmin']==1){$user="admin";}
-//     else{$user="user";}
-// }else{
-
-//     echo "<script type='text/javascript'>alert('尚未登入');</script>";
-//     // echo "<script type='text/javascript'>document.location.href='ac_login.html'</script>";
-//     echo "<script type='text/javascript'>document.location.href='/homework0721_MVC/Account/login'</script>";
-// }
-
-?>
 
 <html>
   <head>
@@ -24,6 +7,8 @@
     <link href="/homework0721_MVC/views/css/bootstrap.min.css" rel="stylesheet">
     <script src="/homework0721_MVC/views/js/jquery.js"></script>
     <script src="/homework0721_MVC/views/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="/homework0721_MVC/views/js/bootstrap-dialog.min.js"></script>
+    <link href="/homework0721_MVC/views/css/bootstrap-dialog.min.css" rel="stylesheet">
     <script type="text/javascript" src="/homework0721_MVC/views/js/check_mail_regist.js"></script>
     <script type="text/javascript">
     
@@ -37,21 +22,33 @@
         function ch_pass(){
 	
         	if($("#check").val() != 1){
-        		alert("請確實填寫帳號");
+        // 		alert("請確實填寫帳號");
+                BootstrapDialog.show({
+				title: 'Oops 系統發生錯誤!',
+				message: '請確實填寫帳號'
+				}).setType(BootstrapDialog.TYPE_DANGER);
         		$("#txtUserName").focus();
         		istrue=false;
         		return false;
         	}
         	
         	if($("#oldPassword").val()==""){
-                alert("請填寫舊密碼！");
+                // alert("請填寫舊密碼！");
+                BootstrapDialog.show({
+				title: 'Oops 系統發生錯誤!',
+				message: '請填寫舊密碼'
+				}).setType(BootstrapDialog.TYPE_DANGER);
                 $("#oldPassword").focus();
                 istrue=false;
                 return false;
             }
 
         	if($("#check_pass").val() != 1){
-        		alert("請確實填寫密碼");
+        // 		alert("請確實填寫密碼");
+                BootstrapDialog.show({
+				title: 'Oops 系統發生錯誤!',
+				message: '請確實填寫密碼'
+				}).setType(BootstrapDialog.TYPE_DANGER);
         		$("#pw").focus();
         		istrue=false;
         		return false;
@@ -59,7 +56,11 @@
         	
         	
         	if($("#pw").val()!=$("#pwCheck").val()){ 
-                alert("請確實填寫資料！");
+                // alert("請確實填寫資料！");
+                BootstrapDialog.show({
+				title: 'Oops 系統發生錯誤!',
+				message: '請確實填寫資料！'
+				}).setType(BootstrapDialog.TYPE_DANGER);
                 $("#pw").focus();
         		istrue=false;
         		return false;

@@ -15,15 +15,14 @@ class password_send_mail{
         require_once("Connections/DB_config.php");
         $this->data['password'] = Tools::getRandPassword();
         $this->data['updatetime'] = Tools::getCurrentDateTime();
-        $this->md5_pass = Tools::getPasswordHash($this->data['password']); //MD5加密
-        if (!preg_match('/^([.0-9a-z]+)@([0-9a-z]+).([.0-9a-z]+)$/i', $this->e_mail)){ //過濾Email;
-                
-                $arry_result["isTrue"] = false;
-                $arry_result["errorCod"] = 2;
-                $arry_result["mesg"] = "帳號格式為Email，請輸入正確格式!";
-                $arry_result['e_mail'] = $this->e_mail;
-                $_SESSION['error'] = $arry_result;
-                return $arry_result;
+        $this->md5_pass = Tools::getPasswordHash($this->data['password']); #MD5加密
+        if (!preg_match('/^([.0-9a-z]+)@([0-9a-z]+).([.0-9a-z]+)$/i', $this->e_mail)){ #過濾Email;
+            $arry_result["isTrue"] = false;
+            $arry_result["errorCod"] = 2;
+            $arry_result["mesg"] = "帳號格式為Email，請輸入正確格式!";
+            $arry_result['e_mail'] = $this->e_mail;
+            $_SESSION['error'] = $arry_result;
+            return $arry_result;
          }
         $this->data['mail'] = $this->e_mail;
         $sql_nick_name ="SELECT `ac_nick_name`

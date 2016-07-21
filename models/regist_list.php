@@ -31,13 +31,6 @@ if(trim($text_value)!=""){
 }
 
 
-
-#搜尋條件  DATE(c.creat_date)這邊只用年月日排序 所以第一筆不會在最上面
-// $str_sql = "SELECT c.id, DATE_FORMAT(c.date,'%Y-%m-%d') as date, i.items_list, c.buy, c.receipt, c.note, c.items, c.user_id
-// FROM `charge` as c LEFT JOIN items as i ON c.items = i.items_id
-// WHERE c.is_enabled = 1 && c.user_id = '".$_SESSION['id']."' ".$str_where."
-// ORDER BY DATE(c.creat_date) DESC 
-// LIMIT ".(($P-1)*$P_number).",".$P_number.";";
 #搜尋條件
 $str_sql = "SELECT c.id, DATE_FORMAT(c.date,'%Y-%m-%d') as date, i.items_list, c.buy, c.receipt, c.note, c.items, c.user_id
 FROM `charge` as c LEFT JOIN items as i ON c.items = i.items_id
@@ -59,7 +52,6 @@ WHERE c.is_enabled =1 && c.user_id = '".$_SESSION['id']."' ".$str_where.";";
 
 
 // $i=$P_number * ($P-1)+1;
-
 //var_dump($str_sql_c);
 
 #輸入關鍵字進行搜尋功能
@@ -80,12 +72,7 @@ function reSet_RegexpString($value){
 //=====================================================================================
 //進行連線
 //=====================================================================================
-// $conn = @mysql_connect($hostname,$username ,$password );
-// if (!$conn){
-//     die("資料庫連接失敗：" . mysql_error());
-// }
-// mysql_select_db($database, $conn);
-// mysql_query("set character set 'utf8'"); 
+
 $db = new DB();
 $db->connect_db($_DB['host'], $_DB['username'], $_DB['password'], $_DB['dbname']);
 
@@ -111,7 +98,6 @@ $result = $db->query($str_sql);
   <tbody>
 
 <?php
-    // while( $row = mysql_fetch_array($result)) {
     while( $row = $db->fetch_array($result)) {
         echo'
         <tr>
@@ -146,8 +132,7 @@ $result = $db->query($str_sql);
           </td>
         </tr>';
     }
-// $result = mysql_query($str_sql_c); 
-// $count = mysql_fetch_assoc($result);
+
 $result = $db->query($str_sql_c);
 $count = $db->fetch_array($result);
 ?>

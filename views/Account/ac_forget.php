@@ -19,6 +19,33 @@
         margin-bottom :10px;
       }
     </style>
+    <?php
+    if(!empty($data)){
+        
+        if($data['isTrue']){
+            echo "<script>
+                $(document).ready(function(){
+                      BootstrapDialog.show({
+                      title: '執行操作成功!',
+                      message: '".$data['mesg']."'
+                      }).setType(BootstrapDialog.TYPE_SUCCESS);
+                });
+                  </script>
+                  ";
+        }else{
+            echo "<script>
+                $(document).ready(function(){
+                      BootstrapDialog.show({
+                      title: 'Oops 系統發生錯誤!',
+                      message: '".$data['mesg']."'
+                      }).setType(BootstrapDialog.TYPE_DANGER);
+                });
+                  </script>
+                  ";
+        }
+    }
+    
+    ?>
   </head>   
 
   <body>

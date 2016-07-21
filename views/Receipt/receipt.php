@@ -52,29 +52,6 @@
         return date.getFullYear() - 1911;    
      } 
     
-    // function check_receipt(d){
-    //     $.post("package/get_receipt.php",
-    //         {"date":d},
-    //         function(result){
-    //             if(result.isTrue == 1){
-    //                 i=0;
-    //                 $.each(result.data, function(i){
-    //                     console.log(result.data[i]);
-    //                     $("#content").append('<p>'+result.data[i]+'</p>');
-    //                     i++;
-    //                 });
-                    
-    //             }else if(result.isTrue == 2){
-    //                 $("#content").append('<p>'+result.data+'</p>');
-    //             }else{
-    //                 BootstrapDialog.show({
-    //                     title: 'Oops 系統發生錯誤!',
-    //                     message: result.data
-    //                 }).setType(BootstrapDialog.TYPE_DANGER);
-    //             }
-    //         },"json");
-    // }
-    
     function check_receipt(d){
         $.post("/homework0721_MVC/models/get_receipt.php",
             {"date":d},
@@ -86,11 +63,11 @@
                             $("#content").append('<p>'+result.data[i]+'</p>');
                             i++;
                         }else{
-                                alert(result.data);
-                                // BootstrapDialog.show({
-                                //     title: 'Oops 系統發生錯誤!',
-                                //     message: result.data
-                                // }).setType(BootstrapDialog.TYPE_DANGER);
+                                // alert(result.data);
+                                BootstrapDialog.show({
+                                    title: 'Oops 系統發生錯誤!',
+                                    message: result.data
+                                }).setType(BootstrapDialog.TYPE_DANGER);
                            }           
                         });
                     

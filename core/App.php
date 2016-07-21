@@ -6,7 +6,8 @@ class App {
                         "Account/regist",
                         "Account/forget_password",
                         "Account/forget_password_send_mail",
-                        "Account/regist_isset_user"
+                        "Account/regist_isset_user",
+                        "Account/regist_account"
                         );
     
     public function __construct() {
@@ -23,10 +24,8 @@ class App {
             }else{
                 echo "<script type='text/javascript'>document.location.href='/homework0721_MVC/Account/login'</script>";
             }
-        }       
-        
-        
-        
+        }      
+
         if (!file_exists("controllers/$controllerName.php")) //判斷該資料夾內有沒有該檔案
             return;
         require_once "controllers/$controllerName.php";  //有HomeController 的php

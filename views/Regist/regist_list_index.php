@@ -28,11 +28,11 @@
   	var text_value=$("#text_value").val();
   	
   	if(Date.parse(time_str).valueOf() > Date.parse(time_end).valueOf()){
-       alert("注意開始時間不能晚於結束時間！");
-    //   BootstrapDialog.show({
-    //         title: 'Oops 系統發生錯誤!',
-    //         message: "注意開始時間不能晚於結束時間!!"
-    //   }).setType(BootstrapDialog.TYPE_DANGER);;
+      // alert("注意開始時間不能晚於結束時間！");
+      BootstrapDialog.show({
+            title: 'Oops 系統發生錯誤!',
+            message: "注意開始時間不能晚於結束時間!!"
+      }).setType(BootstrapDialog.TYPE_DANGER);;
       return false;
     }
     $("#content").load("/homework0721_MVC/models/regist_list.php?P="+P+"&P_number="+P_number,{
@@ -57,40 +57,40 @@
   	var note = $("#note_"+id).val();
     var user = $("#user_"+id).val();
     if(date == ""){
-       alert("日期不能是空白");
-    //   BootstrapDialog.show({
-    //         title: 'Oops 系統發生錯誤!',
-    //         message: "日期不能是空白!!"
-    //   }).setType(BootstrapDialog.TYPE_DANGER);
+      // alert("日期不能是空白");
+      BootstrapDialog.show({
+            title: 'Oops 系統發生錯誤!',
+            message: "日期不能是空白!!"
+      }).setType(BootstrapDialog.TYPE_DANGER);
       $("#data_"+id).focus();
       return false;
     }
     if(buy == ""){
-       alert("金額不能空白");
-    //   BootstrapDialog.show({
-    //         title: 'Oops 系統發生錯誤!',
-    //         message: "金額不能空白!!"
-    //   }).setType(BootstrapDialog.TYPE_DANGER);
+      // alert("金額不能空白");
+      BootstrapDialog.show({
+            title: 'Oops 系統發生錯誤!',
+            message: "金額不能空白!!"
+      }).setType(BootstrapDialog.TYPE_DANGER);
       $("#buy_"+id).focus();
        return false;
     }
     if(buy <= 0){
-       alert("金額不能小於零");
-    //   BootstrapDialog.show({
-    //         title: 'Oops 系統發生錯誤!',
-    //         message: "金額不能小於零!!"
-    //   }).setType(BootstrapDialog.TYPE_DANGER);
+      // alert("金額不能小於零");
+      BootstrapDialog.show({
+            title: 'Oops 系統發生錯誤!',
+            message: "金額不能小於零!!"
+      }).setType(BootstrapDialog.TYPE_DANGER);
        $("#buy_"+id).focus();
        return false;
     }
    if($("#receipt_"+id).val() != ""){
       var receipt=$("#receipt_"+id).val()
       if(receipt.length != 8){
-          alert("發票號碼長度錯誤唷!!");
-        //  BootstrapDialog.show({
-        //   title: 'Oops 系統發生錯誤!',
-        //   message: "發票號碼長度錯誤唷!!"
-        //   }).setType(BootstrapDialog.TYPE_DANGER);
+          // alert("發票號碼長度錯誤唷!!");
+          BootstrapDialog.show({
+          title: 'Oops 系統發生錯誤!',
+          message: "發票號碼長度錯誤唷!!"
+          }).setType(BootstrapDialog.TYPE_DANGER);
          $("#receipt_"+id).focus();
          return false;
       }        
@@ -107,18 +107,18 @@
   		"user":user
   	},function(data){
   		if(data.isTrue==1){
-  			alert('更新成功!');
-  		// 	BootstrapDialog.show({
-    //         title: '執行操作成功!',
-    //         message: "更新成功!!"
-    //     }).setType(BootstrapDialog.TYPE_SUCCESS);
+  		// 	alert('更新成功!');
+  			BootstrapDialog.show({
+            title: '執行操作成功!',
+            message: "更新成功!!"
+        }).setType(BootstrapDialog.TYPE_SUCCESS);
   			list_load($("#P").val(),$("#P_number").val());
   		}else{
-  			alert('更新失敗!\r\n'+data.data);
-  		// 	BootstrapDialog.show({
-    //         title: 'Oops 系統發生錯誤!',
-    //         message: '更新失敗!\r\n'+data.data
-    //     }).setType(BootstrapDialog.TYPE_DANGER);
+  		// 	alert('更新失敗!\r\n'+data.data);
+  			BootstrapDialog.show({
+            title: 'Oops 系統發生錯誤!',
+            message: '更新失敗!\r\n'+data.data
+        }).setType(BootstrapDialog.TYPE_DANGER);
   		}
   	},'json');
   	
@@ -131,48 +131,48 @@
   	var user = $("#user_"+id).val();
   	var isdelete = false;
 
-   	if(!confirm("確定要刪除"+datetime+"，金額"+buy+"?(刪除後無法復原!!)")){
-   		return;
-   	}
-    remove_post(id,user);
+   	// if(!confirm("確定要刪除"+datetime+"，金額"+buy+"?(刪除後無法復原!!)")){
+   	// 	return;
+   	// }
+    // remove_post(id,user);
   
-//   	BootstrapDialog.show({
-//             title: 'Oops 警告!',
-//             message: "確定要刪除"+datetime+"金額:"+buy+"?(刪除後無法復原!!)",
-//             buttons: [{
-//                 label: '確認',
-//                 cssClass: 'btn-primary',
-//                 action: function(dialogItself){
-//                     // isdelete = true;
-//                      remove_post(id,user);
-//                     dialogItself.close();
-//                 }
-//             }, {
-//                 label: '取消',
-//                 cssClass: 'btn-danger',
-//                 action: function(dialogItself){
-//                     // isdelete = false;
-//                     dialogItself.close();
-//                 }
-//             }]
-//       }).setType(BootstrapDialog.TYPE_WARNING);
+  	BootstrapDialog.show({
+            title: 'Oops 警告!',
+            message: "確定要刪除"+datetime+"金額:"+buy+"?(刪除後無法復原!!)",
+            buttons: [{
+                label: '確認',
+                cssClass: 'btn-primary',
+                action: function(dialogItself){
+                    // isdelete = true;
+                      remove_post(id,user);
+                    dialogItself.close();
+                }
+            }, {
+                label: '取消',
+                cssClass: 'btn-danger',
+                action: function(dialogItself){
+                    // isdelete = false;
+                    dialogItself.close();
+                }
+            }]
+      }).setType(BootstrapDialog.TYPE_WARNING);
   	 
   }
 function  remove_post(id,user){
   	$.post('/homework0721_MVC/models/regist_list_delete.php',{"id":id,"user_id":user},function(date){
   		if(date.isTrue==1){
-  			alert('刪除成功');
-  		// 	BootstrapDialog.show({
-    //         title: '執行操作成功!',
-    //         message: "刪除成功!!"
-    //   }).setType(BootstrapDialog.TYPE_SUCCESS);
+  		// 	alert('刪除成功');
+  			BootstrapDialog.show({
+            title: '執行操作成功!',
+            message: "刪除成功!!"
+      }).setType(BootstrapDialog.TYPE_SUCCESS);
   			list_load($("#P").val(),$("#P_number").val());
   		}else{
-  		   alert('刪除失敗!\n\r'+date.data);
-  		//   BootstrapDialog.show({
-    //         title: 'Oops 系統發生錯誤!',
-    //         message: "刪除失敗!!"
-    //   }).setType(BootstrapDialog.TYPE_DANGER);
+  		  // alert('刪除失敗!\n\r'+date.data);
+  		  BootstrapDialog.show({
+            title: 'Oops 系統發生錯誤!',
+            message: "刪除失敗!!"
+      }).setType(BootstrapDialog.TYPE_DANGER);
   		  
   		}
   	},'json');

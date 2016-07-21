@@ -10,23 +10,17 @@ class User {
         require_once("Connections/DB_config.php");
         $Actions_result='';
         $arry_result = array();
-        
         // echo $this->name."<br>";
         // echo $this->password."<br>";
         // exit;
-        //---------------------------------------------------------------------------------------------
-        //在接受到POST情況下進行資料比對
-        //---------------------------------------------------------------------------------------------
         if(isset($this->name) && isset($this->password)){
         
             $EmpAccount = $this->name;
             $EmpPwd = $this->password;
-            
             // echo $EmpAccount;
         //=====================================================================================
         //對接收到的帳號資料先做正規化判斷
-        //是否是純英文與數字
-        //密碼則是直接進行MD5加密
+        //密碼進行MD5加密
         //=====================================================================================
             if (!preg_match('/^([.0-9a-z]+)@([0-9a-z]+).([.0-9a-z]+)$/i', $EmpAccount)){ //過濾Email;
                 
@@ -51,9 +45,8 @@ class User {
             // echo $EmpPwd;
             // exit;
         //=====================================================================================
-        //判斷讀出來的密碼是否與MD5加密後的使用者輸入密碼相同 並且IsEnabled(是否已啟用)是否設為一
+        //判斷讀出來的密碼是否與MD5加密後的使用者輸入密碼相同 並且IsEnabled(是否已啟用)
         //相同將資訊存入Session
-        //不同則不存入session並回傳錯誤的提醒
         //=====================================================================================
             $sql = sprintf("SELECT ac_id,ac_nick_name,ac_email,ac_password,is_admin,is_enabled FROM  account WHERE
             ac_email='%s'",str_replace("'","\'",$EmpAccount));
@@ -137,6 +130,10 @@ class User {
             $_SESSION['error'] = $arry_result;
         }
         	$db->closeDB();
+    }
+}
+
+?>
     }
 }
 

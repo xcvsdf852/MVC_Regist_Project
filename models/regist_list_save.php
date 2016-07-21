@@ -7,15 +7,6 @@ require_once("Connections/DB_Class.php");
 require_once("Connections/DB_config.php");
 // var_dump($_POST);
 // exit;
-// array(5) { 
-// 	'id' => string(1) "5"
-// 	'date' => string(10) "2016-07-12"
-//  'items' => string(1) "1"
-// 	'buy' => string(2) "25"
-// 	'receipt' => string(6) "123456"
-// 	'note' => string(3) "123"
-//  'user' => string(1) "2" 
-// 	}
 
 #修改 id檢查 數字型態
 if( !isset($_POST['id']) || empty($_POST['id']))
@@ -99,13 +90,7 @@ if($note != "" && $note != "0"){
         die('{"isTrue":0,"data":"資料格式錯誤!"}');
 }
 $ip = getIP();
-// 	'id' => string(1) "5"
-// 	'date' => string(10) "2016-07-12"
-//  'items' => string(1) "1"
-// 	'buy' => string(2) "25"
-// 	'receipt' => string(6) "123456"
-// 	'note' => string(3) "123"
-//  'user' => string(1) "2" 
+ 
 $str_Sql='UPDATE `charge` 
 SET `date`="'.$data.'"
 ,`buy`="'.$buy.'" 
@@ -121,16 +106,10 @@ WHERE `id`="'.$id.'" &&  `user_id` = "'.$user.'";';
 //=====================================================================================
 //進行連線
 //=====================================================================================
-// $conn = @mysql_connect($hostname,$username ,$password );
-// if (!$conn){
-//     die("資料庫連接失敗：" . mysql_error());
-// }
-// mysql_select_db($database, $conn);
-// mysql_query("set character set 'utf8'"); 
+
 $db = new DB();
 $db->connect_db($_DB['host'], $_DB['username'], $_DB['password'], $_DB['dbname']);
 
-// $result = mysql_query($str_Sql) ;    
 $result = $db->query($str_Sql);
 
 if($result){
@@ -139,7 +118,6 @@ if($result){
 	echo '{"isTrue":0,"data":"'. mysql_error().'"}';
 	}
 
-// mysql_close ($conn);
 $db->closeDB();
 exit();
 

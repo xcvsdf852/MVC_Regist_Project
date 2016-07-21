@@ -29,11 +29,11 @@
         $("#arry_num").val(arry_num); 
         // console.log($("#data_"+num).val());
         if($("#data_"+num).val() == ""){
-          alert("日期不能是空白");
-          // BootstrapDialog.show({
-          //   title: 'Oops 系統發生錯誤!',
-          //   message: "日期不能是空白!!"
-          //   }).setType(BootstrapDialog.TYPE_DANGER);
+          // alert("日期不能是空白");
+          BootstrapDialog.show({
+            title: 'Oops 系統發生錯誤!',
+            message: "日期不能是空白!!"
+            }).setType(BootstrapDialog.TYPE_DANGER);
            
            $("#data_"+num).focus();
            ispass = false;
@@ -41,22 +41,22 @@
          }
 
         if($("#money_"+num).val() == ""){
-          alert("金額不能空白");
-          // BootstrapDialog.show({
-          //   title: 'Oops 系統發生錯誤!',
-          //   message: "金額不能空白!!"
-          //   }).setType(BootstrapDialog.TYPE_DANGER);
+          // alert("金額不能空白");
+          BootstrapDialog.show({
+            title: 'Oops 系統發生錯誤!',
+            message: "金額不能空白!!"
+            }).setType(BootstrapDialog.TYPE_DANGER);
           
           $("#money_"+num).focus();
            ispass = false;
            return false;
         }
         if($("#money_"+num).val() <= 0){
-          alert("金額不能小於零");
-          // BootstrapDialog.show({
-          //   title: 'Oops 系統發生錯誤!',
-          //   message: "金額不能小於零!!"
-          //   }).setType(BootstrapDialog.TYPE_DANGER);
+          // alert("金額不能小於零");
+          BootstrapDialog.show({
+            title: 'Oops 系統發生錯誤!',
+            message: "金額不能小於零!!"
+            }).setType(BootstrapDialog.TYPE_DANGER);
            $("#money_"+num).focus();
            ispass = false;
            return false;
@@ -64,11 +64,11 @@
          if($("#receipt_"+num).val() != ""){
             var receipt=$("#receipt_"+num).val()
             if(receipt.length != 8){
-              alert("發票號碼長度錯誤唷!!");
-              // BootstrapDialog.show({
-              //   title: 'Oops 系統發生錯誤!',
-              //   message: "發票號碼長度錯誤唷!!"
-              //   }).setType(BootstrapDialog.TYPE_DANGER);
+              // alert("發票號碼長度錯誤唷!!");
+              BootstrapDialog.show({
+                title: 'Oops 系統發生錯誤!',
+                message: "發票號碼長度錯誤唷!!"
+                }).setType(BootstrapDialog.TYPE_DANGER);
                $("#receipt_"+num).focus();
                ispass = false;
                return false;
@@ -110,10 +110,34 @@
     function remov(n){
       $('#row_'+n).remove();
     }
-    
-    
-    
   </script>
+  <?php
+    if(!empty($data)){
+        
+        if($data['isTrue']){
+            echo "<script>
+                $(document).ready(function(){
+                      BootstrapDialog.show({
+                      title: '執行操作成功!',
+                      message: '".$data['mesg']."'
+                      }).setType(BootstrapDialog.TYPE_SUCCESS);
+                });
+                  </script>
+                  ";
+        }else{
+            echo "<script>
+                $(document).ready(function(){
+                      BootstrapDialog.show({
+                      title: 'Oops 系統發生錯誤!',
+                      message: '".$data['mesg']."'
+                      }).setType(BootstrapDialog.TYPE_DANGER);
+                });
+                  </script>
+                  ";
+        }
+    }
+    
+    ?>
 </head>
 <body>
 

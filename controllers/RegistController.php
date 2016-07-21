@@ -2,7 +2,7 @@
 
 class RegistController extends Controller {
     
-     #顯示修改密碼頁
+     #顯示記帳頁面
     function regist_index(){ 
         $this->view("Regist/regist_index");
     }
@@ -15,14 +15,14 @@ class RegistController extends Controller {
         $arry_return = $user->charge();
         // var_dump($arry_return);
         if($arry_return['isTrue']){
-             echo '<script>alert("紀錄新增成功!");</script>';
+            //  echo '<script>alert("紀錄新增成功!");</script>';
             if(isset($_SESSION['error'])){
                 unset($_SESSION['error']);
             }
-            $this->view("Regist/regist_index");//登入成功要導入記帳頁面
+            $this->view("Regist/regist_index",$arry_return );//登入成功要導入記帳頁面
         }else{
-            echo '<script>alert("'.$arry_return['mesg'].'");</script>';
-            $this->view("Regist/regist_index");//導回首頁
+            // echo '<script>alert("'.$arry_return['mesg'].'");</script>';
+            $this->view("Regist/regist_index",$arry_return);//導回首頁
         }
     }
     

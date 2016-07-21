@@ -9,10 +9,6 @@ require_once("Connections/DB_config.php");
 
 // var_dump($_POST);
 // exit;
-// $_POST = ['time_str' =>  "2016-07-01",
-// 'time_end' =>  "2016-07-31",
-// 'user_id' =>  "2" 
-// ];
 
 # 時間
 if( !isset($_POST['time_str']) )
@@ -59,19 +55,9 @@ if($_SESSION['id'] != $user && $_SESSION['IsAdmin'] == 0 ){
     exit();
 }
 
-
-
 // echo $time_str."<br>";
 // echo $time_end."<br>";
 
-
-// SELECT i.items_list, SUM(c.buy) 
-// FROM `charge` as c
-// LEFT JOIN items as i
-// ON c.items = i.items_id
-// WHERE DATE_FORMAT(c.date,'%Y-%m-%d') BETWEEN '2016-07-01' AND '2016-07-31'
-// AND  c.user_id = '2'
-// GROUP BY items
 
 $str_sql = "SELECT i.items_list, SUM(c.buy) as total
             FROM `charge` as c
@@ -87,22 +73,15 @@ $str_sql = "SELECT i.items_list, SUM(c.buy) as total
 //=====================================================================================
 //進行連線
 //=====================================================================================
-// $conn = @mysql_connect($hostname,$username ,$password );
-// if (!$conn){
-//     die("資料庫連接失敗：" . mysql_error());
-// }
-// mysql_select_db($database, $conn);
-// mysql_query("set character set 'utf8'"); 
+
 $db = new DB();
 $db->connect_db($_DB['host'], $_DB['username'], $_DB['password'], $_DB['dbname']);
 
 $return_json = [];
 $str_json = '';
 
-// $result = mysql_query($str_sql);
 $result = $db->query($str_sql);
 
-// while($row = mysql_fetch_assoc($result)){
 while($row = $db->fetch_array($result)){
     $str_json .= '{"name": "'.$row['items_list'].'","y": '.$row['total'].'},';
 }
@@ -113,8 +92,6 @@ $str_json = substr_replace($str_json, '', -1, 1);
 
 echo '{"isTrue":1,"data":['.$str_json.']}';
 
-
-// mysql_close ($conn);
 $db->closeDB();
 exit();
 

@@ -2,7 +2,7 @@
 class AccountController extends Controller{
     #到登入頁面
     function login(){ 
-        $this->view("Account/ac_login");//是View底下的路徑
+        $this->view("Account/ac_login");//是View底下的路徑    
     }
     #登入功能
     function check_user(){
@@ -49,17 +49,18 @@ class AccountController extends Controller{
         $user->pw = $_POST['pw'];
         $user->pwCheck = $_POST['pwCheck'];
         $user->e_mail = $_POST['txtUserName'];
-        
+
         $arry_return = $user->regist_insert();
-        
+        // var_dump($arry_return);
+        // exit;
         if($arry_return['isTrue']){
             if(isset($_SESSION['error'])){
                 unset($_SESSION['error']);
             }
-            echo '<script>alert("'.$arry_return['mesg'].'");</script>';
-            $this->view("Account/ac_login");//註冊成功，導入燈入頁
+            // echo '<script>alert("'.$arry_return['mesg'].'");</script>';
+            $this->view("Account/ac_login",$arry_return);//註冊成功，導入登入頁
         }else{
-            $this->view("Account/ac_regist");//失敗繼續註冊頁
+            $this->view("Account/ac_regist",$arry_return);//失敗繼續註冊頁
         }
 
     }
@@ -120,11 +121,11 @@ class AccountController extends Controller{
             if(isset($_SESSION['error'])){
                unset($_SESSION['error']);
             }
-            echo '<script>alert("'.$arry_return['mesg'].'");</script>';
-            $this->view("Account/ac_login");///密碼修改成功，登入畫面
+            // echo '<script>alert("'.$arry_return['mesg'].'");</script>';
+            $this->view("Account/ac_login",$arry_return);///密碼修改成功，登入畫面
             //  header('Location: /homework0721_MVC/Account/login');
-        }else{
-            echo '<script>alert("'.$arry_return['mesg'].'");</script>';
+        }else{ 
+            // echo '<script>alert("'.$arry_return['mesg'].'");</script>';
             $this->view("Account/ac_forget",$arry_return);//失敗回到忘記密碼頁
         }
     }
