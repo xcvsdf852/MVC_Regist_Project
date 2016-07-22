@@ -29,20 +29,20 @@
                 // console.log(time_str);
                 
                 if(time_str !="" && time_end =="" || time_str =="" && time_end !=""){
-                  alert("注意起訖時間都必須填寫!!");
-                //   BootstrapDialog.show({
-                //         title: 'Oops 系統發生錯誤!',
-                //         message: "注意起訖時間都必須填寫!!"
-                //   }).setType(BootstrapDialog.TYPE_DANGER);;
+                //   alert("注意起訖時間都必須填寫!!");
+                  BootstrapDialog.show({
+                        title: 'Oops 系統發生錯誤!',
+                        message: "注意起訖時間都必須填寫!!"
+                  }).setType(BootstrapDialog.TYPE_DANGER);
                   return false;
                 }
                 
                 if(Date.parse(time_str).valueOf() > Date.parse(time_end).valueOf()){
-                   alert("注意開始時間不能晚於結束時間！");
-                //   BootstrapDialog.show({
-                //         title: 'Oops 系統發生錯誤!',
-                //         message: "注意開始時間不能晚於結束時間!!"
-                //   }).setType(BootstrapDialog.TYPE_DANGER);;
+                //   alert("注意開始時間不能晚於結束時間！");
+                  BootstrapDialog.show({
+                        title: 'Oops 系統發生錯誤!',
+                        message: "注意開始時間不能晚於結束時間!!"
+                  }).setType(BootstrapDialog.TYPE_DANGER);
                   return false;
                 }
                 
@@ -80,11 +80,11 @@
                             }]
                          });
                     }else{
-                        alert(d.data);
-                        // BootstrapDialog.show({
-                        //     title: 'Oops 系統發生錯誤!',
-                        //     message: d.data
-                        // }).setType(BootstrapDialog.TYPE_DANGER);
+                        // alert(d.data);
+                        BootstrapDialog.show({
+                            title: 'Oops 系統發生錯誤!',
+                            message: d.data
+                        }).setType(BootstrapDialog.TYPE_DANGER);
                         
                     }
                  },'json');

@@ -91,6 +91,7 @@
            <button class="btn btn-lg btn-success btn-block" type="button" name="btnOK" id="btnOK"  onclick ="User_Insert()">邁向理財的第一步
              <span class="glyphicon glyphicon-usd" aria-hidden="true" ></span>
            </button>
+          <a class="btn btn-lg btn-info btn-block" href="login">回登入</a>
           <input name="check" type="hidden" value="0" id="check" />
           <input name="check_pass" type="hidden" value="0" id="check_pass" />
           <input name="check_name" type="hidden" value="0" id="check_name" />
