@@ -52,52 +52,49 @@
     }
     
     ?>
-  </head>
-
+</head>
   <body>
-
-
- <div class="container">
-     <form class="form-signin" role="form" id="form1" name="form1" action="regist_account" method="post">
-         <h2 class="form-signin-heading" style= "text-align : center">記帳管理 - 註冊</h2>
-         <label for="inputEmail" class="sr-only">輸入暱稱</label>
-         
-         <div id="name_set">
-            <input type="text" name="nickname" id="nickname" class="form-control" placeholder="輸入暱稱" autofocus="" onBlur="Checkname();" value="<?php if(is_null($_SESSION['error']['nickname'])|| !isset($_SESSION['error'])){echo "";}else{echo $_SESSION['error']['nickname'];} ?>">
-            <span id='name_message'></span>
-         </div>
-         
-         <label for="inputEmail" class="sr-only">輸入帳號</label>
-         <div id="account_set">
-             <span id='account_message'></span>
-             <input type="email" name="txtUserName" id="txtUserName" class="form-control" placeholder="輸入Email帳號" autofocus=""  onBlur="User_Isset();" value="<?php if(is_null($_SESSION['error']['e_mail'])|| !isset($_SESSION['error'])){echo "";}else{echo $_SESSION['error']['e_mail'];} ?>"> 
+    <div class="container">
+        <form class="form-signin" role="form" id="form1" name="form1" action="regist_account" method="post">
+             <h2 class="form-signin-heading" style= "text-align : center">記帳管理 - 註冊</h2>
+             <label for="inputEmail" class="sr-only">輸入暱稱</label>
              
-         </div>
-         <label for="inputPassword" class="sr-only">輸入密碼</label> 
-         <div id="PasswordCheck">
-             <span id='PasswordCheck_message'></span>
-             <input type="password" name="pw" id="pw"  class="form-control" placeholder="輸入密碼(包含英數字8~12碼)"  >
+             <div id="name_set">
+                <input type="text" name="nickname" id="nickname" class="form-control" placeholder="輸入暱稱" autofocus="" onBlur="Checkname();" value="<?php if(is_null($_SESSION['error']['nickname'])|| !isset($_SESSION['error'])){echo "";}else{echo $_SESSION['error']['nickname'];} ?>">
+                <span id='name_message'></span>
+             </div>
              
-         </div>
-         <label for="inputPassword" class="sr-only">輸入密碼</label> 
-         <div id="PasswordCheck2">
-             <span id='PasswordCheck2_message'></span> 
-             <input type="password" name="pwCheck" id="pwCheck"  class="form-control" placeholder="輸入第二次密碼" onBlur="PasswordCheck();" >
+             <label for="inputEmail" class="sr-only">輸入帳號</label>
+             <div id="account_set">
+                 <span id='account_message'></span>
+                 <input type="email" name="txtUserName" id="txtUserName" class="form-control" placeholder="輸入Email帳號" autofocus=""  onBlur="User_Isset();" value="<?php if(is_null($_SESSION['error']['e_mail'])|| !isset($_SESSION['error'])){echo "";}else{echo $_SESSION['error']['e_mail'];} ?>"> 
+             </div>
              
-         </div>
-         <div style = "margin :10px 0px 10px 0px ">
-           <label class ="label label-danger"><?php echo  $_SESSION['error']['mesg'];?></label>
-         </div>
-           <button class="btn btn-lg btn-success btn-block" type="button" name="btnOK" id="btnOK"  onclick ="User_Insert()">邁向理財的第一步
-             <span class="glyphicon glyphicon-usd" aria-hidden="true" ></span>
-           </button>
-          <a class="btn btn-lg btn-info btn-block" href="login">回登入</a>
-          <input name="check" type="hidden" value="0" id="check" />
-          <input name="check_pass" type="hidden" value="0" id="check_pass" />
-          <input name="check_name" type="hidden" value="0" id="check_name" />
-       </form>
+             <label for="inputPassword" class="sr-only">輸入密碼</label> 
+             <div id="PasswordCheck">
+                 <span id='PasswordCheck_message'></span>
+                 <input type="password" name="pw" id="pw"  class="form-control" placeholder="輸入密碼(包含英數字8~12碼)"  >
+             </div>
+             
+             <label for="inputPassword" class="sr-only">輸入密碼</label> 
+             <div id="PasswordCheck2">
+                 <span id='PasswordCheck2_message'></span> 
+                 <input type="password" name="pwCheck" id="pwCheck"  class="form-control" placeholder="輸入第二次密碼" onBlur="PasswordCheck();" >
+             </div>
+             
+             <div style = "margin :10px 0px 10px 0px ">
+               <label class ="label label-danger"><?php echo  $_SESSION['error']['mesg'];?></label>
+             </div>
+             
+               <button class="btn btn-lg btn-success btn-block" type="button" name="btnOK" id="btnOK"  onclick ="User_Insert()">邁向理財的第一步
+                 <span class="glyphicon glyphicon-usd" aria-hidden="true" ></span>
+               </button>
+               
+              <a class="btn btn-lg btn-info btn-block" href="login">回登入</a>
+              <input name="check" type="hidden" value="0" id="check" />
+              <input name="check_pass" type="hidden" value="0" id="check_pass" />
+              <input name="check_name" type="hidden" value="0" id="check_name" />   
+        </form>
    </div>
-
   </body>
-
-  </html>
+</html>

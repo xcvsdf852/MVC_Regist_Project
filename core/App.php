@@ -13,7 +13,9 @@ class App {
     public function __construct() {
         
         $url = $this->parseUrl();
-        
+        if(is_null($url)){
+             header("Location: /homework0721_MVC/Regist/regist_index");
+        }
         $controllerName = "{$url[0]}Controller";
         
         if(!in_array($_GET["url"], $this->whiteAction)){
@@ -22,7 +24,7 @@ class App {
                 if($_SESSION['IsAdmin']==1){$user="admin";}
                 else{$user="user";}
             }else{
-                echo "<script type='text/javascript'>document.location.href='/homework0721_MVC/Account/login'</script>";
+                header("Location: /homework0721_MVC/Account/login");
             }
         }      
 

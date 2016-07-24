@@ -53,6 +53,7 @@
      } 
     
     function check_receipt(d){
+        $("#content").html("");
         $.post("/homework0721_MVC/models/get_receipt.php",
             {"date":d},
             function(result){

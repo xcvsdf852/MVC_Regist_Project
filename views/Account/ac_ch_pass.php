@@ -1,4 +1,3 @@
-
 <html>
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
@@ -20,7 +19,6 @@
              }
         }
         function ch_pass(){
-	
         	if($("#check").val() != 1){
         // 		alert("請確實填寫帳號");
                 BootstrapDialog.show({

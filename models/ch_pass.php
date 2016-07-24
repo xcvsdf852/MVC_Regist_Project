@@ -72,15 +72,14 @@ class ch_pass{
         	exit();
         }
         //密碼正規表示法檢查
-        $bool_isPasstrue1 = preg_match('/^[A-Za-z0-9]*[0-9]+[A-Za-z0-9]*$/', $this->pw);
+        $bool_isPasstrue1 = preg_match('/^[A-Za-z0-9]*[A-Za-z]+[A-Za-z0-9]*$/', $this->pw);
         $bool_isPasstrue2 = preg_match('/^[A-Za-z0-9]*[A-Za-z]+[A-Za-z0-9]*$/', $this->pwCheck);
         $bool_isPasstrue3 = preg_match('/^[A-Za-z0-9]*[A-Za-z]+[A-Za-z0-9]*$/', $this->oldPassword);
         
         // echo strlen($_POST['pw']);
         // exit;
-        
-        if(strlen($this->pw) < 8 || strlen($this->pw) > 12){ #8-12碼檢查
-            // echo '{"callback":3}';
+        #8-12碼檢查
+        if(strlen($this->pw) < 8 || strlen($this->pw) > 12){ 
             $arry_result["isTrue"] = false;
             $arry_result["errorCod"] = 6;
             $arry_result["mesg"] = "修改密碼失敗，密碼至少8~12碼!";
@@ -93,7 +92,6 @@ class ch_pass{
         //不符合格式
         if(!$bool_isPasstrue1 || !$bool_isPasstrue2|| !$bool_isPasstrue3)  
         {
-        // 	echo '{"callback":3}';
             $arry_result["isTrue"] = false;
             $arry_result["errorCod"] = 7;
             $arry_result["mesg"] = "修改密碼失敗，需英數字混和!";
@@ -143,7 +141,6 @@ class ch_pass{
         $count = $db->fetch_array($result);
         
         if($count['C'] <= 0 ){
-            // echo '{"callback":2}';
             $arry_result["isTrue"] = false;
             $arry_result["errorCod"] = 9;
             $arry_result["mesg"] = "修改密碼失敗，驗證帳密有誤!";
@@ -155,7 +152,6 @@ class ch_pass{
         
         #檢查是否為本人，或者是Admin
         if($_SESSION['EmpAccount'] != $str_e_mail && $_SESSION['IsAdmin'] ==0 ){
-            // echo '{"callback":5}';
             $arry_result["isTrue"] = false;
             $arry_result["errorCod"] = 10;
             $arry_result["mesg"] = "修改密碼失敗，修改權限有誤!";
@@ -173,7 +169,6 @@ class ch_pass{
         $result = $db->query($sql);
         $count = $db->fetch_array($result);
         if(!$result){
-            // echo '{"callback":2}';
             $arry_result["isTrue"] = false;
             $arry_result["errorCod"] = 11;
             $arry_result["mesg"] = "修改密碼失敗，驗證帳密有誤!";

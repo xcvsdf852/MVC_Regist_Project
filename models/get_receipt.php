@@ -78,7 +78,8 @@ class receipt{
 
 $receiptObj= array();
 
-//比對6~頭獎 $receiptz8 發票號碼 $First頭獎陣列 $six六獎陣列
+//比對6~頭獎 
+//$id 放發票號碼資料庫存放的ID   $receiptz 發票號碼 $First頭獎陣列 $six六獎陣列  特別獎 特獎
 function first_Award($id,$receipt,$First,$six,$Special_1,$Special_2){
     $temp = 0;
     foreach($First as $First_val){
@@ -127,7 +128,9 @@ function getdays($day){
 	return array($firstday,$lastday);
 }
 
-
+//=====================================================================================
+//開始資料庫內符合兌獎日期的發票號碼讀取進行兌獎
+//=====================================================================================
 $sql =" SELECT id,receipt
         FROM  `charge` 
         WHERE 	is_enabled = '1'
