@@ -37,7 +37,6 @@ class get_receipt{
                         );
     #讀取資料庫發票與網頁資料對獎
     function get_db_check_numbers(){
-        require_once("Connections/DB_config.php");
         #項目檢查 數字型態
         if( !isset($this->data) || empty($this->data))
         {
@@ -75,25 +74,39 @@ class get_receipt{
         //=====================================================================================
         //開始資料庫內符合兌獎日期的發票號碼讀取進行兌獎
         //=====================================================================================
+        // $sql =" SELECT id,receipt
+        //         FROM  `charge` 
+        //         WHERE 	is_enabled = '1'
+        //         AND receipt <> ''
+        //         AND user_id = '".$_SESSION['id']."'
+        //         AND DATE_FORMAT(date,'%Y-%m-%d') BETWEEN '".$arry_date[0]."' AND '".$arry_date[1]."'";
+        //  echo $sql;
+        //  exit;
         $sql =" SELECT id,receipt
                 FROM  `charge` 
                 WHERE 	is_enabled = '1'
                 AND receipt <> ''
-                AND user_id = '".$_SESSION['id']."'
-                AND DATE_FORMAT(date,'%Y-%m-%d') BETWEEN '".$arry_date[0]."' AND '".$arry_date[1]."'";
-        //  echo $sql;
-        //  exit;
+                AND user_id = ?
+                AND DATE_FORMAT(date,'%Y-%m-%d') BETWEEN ? AND ? ";
         
         //=====================================================================================
         //進行連線
         //=====================================================================================
-        $db = new DB();
-        $db->connect_db($_DB['host'], $_DB['username'], $_DB['password'], $_DB['dbname']);
-        $result = $db->query($sql);
+        // $db = new DB();
+        // $db->connect_db($_DB['host'], $_DB['username'], $_DB['password'], $_DB['dbname']);
+        $PDO = new myPDO();
+        $conn = $PDO->getConnection();
+        $stmt = $conn->prepare($sql);
+        $stmt->bindValue(1, $_SESSION['id']);
+        $stmt->bindValue(2, $arry_date[0]);#起始日期
+        $stmt->bindValue(3, $arry_date[1]);#迄日期
+        $result = $stmt->execute();
+        // $count = $stmt->fetch();
+        // $result = $db->query($sql);
         
         $temp=array();
         
-        while($row = $db->fetch_array($result)){
+        while($row = $stmt->fetch()){
             $temp[] = $this->first_Award($row['id'],$row['receipt'],$First,$six,$num[0],$num[1]);//$num[0];特別獎$num[1];特獎
             // echo $row['id']."<br>";
             // echo $row['receipt']."<br>";
@@ -122,6 +135,7 @@ class get_receipt{
             }
             return json_encode($return_temp);
         }
+        $PDO->closeConnection();
     }
     //$id 放發票號碼資料庫存放的ID   $receiptz 發票號碼 $First頭獎陣列 $six六獎陣列  特別獎 特獎
     function first_Award($id,$receipt,$First,$six,$Special_1,$Special_2){

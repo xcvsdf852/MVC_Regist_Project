@@ -1,13 +1,11 @@
 <?php
 session_start(); 
-header("Content-Type:text/html; charset=utf-8");
 require_once("Connections/DB_Class.php");
 
 class User {
     public $name;
     public $password;
     function check_login(){
-        require_once("Connections/DB_config.php");
         $Actions_result='';
         $arry_result = array();
         // echo $this->name."<br>";
@@ -39,21 +37,30 @@ class User {
         //=====================================================================================
         //進行連線
         //=====================================================================================
-            $db = new DB();
-            $db->connect_db($_DB['host'], $_DB['username'], $_DB['password'], $_DB['dbname']);
+            // $db = new DB();
+            // $db->connect_db($_DB['host'], $_DB['username'], $_DB['password'], $_DB['dbname']);
             
-            // echo $EmpPwd;
-            // exit;
+            $PDO = new myPDO();
+            $conn = $PDO->getConnection();
+            
         //=====================================================================================
         //判斷讀出來的密碼是否與MD5加密後的使用者輸入密碼相同 並且IsEnabled(是否已啟用)
         //相同將資訊存入Session
         //=====================================================================================
-            $sql = sprintf("SELECT ac_id,ac_nick_name,ac_email,ac_password,is_admin,is_enabled FROM  account WHERE
-            ac_email='%s'",str_replace("'","\'",$EmpAccount));
+            // $sql = sprintf("SELECT ac_id,ac_nick_name,ac_email,ac_password,is_admin,is_enabled FROM  account WHERE
+            // ac_email='%s'",str_replace("'","\'",$EmpAccount));
             // echo $sql;
             // exit;
-            $result = $db->query($sql);
-            $count = $db->fetch_array($result);
+            $sql = "SELECT ac_id,ac_nick_name,ac_email,ac_password,is_admin,is_enabled FROM  account WHERE
+            ac_email= ? ";
+            $stmt = $conn->prepare($sql);
+            
+            $stmt->bindValue(1, $EmpAccount, PDO::PARAM_STR);
+            $result = $stmt->execute();
+            $count = $stmt->fetch();
+            
+            // $result = $db->query($sql);
+            // $count = $db->fetch_array($result);
             // var_dump($count);
             // exit;
             if(($EmpPwd== $count['ac_password'])&&($count['is_enabled']=='0')){
@@ -129,7 +136,8 @@ class User {
             $arry_result["pwd"] = $this->password;
             $_SESSION['error'] = $arry_result;
         }
-    	$db->closeDB();
+    // 	$db->closeDB();
+        $PDO->closeConnection();
     }
 }
 

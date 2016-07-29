@@ -1,15 +1,12 @@
 <?php
 session_start();
-header("Content-Type:text/html; charset=utf-8");
 require_once('package/str_sql_replace.php'); 
 require_once('package/get_IP.php'); 
 require_once("Connections/DB_Class.php");
 
 class statistics_json{
-    //"time_str":time_str,"time_end":time_end,"user_id":user_id
     public $POST_data;
     function get_pie_data(){
-        require_once("Connections/DB_config.php");
         # 時間
         if( !isset($this->POST_data['time_str']) )
         {
@@ -70,22 +67,28 @@ class statistics_json{
         //進行連線
         //=====================================================================================
         
-        $db = new DB();
-        $db->connect_db($_DB['host'], $_DB['username'], $_DB['password'], $_DB['dbname']);
+        // $db = new DB();
+        // $db->connect_db($_DB['host'], $_DB['username'], $_DB['password'], $_DB['dbname']);
+        $PDO = new myPDO();
+        $conn = $PDO->getConnection();
+        $stmt = $conn->prepare($str_sql);
+        $result = $stmt->execute();
+        
         
         $return_json = [];
         $str_json = '';
         
-        $result = $db->query($str_sql);
+        // $result = $db->query($str_sql);
         
-        while($row = $db->fetch_array($result)){
+        while($row = $stmt->fetch()){
             $str_json .= '{"name": "'.$row['items_list'].'","y": '.$row['total'].'},';
         }
         $str_json = substr_replace($str_json, '', -1, 1);
         
         // echo $str_json;
         // exit;
-        $db->closeDB();
+        // $db->closeDB();
+        $PDO->closeConnection();
         return '{"isTrue":1,"data":['.$str_json.']}';
     
         // exit();

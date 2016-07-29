@@ -21,7 +21,7 @@ class ch_pass{
     public $check;
     
     function ch_password(){
-        require_once("Connections/DB_config.php");
+        // require_once("Connections/DB_config.php");
         if(!isset($this->check) || empty($this->check) || $this->check != 1 )
         {
             $arry_result["isTrue"] = false;
@@ -108,19 +108,26 @@ class ch_pass{
         //=====================================================================================
         //進行連線
         //=====================================================================================
-        $db = new DB();
-        $db->connect_db($_DB['host'], $_DB['username'], $_DB['password'], $_DB['dbname']);
+        // $db = new DB();
+        // $db->connect_db($_DB['host'], $_DB['username'], $_DB['password'], $_DB['dbname']);
+        $PDO = new myPDO();
+        $conn = $PDO->getConnection();
         #檢查帳號密碼是否符合
-        $sql = sprintf("SELECT COUNT(ac_id) AS C FROM  account 
-                        WHERE ac_email='%s' AND ac_password = MD5('%s')" ,
-                        str_replace("'","\'",$str_e_mail),
-                        str_replace("'","\'",$str_oldPassword)
-                        );
+        // $sql = sprintf("SELECT COUNT(ac_id) AS C FROM  account 
+        //                 WHERE ac_email='%s' AND ac_password = MD5('%s')" ,
+        //                 str_replace("'","\'",$str_e_mail),
+        //                 str_replace("'","\'",$str_oldPassword)
+        //                 );
+        $sql = "SELECT COUNT(ac_id) AS C FROM  account 
+                        WHERE ac_email= ? AND ac_password = MD5( ? )";
+        $stmt = $conn->prepare($sql);
+        $stmt->bindValue(1, $str_e_mail, PDO::PARAM_STR);
+        $stmt->bindValue(2, $str_oldPassword, PDO::PARAM_STR);
+        $result = $stmt->execute();
         // echo $sql;
         // exit;
-        // $result = mysql_query($sql) or die(mysql_error);    
-        // $count = mysql_fetch_assoc($result);
-        $result = $db->query($sql);
+
+        // $result = $db->query($sql);
         // var_dump($result);
         
         if(!$result){
@@ -131,8 +138,8 @@ class ch_pass{
             $_SESSION['error'] = $arry_result;
             return $arry_result;
         }
-        $count = $db->fetch_array($result);
-        
+        // $count = $db->fetch_array($result);
+        $count = $stmt->fetch();
         if($count['C'] <= 0 ){
             $arry_result["isTrue"] = false;
             $arry_result["errorCod"] = 9;
@@ -153,12 +160,19 @@ class ch_pass{
         }
         
         
-        $sql = sprintf("UPDATE `account` SET ac_password = MD5('%s') WHERE ac_email='%s'"
-                        ,str_replace("'","\'",$str_pw),
-                        str_replace("'","\'",$str_e_mail)
-                        );
-        $result = $db->query($sql);
-        $count = $db->fetch_array($result);
+        // $sql = sprintf("UPDATE `account` SET ac_password = MD5('%s') WHERE ac_email='%s'"
+        //                 ,str_replace("'","\'",$str_pw),
+        //                 str_replace("'","\'",$str_e_mail)
+        //                 );
+        // $result = $db->query($sql);
+        // $count = $db->fetch_array($result);
+        
+        $sql = "UPDATE `account` SET ac_password = MD5( ? ) WHERE ac_email= ? ";
+        $stmt = $conn->prepare($sql);
+        $stmt->bindValue(1, $str_pw, PDO::PARAM_STR);
+        $stmt->bindValue(2, $str_e_mail, PDO::PARAM_STR);
+        $result = $stmt->execute();
+        $count = $stmt->fetch();
         if(!$result){
             $arry_result["isTrue"] = false;
             $arry_result["errorCod"] = 11;
@@ -168,7 +182,8 @@ class ch_pass{
             return $arry_result;
         }
         
-        $db->closeDB();
+        // $db->closeDB();
+        $PDO->closeConnection();
         $arry_result["isTrue"] = true;
         $arry_result["errorCod"] = 1;
         $arry_result["mesg"] = "密碼修改完成!";

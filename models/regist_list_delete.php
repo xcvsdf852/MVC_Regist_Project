@@ -2,7 +2,6 @@
 // var_dump($_POST);
 // exit;
 session_start();
-header("Content-Type:text/html; charset=utf-8");
 require_once('package/str_sql_replace.php'); 
 require_once('package/get_IP.php'); 
 require_once("Connections/DB_Class.php");
@@ -10,7 +9,6 @@ require_once("Connections/DB_Class.php");
 class regist_list_delete{
     public $POST_data;
     function regist_delete(){
-        require_once("Connections/DB_config.php");
         #修改 id檢查 數字型態
         if( !isset($_POST['id']) || empty($_POST['id']))
         {
@@ -34,9 +32,13 @@ class regist_list_delete{
         // exit;
         
         
+        // $str_Sql='UPDATE `charge`  
+        // SET `is_enabled`=0
+        // WHERE id='.$id.';';
+        
         $str_Sql='UPDATE `charge`  
-        SET `is_enabled`=0
-        WHERE id='.$id.';';
+                  SET `is_enabled`=0
+                  WHERE id= ? ;';
         
         // var_dump($str_Sql);
         // exit;
@@ -45,17 +47,24 @@ class regist_list_delete{
         //進行連線
         //=====================================================================================
         
-        $db = new DB();
-        $db->connect_db($_DB['host'], $_DB['username'], $_DB['password'], $_DB['dbname']);
-        $result = $db->query($str_Sql);
+        // $db = new DB();
+        // $db->connect_db($_DB['host'], $_DB['username'], $_DB['password'], $_DB['dbname']);
+        // $result = $db->query($str_Sql);
+        $PDO = new myPDO();
+        $conn = $PDO->getConnection();
         
-        if($result ){
+        $stmt = $conn->prepare($str_Sql);
+        $stmt->bindValue(1, $id, PDO::PARAM_INT);
+        $result = $stmt->execute();
+
+        if($result){
         	return '{"isTrue":1,"data":""}';
         }else{
         	return '{"isTrue":0,"data":"執行失敗"}';
     	}
         
-        $db->closeDB();
+        // $db->closeDB();
+        $PDO->closeConnection();
         exit();
     }
 }

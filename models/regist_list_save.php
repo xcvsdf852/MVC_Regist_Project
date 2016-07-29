@@ -1,6 +1,5 @@
 <?php
 session_start();
-header("Content-Type:text/html; charset=utf-8");
 require_once('package/str_sql_replace.php'); 
 require_once('package/get_IP.php'); 
 require_once("Connections/DB_Class.php");
@@ -11,8 +10,6 @@ require_once("Connections/DB_Class.php");
 class regist_list_save{
     public $POST_data;
     function regist_update(){
-        require_once("Connections/DB_config.php");
-        
         // var_dump($this->POST_data);
         // exit;
         #修改 id檢查 數字型態
@@ -97,14 +94,22 @@ class regist_list_save{
         }
         $ip = getIP();
          
+        // $str_Sql='UPDATE `charge` 
+        // SET `date`="'.$data.'"
+        // ,`buy`="'.$buy.'" 
+        // ,`items`="'.$items.'" 
+        // ,`note`="'.$note.'" 
+        // ,`ip`="'.$ip.'" 
+        // ,`receipt`="'.$receipt.'" 
+        // WHERE `id`="'.$id.'" &&  `user_id` = "'.$user.'";';
         $str_Sql='UPDATE `charge` 
-        SET `date`="'.$data.'"
-        ,`buy`="'.$buy.'" 
-        ,`items`="'.$items.'" 
-        ,`note`="'.$note.'" 
-        ,`ip`="'.$ip.'" 
-        ,`receipt`="'.$receipt.'" 
-        WHERE `id`="'.$id.'" &&  `user_id` = "'.$user.'";';
+        SET `date`= :data
+        ,`buy`= :money 
+        ,`items`= :items
+        ,`note`= :note
+        ,`ip`= :ip
+        ,`receipt`= :receipt
+        WHERE `id`= :id &&  `user_id` = :user;';
         
         // var_dump($str_Sql);
         // exit;
@@ -113,18 +118,30 @@ class regist_list_save{
         //進行連線
         //=====================================================================================
         
-        $db = new DB();
-        $db->connect_db($_DB['host'], $_DB['username'], $_DB['password'], $_DB['dbname']);
+        // $db = new DB();
+        // $db->connect_db($_DB['host'], $_DB['username'], $_DB['password'], $_DB['dbname']);
+        $PDO = new myPDO();
+        $conn = $PDO->getConnection();
         
-        $result = $db->query($str_Sql);
+        // $result = $db->query($str_Sql);
+        $sth = $conn->prepare($str_Sql);
+        $sth->bindParam("data", $data);
+        $sth->bindParam("items", $items);
+        $sth->bindParam("money", $buy);
+        $sth->bindParam("receipt", $receipt);
+        $sth->bindParam("note", $note);
+        $sth->bindParam("ip", $ip);
+        $sth->bindParam("id", $id);
+        $sth->bindParam("user", $user);
+        $result = $sth->execute();
         
         if($result){
         	return '{"isTrue":1,"data":""}';
         }else{
         	return '{"isTrue":0,"data":"'. mysql_error().'"}';
     	}
-        
-        $db->closeDB();
+        $PDO->closeConnection();
+        // $db->closeDB();
         exit();
     }
 }

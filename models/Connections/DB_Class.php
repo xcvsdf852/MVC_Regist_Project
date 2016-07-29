@@ -1,51 +1,24 @@
 <?php
-class DB 
-{
-    var $_dbConn = 0;
-    var $_queryResource = 0;
-    
+require_once "DB_config.php";
 
-    function connect_db($host, $user, $pwd, $dbname)
-    {
-        $dbConn = mysql_connect($host, $user, $pwd);
-        if (! $dbConn)
-            die ("MySQL Connect Error");
-        mysql_query("SET NAMES utf8");
-        if (! mysql_select_db($dbname, $dbConn))
-            die ("MySQL Select DB Error");
-        $this->_dbConn = $dbConn;
-        return true;
-    }
-    
-    function query($sql)
-    {
-        if (! $queryResource = mysql_query($sql, $this->_dbConn))
-            die ("MySQL Query Error");
-        $this->_queryResource = $queryResource;
-        return $queryResource;        
-    }
-    
-    /** Get array return by MySQL */
-    function fetch_array()
-    {
-        return mysql_fetch_array($this->_queryResource, MYSQL_ASSOC);
-    }
-    
-    function get_num_rows()
-    {
-        return mysql_num_rows($this->_queryResource);
-    }
+class myPDO{
+     private static $connection = NULL;
+     
+     function __construct() {
+          $config = new Config();
+          $pdo = new PDO("mysql:host=".$config->db['host'].":".$config->db['port'].";dbname=".$config->db['dbname'], $config->db['username'], $config->db['password']);
+          $pdo->exec("SET CHARACTER SET utf8");
+          self::$connection = $pdo;
+          $config = null;
+          $pdo = null;
+     }
+     
+     function getConnection(){
+          return self::$connection;
+     }
 
-    /** Get the cuurent id */    
-    function get_insert_id()
-    {
-        return mysql_insert_id($this->_dbConn);
-    } 
-    
-    function closeDB()
-    {
-        return mysql_close($this->_dbConn);
-    } 
-    
+     function closeConnection(){
+          self::$connection = NULL;
+     }
 }
 ?>

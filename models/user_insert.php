@@ -15,8 +15,6 @@ class user_insert{
     public $e_mail;
     
     function regist_insert(){
- 
-        require_once("Connections/DB_config.php"); 
         if(!isset($this->check) || empty($this->check) || $this->check != 1 )
         {
             $arry_result["isTrue"] = false;
@@ -82,7 +80,7 @@ class user_insert{
         // exit;
         
         if(strlen($this->pw) < 8 || strlen($this->pw) > 12){ #8-12碼檢查
-            // echo '{"callback":3}';
+            
         	$arry_result["isTrue"] = false;
             $arry_result["errorCod"] = 7;
             $arry_result["mesg"] = "新增會員失敗,密碼要8-12英數字混和!";
@@ -145,8 +143,10 @@ class user_insert{
         //=====================================================================================
         //進行連線
         //=====================================================================================
-        $db = new DB();
-        $db->connect_db($_DB['host'], $_DB['username'], $_DB['password'], $_DB['dbname']);
+        // $db = new DB();
+        // $db->connect_db($_DB['host'], $_DB['username'], $_DB['password'], $_DB['dbname']);
+        $PDO = new myPDO();
+        $conn = $PDO->getConnection();
         //============================存入資料庫==========================================
         //判斷所有輸入值都通過function驗證才開始輸入資料庫
         //==============================================================================
@@ -160,7 +160,9 @@ class user_insert{
                         );
         // echo $query;
         // exit;
-        $result = $db->query($query);
+        $stmt = $conn->prepare($query);
+        $result = $stmt->execute();
+        // $result = $db->query($query);
         if($result) {
             $arry_result["isTrue"] = true;
             $arry_result["errorCod"] = 1;
@@ -177,7 +179,8 @@ class user_insert{
             $_SESSION['error'] = $arry_result;
             return $arry_result;
         }
-        $db->closeDB();
+        // $db->closeDB();
+        $PDO->closeConnection();
     }
 }
 

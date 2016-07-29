@@ -1,6 +1,5 @@
 <?php 
 session_start();
-header("Content-Type:text/html; charset=utf-8");
 require_once("Connections/DB_Class.php");
 require_once('package/str_sql_replace.php'); 
 require_once('package/get_IP.php'); 
@@ -16,14 +15,24 @@ class add_charge{
     public $POST_data; 
     
     function charge(){
-        // echo $this->POST_data['arry_num'];
-        // exit;
-        require_once("Connections/DB_config.php");
         $ip = getIP();
         $arry_num = explode(",",$this->POST_data['arry_num']);
         // var_dump($arry_num);
         // exit;
+        #連結資料庫
+        $PDO = new myPDO();
+        $conn = $PDO->getConnection();
+        
         $sql_str = "";
+        
+        // $sql = "INSERT INTO `charge`(`date`,`items`,`buy`,`receipt`,`note`,`ip`,`user_id`,`creat_date`)
+        //         VALUES()";
+                
+        $sth = $conn->prepare("INSERT INTO `charge`(`date`,`items`,`buy`,`receipt`,`note`,`ip`,`user_id`,`creat_date`)
+                               values (:data, :items, :money, :receipt, :note, :ip, :id, NOW())");
+        
+        
+        
         foreach($arry_num as $value){
             // var_dump($this->POST_data['data_'.$value]);
             // exit;
@@ -129,32 +138,42 @@ class add_charge{
                    
             }
             // echo $_POST['note_'.$value]."<br>";
+            $sth->bindParam("data", $data);
+            $sth->bindParam("items", $items);
+            $sth->bindParam("money", $money);
+            $sth->bindParam("receipt", $receipt);
+            $sth->bindParam("note", $note);
+            $sth->bindParam("ip", $ip);
+            $sth->bindParam("id", $_SESSION['id']);
+            $result = $sth->execute();
             
-            $sql_str .= "('".$data."','".$items."','".$money."','".$receipt."','".$note."','".$ip."','".$_SESSION['id']."',NOW()),";
+            if(!$result){
+                $arry_result["isTrue"] = false;
+                $arry_result["errorCod"] = 12;
+                $arry_result["mesg"] = "新增消費紀錄失敗，資料庫有誤!";
+                $_SESSION['error'] = $arry_result;
+                return $arry_result;
+            }
+            // $sql_str .= "('".$data."','".$items."','".$money."','".$receipt."','".$note."','".$ip."','".$_SESSION['id']."',NOW()),";
         }
         
         // echo $sql_str;
-        $sql_str = substr_replace($sql_str, ';', -1, 1);
-        $sql = "INSERT INTO `charge`(`date`,`items`,`buy`,`receipt`,`note`,`ip`,`user_id`,`creat_date`)
-                VALUES".$sql_str ;
-        // echo $sql;
-        // exit();
+        // $sql_str = substr_replace($sql_str, ';', -1, 1);
+        // $sql = "INSERT INTO `charge`(`date`,`items`,`buy`,`receipt`,`note`,`ip`,`user_id`,`creat_date`)
+        //         VALUES".$sql_str ;
+            // echo $sql;
+            // exit();
         //=====================================================================================
         //進行連線
         //=====================================================================================
-        $db = new DB();
-        $db->connect_db($_DB['host'], $_DB['username'], $_DB['password'], $_DB['dbname']);
+        // $db = new DB();
+        // $db->connect_db($_DB['host'], $_DB['username'], $_DB['password'], $_DB['dbname']);
         
-        $result = $db->query($sql);
-        if(!$result){
-            $arry_result["isTrue"] = false;
-            $arry_result["errorCod"] = 12;
-            $arry_result["mesg"] = "新增消費紀錄失敗，資料庫有誤!";
-            $_SESSION['error'] = $arry_result;
-            return $arry_result;
-        }
         
-        $db->closeDB();
+        // $result = $db->query($sql);
+        
+        $PDO->closeConnection();
+        // $db->closeDB();
         $arry_result["isTrue"] = true;
         $arry_result["errorCod"] = 1;
         $arry_result["mesg"] = "紀錄新增成功!";

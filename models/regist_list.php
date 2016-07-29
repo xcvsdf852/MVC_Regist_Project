@@ -1,6 +1,5 @@
 <?php
 session_start(); 
-header("Content-Type:text/html; charset=utf-8");
 require_once("Connections/DB_Class.php");
 
 
@@ -8,7 +7,6 @@ require_once("Connections/DB_Class.php");
 class regist_list{
   public $POST_data;
   function search_regist_list(){
-    require_once("Connections/DB_config.php");
     if(isset($this->POST_data['P'])){$P=intval($this->POST_data['P']);}else{$P=1;}
     if(isset($this->POST_data['P_number'])){$P_number=intval($this->POST_data['P_number']);}else{$P_number=5;}
     if(isset($this->POST_data['time_str'])){$time_str=$this->POST_data['time_str'];}else{$time_str='';}//起始時間
@@ -76,13 +74,15 @@ class regist_list{
     //進行連線
     //=====================================================================================
     
-    $db = new DB();
-    $db->connect_db($_DB['host'], $_DB['username'], $_DB['password'], $_DB['dbname']);
-    
+    // $db = new DB();
+    // $db->connect_db($_DB['host'], $_DB['username'], $_DB['password'], $_DB['dbname']);
+    $PDO = new myPDO();
+    $conn = $PDO->getConnection();
     // $result = mysql_query($str_sql);  
-
-    $result = $db->query($str_sql); #查詢結果
     
+    // $result = $db->query($str_sql); #查詢結果
+    $stmt = $conn->prepare($str_sql);
+    $result = $stmt->execute();
     // echo $result;
     // exit;
     if(!$result){
@@ -94,18 +94,24 @@ class regist_list{
     
     $ary_list = array();
     $ary_list['isTrue'] = true;
-    while( $row = $db->fetch_array($result)) {
+    while( $row =  $stmt->fetch()) {
       // var_dump($row);
       // $ary_list['date'][] = "{'id':".$row['id'].",'date':".$row['date'].",'items':".$row['items'].",'buy':".$row['buy'].",'receipt':".$row['receipt'].",'note':".$row['note'].",'user_id':".$row['user_id']."}";
       $ary_list['date'][] = array('id'=>$row['id'],'date'=>$row['date'],'items'=>$row['items'],'buy'=>$row['buy'],'receipt'=>$row['receipt'],'note'=>$row['note'],'user_id'=>$row['user_id']);
     }
     // var_dump($ary_list['date']);
     // exit;
-    $result_c = $db->query($str_sql_c); #查詢筆數
-    $count = $db->fetch_array($result_c);
+    
+    
+    // $result_c = $db->query($str_sql_c); 
+    // $count = $db->fetch_array($result_c);
+    // $ary_list['page_num'] = $count['C'];
+    
+    $stmt_c = $conn->prepare($str_sql_c);#查詢筆數
+    $result_c = $stmt_c->execute();
+    $count =  $stmt_c->fetch();
     $ary_list['page_num'] = $count['C'];
-    
-    
+    $PDO->closeConnection();
     return json_encode($ary_list);
   }
 }
