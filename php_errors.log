@@ -25,3 +25,223 @@
 [18-Jul-2016 08:47:52 UTC] PHP Fatal error:  Call to undefined function file_get_html() in /home/ubuntu/workspace/homework0721_MVC/models/get_receipt.php on line 35
 [18-Jul-2016 08:47:52 UTC] PHP Stack trace:
 [18-Jul-2016 08:47:52 UTC] PHP   1. {main}() /home/ubuntu/workspace/homework0721_MVC/models/get_receipt.php:0
+[25-Jul-2016 01:21:47 UTC] PHP Warning:  file_get_contents(http://www.etax.nat.gov.tw/etw-main/front/ETW183W2_10505/): failed to open stream: HTTP request failed! HTTP/1.1 404 Not Found
+ in /home/ubuntu/workspace/homework0721_MVC/models/package/simple_html_dom.php on line 76
+[25-Jul-2016 01:21:47 UTC] PHP Stack trace:
+[25-Jul-2016 01:21:47 UTC] PHP   1. {main}() /home/ubuntu/workspace/homework0721_MVC/models/get_receipt.php:0
+[25-Jul-2016 01:21:47 UTC] PHP   2. file_get_html() /home/ubuntu/workspace/homework0721_MVC/models/get_receipt.php:35
+[25-Jul-2016 01:21:47 UTC] PHP   3. file_get_contents() /home/ubuntu/workspace/homework0721_MVC/models/package/simple_html_dom.php:76
+[25-Jul-2016 01:21:47 UTC] PHP Fatal error:  Call to a member function find() on a non-object in /home/ubuntu/workspace/homework0721_MVC/models/get_receipt.php on line 38
+[25-Jul-2016 01:21:47 UTC] PHP Stack trace:
+[25-Jul-2016 01:21:47 UTC] PHP   1. {main}() /home/ubuntu/workspace/homework0721_MVC/models/get_receipt.php:0
+[25-Jul-2016 01:22:01 UTC] PHP Warning:  file_get_contents(http://www.etax.nat.gov.tw/etw-main/front/ETW183W2_10505/): failed to open stream: HTTP request failed! HTTP/1.1 404 Not Found
+ in /home/ubuntu/workspace/homework0721_MVC/models/package/simple_html_dom.php on line 76
+[25-Jul-2016 01:22:01 UTC] PHP Stack trace:
+[25-Jul-2016 01:22:01 UTC] PHP   1. {main}() /home/ubuntu/workspace/homework0721_MVC/models/get_receipt.php:0
+[25-Jul-2016 01:22:01 UTC] PHP   2. file_get_html() /home/ubuntu/workspace/homework0721_MVC/models/get_receipt.php:35
+[25-Jul-2016 01:22:01 UTC] PHP   3. file_get_contents() /home/ubuntu/workspace/homework0721_MVC/models/package/simple_html_dom.php:76
+[25-Jul-2016 01:22:01 UTC] PHP Fatal error:  Call to a member function find() on a non-object in /home/ubuntu/workspace/homework0721_MVC/models/get_receipt.php on line 38
+[25-Jul-2016 01:22:01 UTC] PHP Stack trace:
+[25-Jul-2016 01:22:01 UTC] PHP   1. {main}() /home/ubuntu/workspace/homework0721_MVC/models/get_receipt.php:0
+[25-Jul-2016 01:22:12 UTC] PHP Warning:  file_get_contents(http://www.etax.nat.gov.tw/etw-main/front/ETW183W2_10505/): failed to open stream: HTTP request failed! HTTP/1.1 404 Not Found
+ in /home/ubuntu/workspace/homework0721_MVC/models/package/simple_html_dom.php on line 76
+[25-Jul-2016 01:22:12 UTC] PHP Stack trace:
+[25-Jul-2016 01:22:12 UTC] PHP   1. {main}() /home/ubuntu/workspace/homework0721_MVC/models/get_receipt.php:0
+[25-Jul-2016 01:22:12 UTC] PHP   2. file_get_html() /home/ubuntu/workspace/homework0721_MVC/models/get_receipt.php:35
+[25-Jul-2016 01:22:12 UTC] PHP   3. file_get_contents() /home/ubuntu/workspace/homework0721_MVC/models/package/simple_html_dom.php:76
+[25-Jul-2016 01:22:12 UTC] PHP Fatal error:  Call to a member function find() on a non-object in /home/ubuntu/workspace/homework0721_MVC/models/get_receipt.php on line 38
+[25-Jul-2016 01:22:12 UTC] PHP Stack trace:
+[25-Jul-2016 01:22:12 UTC] PHP   1. {main}() /home/ubuntu/workspace/homework0721_MVC/models/get_receipt.php:0
+[25-Jul-2016 01:22:48 UTC] PHP Warning:  file_get_contents(http://www.etax.nat.gov.tw/etw-main/front/ETW183W2_10505/): failed to open stream: HTTP request failed! HTTP/1.1 404 Not Found
+ in /home/ubuntu/workspace/homework0721_MVC/models/package/simple_html_dom.php on line 76
+[25-Jul-2016 01:22:48 UTC] PHP Stack trace:
+[25-Jul-2016 01:22:48 UTC] PHP   1. {main}() /home/ubuntu/workspace/homework0721_MVC/models/get_receipt.php:0
+[25-Jul-2016 01:22:48 UTC] PHP   2. file_get_html() /home/ubuntu/workspace/homework0721_MVC/models/get_receipt.php:35
+[25-Jul-2016 01:22:48 UTC] PHP   3. file_get_contents() /home/ubuntu/workspace/homework0721_MVC/models/package/simple_html_dom.php:76
+[25-Jul-2016 01:22:48 UTC] PHP Fatal error:  Call to a member function find() on a non-object in /home/ubuntu/workspace/homework0721_MVC/models/get_receipt.php on line 38
+[25-Jul-2016 01:22:48 UTC] PHP Stack trace:
+[25-Jul-2016 01:22:48 UTC] PHP   1. {main}() /home/ubuntu/workspace/homework0721_MVC/models/get_receipt.php:0
+[25-Jul-2016 01:24:56 UTC] PHP Warning:  file_get_contents(http://www.etax.nat.gov.tw/etw-main/front/ETW183W2_10505/): failed to open stream: HTTP request failed! HTTP/1.1 404 Not Found
+ in /home/ubuntu/workspace/homework0721_MVC/models/package/simple_html_dom.php on line 76
+[25-Jul-2016 01:24:56 UTC] PHP Stack trace:
+[25-Jul-2016 01:24:56 UTC] PHP   1. {main}() /home/ubuntu/workspace/homework0721_MVC/models/get_receipt.php:0
+[25-Jul-2016 01:24:56 UTC] PHP   2. file_get_html() /home/ubuntu/workspace/homework0721_MVC/models/get_receipt.php:35
+[25-Jul-2016 01:24:56 UTC] PHP   3. file_get_contents() /home/ubuntu/workspace/homework0721_MVC/models/package/simple_html_dom.php:76
+[25-Jul-2016 01:24:56 UTC] PHP Fatal error:  Call to a member function find() on a non-object in /home/ubuntu/workspace/homework0721_MVC/models/get_receipt.php on line 38
+[25-Jul-2016 01:24:56 UTC] PHP Stack trace:
+[25-Jul-2016 01:24:56 UTC] PHP   1. {main}() /home/ubuntu/workspace/homework0721_MVC/models/get_receipt.php:0
+[25-Jul-2016 01:51:33 UTC] PHP Warning:  file_get_contents(http://www.etax.nat.gov.tw/etw-main/front/ETW183W2_10505/): failed to open stream: HTTP request failed! HTTP/1.1 404 Not Found
+ in /home/ubuntu/workspace/homework0721_MVC/models/package/simple_html_dom.php on line 76
+[25-Jul-2016 01:51:33 UTC] PHP Stack trace:
+[25-Jul-2016 01:51:33 UTC] PHP   1. {main}() /home/ubuntu/workspace/homework0721_MVC/models/get_receipt.php:0
+[25-Jul-2016 01:51:33 UTC] PHP   2. file_get_html() /home/ubuntu/workspace/homework0721_MVC/models/get_receipt.php:36
+[25-Jul-2016 01:51:33 UTC] PHP   3. file_get_contents() /home/ubuntu/workspace/homework0721_MVC/models/package/simple_html_dom.php:76
+[25-Jul-2016 01:51:33 UTC] PHP Fatal error:  Call to a member function find() on a non-object in /home/ubuntu/workspace/homework0721_MVC/models/get_receipt.php on line 39
+[25-Jul-2016 01:51:33 UTC] PHP Stack trace:
+[25-Jul-2016 01:51:33 UTC] PHP   1. {main}() /home/ubuntu/workspace/homework0721_MVC/models/get_receipt.php:0
+[25-Jul-2016 01:51:47 UTC] PHP Warning:  file_get_contents(http://www.etax.nat.gov.tw/etw-main/front/ETW183W2_10505/): failed to open stream: HTTP request failed! HTTP/1.1 404 Not Found
+ in /home/ubuntu/workspace/homework0721_MVC/models/package/simple_html_dom.php on line 76
+[25-Jul-2016 01:51:47 UTC] PHP Stack trace:
+[25-Jul-2016 01:51:47 UTC] PHP   1. {main}() /home/ubuntu/workspace/homework0721_MVC/models/get_receipt.php:0
+[25-Jul-2016 01:51:47 UTC] PHP   2. file_get_html() /home/ubuntu/workspace/homework0721_MVC/models/get_receipt.php:36
+[25-Jul-2016 01:51:47 UTC] PHP   3. file_get_contents() /home/ubuntu/workspace/homework0721_MVC/models/package/simple_html_dom.php:76
+[25-Jul-2016 01:51:47 UTC] PHP Fatal error:  Call to a member function find() on a non-object in /home/ubuntu/workspace/homework0721_MVC/models/get_receipt.php on line 39
+[25-Jul-2016 01:51:47 UTC] PHP Stack trace:
+[25-Jul-2016 01:51:47 UTC] PHP   1. {main}() /home/ubuntu/workspace/homework0721_MVC/models/get_receipt.php:0
+[25-Jul-2016 01:53:31 UTC] PHP Fatal error:  Cannot use try without catch or finally in /home/ubuntu/workspace/homework0721_MVC/models/get_receipt.php on line 38
+[25-Jul-2016 01:54:36 UTC] PHP Warning:  file_get_contents(http://www.etax.nat.gov.tw/etw-main/front/ETW183W2_10505/): failed to open stream: HTTP request failed! HTTP/1.1 404 Not Found
+ in /home/ubuntu/workspace/homework0721_MVC/models/package/simple_html_dom.php on line 76
+[25-Jul-2016 01:54:36 UTC] PHP Stack trace:
+[25-Jul-2016 01:54:36 UTC] PHP   1. {main}() /home/ubuntu/workspace/homework0721_MVC/models/get_receipt.php:0
+[25-Jul-2016 01:54:36 UTC] PHP   2. file_get_html() /home/ubuntu/workspace/homework0721_MVC/models/get_receipt.php:36
+[25-Jul-2016 01:54:36 UTC] PHP   3. file_get_contents() /home/ubuntu/workspace/homework0721_MVC/models/package/simple_html_dom.php:76
+[25-Jul-2016 01:54:36 UTC] PHP Fatal error:  Call to a member function find() on a non-object in /home/ubuntu/workspace/homework0721_MVC/models/get_receipt.php on line 45
+[25-Jul-2016 01:54:36 UTC] PHP Stack trace:
+[25-Jul-2016 01:54:36 UTC] PHP   1. {main}() /home/ubuntu/workspace/homework0721_MVC/models/get_receipt.php:0
+[25-Jul-2016 01:55:27 UTC] PHP Warning:  file_get_contents(http://www.etax.nat.gov.tw/etw-main/front/ETW183W2_10505/): failed to open stream: HTTP request failed! HTTP/1.1 404 Not Found
+ in /home/ubuntu/workspace/homework0721_MVC/models/package/simple_html_dom.php on line 76
+[25-Jul-2016 01:55:27 UTC] PHP Stack trace:
+[25-Jul-2016 01:55:27 UTC] PHP   1. {main}() /home/ubuntu/workspace/homework0721_MVC/models/get_receipt.php:0
+[25-Jul-2016 01:55:27 UTC] PHP   2. file_get_html() /home/ubuntu/workspace/homework0721_MVC/models/get_receipt.php:36
+[25-Jul-2016 01:55:27 UTC] PHP   3. file_get_contents() /home/ubuntu/workspace/homework0721_MVC/models/package/simple_html_dom.php:76
+[25-Jul-2016 01:55:27 UTC] PHP Fatal error:  Call to a member function find() on a non-object in /home/ubuntu/workspace/homework0721_MVC/models/get_receipt.php on line 45
+[25-Jul-2016 01:55:27 UTC] PHP Stack trace:
+[25-Jul-2016 01:55:27 UTC] PHP   1. {main}() /home/ubuntu/workspace/homework0721_MVC/models/get_receipt.php:0
+[25-Jul-2016 01:55:56 UTC] PHP Warning:  file_get_contents(http://www.etax.nat.gov.tw/etw-main/front/ETW183W2_10505/): failed to open stream: HTTP request failed! HTTP/1.1 404 Not Found
+ in /home/ubuntu/workspace/homework0721_MVC/models/package/simple_html_dom.php on line 76
+[25-Jul-2016 01:55:56 UTC] PHP Stack trace:
+[25-Jul-2016 01:55:56 UTC] PHP   1. {main}() /home/ubuntu/workspace/homework0721_MVC/models/get_receipt.php:0
+[25-Jul-2016 01:55:56 UTC] PHP   2. file_get_html() /home/ubuntu/workspace/homework0721_MVC/models/get_receipt.php:36
+[25-Jul-2016 01:55:56 UTC] PHP   3. file_get_contents() /home/ubuntu/workspace/homework0721_MVC/models/package/simple_html_dom.php:76
+[25-Jul-2016 01:55:56 UTC] PHP Fatal error:  Call to a member function find() on a non-object in /home/ubuntu/workspace/homework0721_MVC/models/get_receipt.php on line 38
+[25-Jul-2016 01:55:56 UTC] PHP Stack trace:
+[25-Jul-2016 01:55:56 UTC] PHP   1. {main}() /home/ubuntu/workspace/homework0721_MVC/models/get_receipt.php:0
+[25-Jul-2016 01:57:52 UTC] PHP Warning:  file_get_contents(http://www.etax.nat.gov.tw/etw-main/front/ETW183W2_10505/): failed to open stream: HTTP request failed! HTTP/1.1 404 Not Found
+ in /home/ubuntu/workspace/homework0721_MVC/models/package/simple_html_dom.php on line 76
+[25-Jul-2016 01:57:52 UTC] PHP Stack trace:
+[25-Jul-2016 01:57:52 UTC] PHP   1. {main}() /home/ubuntu/workspace/homework0721_MVC/models/get_receipt.php:0
+[25-Jul-2016 01:57:52 UTC] PHP   2. file_get_html() /home/ubuntu/workspace/homework0721_MVC/models/get_receipt.php:37
+[25-Jul-2016 01:57:52 UTC] PHP   3. file_get_contents() /home/ubuntu/workspace/homework0721_MVC/models/package/simple_html_dom.php:76
+[25-Jul-2016 01:57:52 UTC] PHP Fatal error:  Call to a member function find() on a non-object in /home/ubuntu/workspace/homework0721_MVC/models/get_receipt.php on line 39
+[25-Jul-2016 01:57:52 UTC] PHP Stack trace:
+[25-Jul-2016 01:57:52 UTC] PHP   1. {main}() /home/ubuntu/workspace/homework0721_MVC/models/get_receipt.php:0
+[25-Jul-2016 02:01:14 UTC] PHP Warning:  file_get_contents(http://www.etax.nat.gov.tw/etw-main/front/ETW183W2_10505/): failed to open stream: HTTP request failed! HTTP/1.1 404 Not Found
+ in /home/ubuntu/workspace/homework0721_MVC/models/package/simple_html_dom.php on line 76
+[25-Jul-2016 02:01:14 UTC] PHP Stack trace:
+[25-Jul-2016 02:01:14 UTC] PHP   1. {main}() /home/ubuntu/workspace/homework0721_MVC/models/get_receipt.php:0
+[25-Jul-2016 02:01:14 UTC] PHP   2. file_get_html() /home/ubuntu/workspace/homework0721_MVC/models/get_receipt.php:35
+[25-Jul-2016 02:01:14 UTC] PHP   3. file_get_contents() /home/ubuntu/workspace/homework0721_MVC/models/package/simple_html_dom.php:76
+[25-Jul-2016 02:20:12 UTC] PHP Warning:  file_get_contents(http://www.etax.nat.gov.tw/etw-main/front/ETW183W2_10505/): failed to open stream: HTTP request failed! HTTP/1.1 404 Not Found
+ in /home/ubuntu/workspace/homework0721_MVC/models/package/simple_html_dom.php on line 76
+[25-Jul-2016 02:20:12 UTC] PHP Stack trace:
+[25-Jul-2016 02:20:12 UTC] PHP   1. {main}() /home/ubuntu/workspace/homework0721_MVC/models/get_receipt.php:0
+[25-Jul-2016 02:20:12 UTC] PHP   2. file_get_html() /home/ubuntu/workspace/homework0721_MVC/models/get_receipt.php:51
+[25-Jul-2016 02:20:12 UTC] PHP   3. file_get_contents() /home/ubuntu/workspace/homework0721_MVC/models/package/simple_html_dom.php:76
+[25-Jul-2016 02:20:12 UTC] PHP Fatal error:  Call to a member function find() on a non-object in /home/ubuntu/workspace/homework0721_MVC/models/get_receipt.php on line 53
+[25-Jul-2016 02:20:12 UTC] PHP Stack trace:
+[25-Jul-2016 02:20:12 UTC] PHP   1. {main}() /home/ubuntu/workspace/homework0721_MVC/models/get_receipt.php:0
+[25-Jul-2016 02:20:34 UTC] PHP Warning:  file_get_contents(http://www.etax.nat.gov.tw/etw-main/front/ETW183W2_10505/): failed to open stream: HTTP request failed! HTTP/1.1 404 Not Found
+ in /home/ubuntu/workspace/homework0721_MVC/models/package/simple_html_dom.php on line 76
+[25-Jul-2016 02:20:34 UTC] PHP Stack trace:
+[25-Jul-2016 02:20:34 UTC] PHP   1. {main}() /home/ubuntu/workspace/homework0721_MVC/models/get_receipt.php:0
+[25-Jul-2016 02:20:34 UTC] PHP   2. file_get_html() /home/ubuntu/workspace/homework0721_MVC/models/get_receipt.php:51
+[25-Jul-2016 02:20:34 UTC] PHP   3. file_get_contents() /home/ubuntu/workspace/homework0721_MVC/models/package/simple_html_dom.php:76
+[25-Jul-2016 02:20:34 UTC] PHP Fatal error:  Call to a member function find() on a non-object in /home/ubuntu/workspace/homework0721_MVC/models/get_receipt.php on line 53
+[25-Jul-2016 02:20:34 UTC] PHP Stack trace:
+[25-Jul-2016 02:20:34 UTC] PHP   1. {main}() /home/ubuntu/workspace/homework0721_MVC/models/get_receipt.php:0
+[25-Jul-2016 02:36:13 UTC] PHP Warning:  file_get_contents(http://www.etax.nat.gov.tw/etw-main/front/ETW183W2_10505/): failed to open stream: HTTP request failed! HTTP/1.1 404 Not Found
+ in /home/ubuntu/workspace/homework0721_MVC/models/package/simple_html_dom.php on line 76
+[25-Jul-2016 02:36:13 UTC] PHP Stack trace:
+[25-Jul-2016 02:36:13 UTC] PHP   1. {main}() /home/ubuntu/workspace/homework0721_MVC/models/get_receipt.php:0
+[25-Jul-2016 02:36:13 UTC] PHP   2. file_get_html() /home/ubuntu/workspace/homework0721_MVC/models/get_receipt.php:43
+[25-Jul-2016 02:36:13 UTC] PHP   3. file_get_contents() /home/ubuntu/workspace/homework0721_MVC/models/package/simple_html_dom.php:76
+[25-Jul-2016 02:36:13 UTC] PHP Fatal error:  Call to a member function find() on a non-object in /home/ubuntu/workspace/homework0721_MVC/models/get_receipt.php on line 45
+[25-Jul-2016 02:36:13 UTC] PHP Stack trace:
+[25-Jul-2016 02:36:13 UTC] PHP   1. {main}() /home/ubuntu/workspace/homework0721_MVC/models/get_receipt.php:0
+[25-Jul-2016 02:36:21 UTC] PHP Warning:  file_get_contents(http://www.etax.nat.gov.tw/etw-main/front/ETW183W2_10505/): failed to open stream: HTTP request failed! HTTP/1.1 404 Not Found
+ in /home/ubuntu/workspace/homework0721_MVC/models/package/simple_html_dom.php on line 76
+[25-Jul-2016 02:36:21 UTC] PHP Stack trace:
+[25-Jul-2016 02:36:21 UTC] PHP   1. {main}() /home/ubuntu/workspace/homework0721_MVC/models/get_receipt.php:0
+[25-Jul-2016 02:36:21 UTC] PHP   2. file_get_html() /home/ubuntu/workspace/homework0721_MVC/models/get_receipt.php:43
+[25-Jul-2016 02:36:21 UTC] PHP   3. file_get_contents() /home/ubuntu/workspace/homework0721_MVC/models/package/simple_html_dom.php:76
+[25-Jul-2016 02:36:21 UTC] PHP Fatal error:  Call to a member function find() on a non-object in /home/ubuntu/workspace/homework0721_MVC/models/get_receipt.php on line 45
+[25-Jul-2016 02:36:21 UTC] PHP Stack trace:
+[25-Jul-2016 02:36:21 UTC] PHP   1. {main}() /home/ubuntu/workspace/homework0721_MVC/models/get_receipt.php:0
+[25-Jul-2016 08:11:48 UTC] PHP Warning:  file_get_contents(): SSL: Connection reset by peer in /home/ubuntu/workspace/homework0721_MVC/models/package/simple_html_dom.php on line 76
+[25-Jul-2016 08:11:48 UTC] PHP Stack trace:
+[25-Jul-2016 08:11:48 UTC] PHP   1. {main}() /home/ubuntu/workspace/homework0721_MVC/models/get_receipt.php:0
+[25-Jul-2016 08:11:48 UTC] PHP   2. file_get_html() /home/ubuntu/workspace/homework0721_MVC/models/get_receipt.php:43
+[25-Jul-2016 08:11:48 UTC] PHP   3. file_get_contents() /home/ubuntu/workspace/homework0721_MVC/models/package/simple_html_dom.php:76
+[25-Jul-2016 08:11:48 UTC] PHP Warning:  file_get_contents(http://www.etax.nat.gov.tw/etw-main/front/ETW183W2_10505/): failed to open stream: HTTP request failed!  in /home/ubuntu/workspace/homework0721_MVC/models/package/simple_html_dom.php on line 76
+[25-Jul-2016 08:11:48 UTC] PHP Stack trace:
+[25-Jul-2016 08:11:48 UTC] PHP   1. {main}() /home/ubuntu/workspace/homework0721_MVC/models/get_receipt.php:0
+[25-Jul-2016 08:11:48 UTC] PHP   2. file_get_html() /home/ubuntu/workspace/homework0721_MVC/models/get_receipt.php:43
+[25-Jul-2016 08:11:48 UTC] PHP   3. file_get_contents() /home/ubuntu/workspace/homework0721_MVC/models/package/simple_html_dom.php:76
+[25-Jul-2016 08:11:48 UTC] PHP Fatal error:  Call to a member function find() on a non-object in /home/ubuntu/workspace/homework0721_MVC/models/get_receipt.php on line 45
+[25-Jul-2016 08:11:48 UTC] PHP Stack trace:
+[25-Jul-2016 08:11:48 UTC] PHP   1. {main}() /home/ubuntu/workspace/homework0721_MVC/models/get_receipt.php:0
+[25-Jul-2016 12:57:37 UTC] PHP Warning:  file_get_contents(): SSL: Connection reset by peer in /home/ubuntu/workspace/homework0721_MVC/models/package/simple_html_dom.php on line 76
+[25-Jul-2016 12:57:37 UTC] PHP Stack trace:
+[25-Jul-2016 12:57:37 UTC] PHP   1. {main}() /home/ubuntu/workspace/homework0721_MVC/models/get_receipt.php:0
+[25-Jul-2016 12:57:37 UTC] PHP   2. file_get_html() /home/ubuntu/workspace/homework0721_MVC/models/get_receipt.php:43
+[25-Jul-2016 12:57:37 UTC] PHP   3. file_get_contents() /home/ubuntu/workspace/homework0721_MVC/models/package/simple_html_dom.php:76
+[25-Jul-2016 12:57:37 UTC] PHP Warning:  file_get_contents(http://www.etax.nat.gov.tw/etw-main/front/ETW183W2_10503/): failed to open stream: HTTP request failed!  in /home/ubuntu/workspace/homework0721_MVC/models/package/simple_html_dom.php on line 76
+[25-Jul-2016 12:57:37 UTC] PHP Stack trace:
+[25-Jul-2016 12:57:37 UTC] PHP   1. {main}() /home/ubuntu/workspace/homework0721_MVC/models/get_receipt.php:0
+[25-Jul-2016 12:57:37 UTC] PHP   2. file_get_html() /home/ubuntu/workspace/homework0721_MVC/models/get_receipt.php:43
+[25-Jul-2016 12:57:37 UTC] PHP   3. file_get_contents() /home/ubuntu/workspace/homework0721_MVC/models/package/simple_html_dom.php:76
+[25-Jul-2016 12:57:37 UTC] PHP Fatal error:  Call to a member function find() on a non-object in /home/ubuntu/workspace/homework0721_MVC/models/get_receipt.php on line 45
+[25-Jul-2016 12:57:37 UTC] PHP Stack trace:
+[25-Jul-2016 12:57:37 UTC] PHP   1. {main}() /home/ubuntu/workspace/homework0721_MVC/models/get_receipt.php:0
+[25-Jul-2016 12:57:43 UTC] PHP Warning:  file_get_contents(): SSL: Connection reset by peer in /home/ubuntu/workspace/homework0721_MVC/models/package/simple_html_dom.php on line 76
+[25-Jul-2016 12:57:43 UTC] PHP Stack trace:
+[25-Jul-2016 12:57:43 UTC] PHP   1. {main}() /home/ubuntu/workspace/homework0721_MVC/models/get_receipt.php:0
+[25-Jul-2016 12:57:43 UTC] PHP   2. file_get_html() /home/ubuntu/workspace/homework0721_MVC/models/get_receipt.php:43
+[25-Jul-2016 12:57:43 UTC] PHP   3. file_get_contents() /home/ubuntu/workspace/homework0721_MVC/models/package/simple_html_dom.php:76
+[25-Jul-2016 12:57:43 UTC] PHP Warning:  file_get_contents(http://www.etax.nat.gov.tw/etw-main/front/ETW183W2_10503/): failed to open stream: HTTP request failed!  in /home/ubuntu/workspace/homework0721_MVC/models/package/simple_html_dom.php on line 76
+[25-Jul-2016 12:57:43 UTC] PHP Stack trace:
+[25-Jul-2016 12:57:43 UTC] PHP   1. {main}() /home/ubuntu/workspace/homework0721_MVC/models/get_receipt.php:0
+[25-Jul-2016 12:57:43 UTC] PHP   2. file_get_html() /home/ubuntu/workspace/homework0721_MVC/models/get_receipt.php:43
+[25-Jul-2016 12:57:43 UTC] PHP   3. file_get_contents() /home/ubuntu/workspace/homework0721_MVC/models/package/simple_html_dom.php:76
+[25-Jul-2016 12:57:43 UTC] PHP Fatal error:  Call to a member function find() on a non-object in /home/ubuntu/workspace/homework0721_MVC/models/get_receipt.php on line 45
+[25-Jul-2016 12:57:43 UTC] PHP Stack trace:
+[25-Jul-2016 12:57:43 UTC] PHP   1. {main}() /home/ubuntu/workspace/homework0721_MVC/models/get_receipt.php:0
+[25-Jul-2016 12:57:51 UTC] PHP Warning:  file_get_contents(): SSL: Connection reset by peer in /home/ubuntu/workspace/homework0721_MVC/models/package/simple_html_dom.php on line 76
+[25-Jul-2016 12:57:51 UTC] PHP Stack trace:
+[25-Jul-2016 12:57:51 UTC] PHP   1. {main}() /home/ubuntu/workspace/homework0721_MVC/models/get_receipt.php:0
+[25-Jul-2016 12:57:51 UTC] PHP   2. file_get_html() /home/ubuntu/workspace/homework0721_MVC/models/get_receipt.php:43
+[25-Jul-2016 12:57:51 UTC] PHP   3. file_get_contents() /home/ubuntu/workspace/homework0721_MVC/models/package/simple_html_dom.php:76
+[25-Jul-2016 12:57:51 UTC] PHP Warning:  file_get_contents(http://www.etax.nat.gov.tw/etw-main/front/ETW183W2_10503/): failed to open stream: HTTP request failed!  in /home/ubuntu/workspace/homework0721_MVC/models/package/simple_html_dom.php on line 76
+[25-Jul-2016 12:57:51 UTC] PHP Stack trace:
+[25-Jul-2016 12:57:51 UTC] PHP   1. {main}() /home/ubuntu/workspace/homework0721_MVC/models/get_receipt.php:0
+[25-Jul-2016 12:57:51 UTC] PHP   2. file_get_html() /home/ubuntu/workspace/homework0721_MVC/models/get_receipt.php:43
+[25-Jul-2016 12:57:51 UTC] PHP   3. file_get_contents() /home/ubuntu/workspace/homework0721_MVC/models/package/simple_html_dom.php:76
+[25-Jul-2016 12:57:51 UTC] PHP Fatal error:  Call to a member function find() on a non-object in /home/ubuntu/workspace/homework0721_MVC/models/get_receipt.php on line 45
+[25-Jul-2016 12:57:51 UTC] PHP Stack trace:
+[25-Jul-2016 12:57:51 UTC] PHP   1. {main}() /home/ubuntu/workspace/homework0721_MVC/models/get_receipt.php:0
+[25-Jul-2016 12:57:52 UTC] PHP Warning:  file_get_contents(): SSL: Connection reset by peer in /home/ubuntu/workspace/homework0721_MVC/models/package/simple_html_dom.php on line 76
+[25-Jul-2016 12:57:52 UTC] PHP Stack trace:
+[25-Jul-2016 12:57:52 UTC] PHP   1. {main}() /home/ubuntu/workspace/homework0721_MVC/models/get_receipt.php:0
+[25-Jul-2016 12:57:52 UTC] PHP   2. file_get_html() /home/ubuntu/workspace/homework0721_MVC/models/get_receipt.php:43
+[25-Jul-2016 12:57:52 UTC] PHP   3. file_get_contents() /home/ubuntu/workspace/homework0721_MVC/models/package/simple_html_dom.php:76
+[25-Jul-2016 12:57:52 UTC] PHP Warning:  file_get_contents(http://www.etax.nat.gov.tw/etw-main/front/ETW183W2_10505/): failed to open stream: HTTP request failed!  in /home/ubuntu/workspace/homework0721_MVC/models/package/simple_html_dom.php on line 76
+[25-Jul-2016 12:57:52 UTC] PHP Stack trace:
+[25-Jul-2016 12:57:52 UTC] PHP   1. {main}() /home/ubuntu/workspace/homework0721_MVC/models/get_receipt.php:0
+[25-Jul-2016 12:57:52 UTC] PHP   2. file_get_html() /home/ubuntu/workspace/homework0721_MVC/models/get_receipt.php:43
+[25-Jul-2016 12:57:52 UTC] PHP   3. file_get_contents() /home/ubuntu/workspace/homework0721_MVC/models/package/simple_html_dom.php:76
+[25-Jul-2016 12:57:52 UTC] PHP Fatal error:  Call to a member function find() on a non-object in /home/ubuntu/workspace/homework0721_MVC/models/get_receipt.php on line 45
+[25-Jul-2016 12:57:52 UTC] PHP Stack trace:
+[25-Jul-2016 12:57:52 UTC] PHP   1. {main}() /home/ubuntu/workspace/homework0721_MVC/models/get_receipt.php:0
+[25-Jul-2016 12:58:05 UTC] PHP Warning:  file_get_contents(): SSL: Connection reset by peer in /home/ubuntu/workspace/homework0721_MVC/models/package/simple_html_dom.php on line 76
+[25-Jul-2016 12:58:05 UTC] PHP Stack trace:
+[25-Jul-2016 12:58:05 UTC] PHP   1. {main}() /home/ubuntu/workspace/homework0721_MVC/models/get_receipt.php:0
+[25-Jul-2016 12:58:05 UTC] PHP   2. file_get_html() /home/ubuntu/workspace/homework0721_MVC/models/get_receipt.php:43
+[25-Jul-2016 12:58:05 UTC] PHP   3. file_get_contents() /home/ubuntu/workspace/homework0721_MVC/models/package/simple_html_dom.php:76
+[25-Jul-2016 12:58:05 UTC] PHP Warning:  file_get_contents(http://www.etax.nat.gov.tw/etw-main/front/ETW183W2_10503/): failed to open stream: HTTP request failed!  in /home/ubuntu/workspace/homework0721_MVC/models/package/simple_html_dom.php on line 76
+[25-Jul-2016 12:58:05 UTC] PHP Stack trace:
+[25-Jul-2016 12:58:05 UTC] PHP   1. {main}() /home/ubuntu/workspace/homework0721_MVC/models/get_receipt.php:0
+[25-Jul-2016 12:58:05 UTC] PHP   2. file_get_html() /home/ubuntu/workspace/homework0721_MVC/models/get_receipt.php:43
+[25-Jul-2016 12:58:05 UTC] PHP   3. file_get_contents() /home/ubuntu/workspace/homework0721_MVC/models/package/simple_html_dom.php:76
+[25-Jul-2016 12:58:05 UTC] PHP Fatal error:  Call to a member function find() on a non-object in /home/ubuntu/workspace/homework0721_MVC/models/get_receipt.php on line 45
+[25-Jul-2016 12:58:05 UTC] PHP Stack trace:
+[25-Jul-2016 12:58:05 UTC] PHP   1. {main}() /home/ubuntu/workspace/homework0721_MVC/models/get_receipt.php:0

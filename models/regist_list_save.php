@@ -4,121 +4,131 @@ header("Content-Type:text/html; charset=utf-8");
 require_once('package/str_sql_replace.php'); 
 require_once('package/get_IP.php'); 
 require_once("Connections/DB_Class.php");
-require_once("Connections/DB_config.php");
+
 // var_dump($_POST);
 // exit;
 
-#修改 id檢查 數字型態
-if( !isset($_POST['id']) || empty($_POST['id']))
-{
-    echo '{"isTrue":0,"data":"資料傳輸失敗!"}';
-	exit();
+class regist_list_save{
+    public $POST_data;
+    function regist_update(){
+        require_once("Connections/DB_config.php");
+        
+        // var_dump($this->POST_data);
+        // exit;
+        #修改 id檢查 數字型態
+        if( !isset($this->POST_data['id']) || empty($this->POST_data['id']))
+        {
+            return '{"isTrue":0,"data":"資料傳輸失敗!"}';
+        }
+        $id = str_SQL_replace($this->POST_data['id']);
+        if(!filter_var($id, FILTER_VALIDATE_INT))
+        {
+            return '{"isTrue":0,"data":"資料格式錯誤!"}';
+        }
+        #user id檢查 數字型態
+        if( !isset($this->POST_data['user']) || empty($this->POST_data['user']))
+        {
+            return '{"isTrue":0,"data":"資料傳輸失敗!"}';
+        }
+        $user = str_SQL_replace($this->POST_data['user']);
+        if(!filter_var($user, FILTER_VALIDATE_INT))
+        {
+            return'{"isTrue":0,"data":"資料格式錯誤!"}';
+        }
+        #檢查是否為本人，或者是Admin
+        if($_SESSION['id'] != $user && $_SESSION['IsAdmin'] == 0 )
+        {
+            return '{"isTrue":0,"data":"權限不足!"}';
+        }
+        
+        # 時間
+        if( !isset($this->POST_data['date']) || empty($this->POST_data['date']))
+        {
+            return '{"isTrue":0,"data":"資料傳輸失敗!"}';
+        }
+        $data = str_SQL_replace($this->POST_data['date']);
+        if(!filter_var($data,  FILTER_SANITIZE_STRING))
+        {
+            return'{"isTrue":0,"data":"資料格式錯誤!"}';
+        }
+        #項目檢查 數字型態
+        if( !isset($this->POST_data['items']) || empty($this->POST_data['items']))
+        {
+            return '{"isTrue":0,"data":"資料傳輸失敗!"}';
+        }
+        $items = str_SQL_replace($this->POST_data['items'] );
+        if(!filter_var($items, FILTER_VALIDATE_INT))
+        {
+            return'{"isTrue":0,"data":"資料格式錯誤!"}';
+        }
+        #金錢檢查 數字型態 不能小於零
+        if( !isset($this->POST_data['buy']) || empty($this->POST_data['buy']) || $this->POST_data['buy'] <= 0)
+        {
+            return '{"isTrue":0,"data":"資料傳輸失敗!"}';
+        }
+        $buy = str_SQL_replace($this->POST_data['buy'] );
+        if(!filter_var($buy, FILTER_VALIDATE_INT)){
+            return '{"isTrue":0,"data":"資料格式錯誤!"}';
+        }
+        
+        
+        #統一發票號碼檢查 字串型態 允許空值
+        if(!isset($this->POST_data['receipt']))
+        {
+            return'{"isTrue":0,"data":"資料傳輸失敗!"}';
+        }
+        $receipt = str_SQL_replace($this->POST_data['receipt'] );
+        if($receipt != ""){
+            if(!filter_var($receipt, FILTER_SANITIZE_STRING)){
+                return '{"isTrue":0,"data":"資料格式錯誤!"}';
+            }
+        }
+        
+        #備註檢查 字串型態 允許空值
+        if(!isset($this->POST_data['note']))
+        {
+            return '{"isTrue":0,"data":"資料傳輸失敗!"}';
+        }
+        $note = str_SQL_replace($this->POST_data['note'] );
+        if($note != "" && $note != "0"){
+            if(!filter_var($note, FILTER_SANITIZE_STRING)){
+                return '{"isTrue":0,"data":"資料格式錯誤!"}';
+            }
+        }
+        $ip = getIP();
+         
+        $str_Sql='UPDATE `charge` 
+        SET `date`="'.$data.'"
+        ,`buy`="'.$buy.'" 
+        ,`items`="'.$items.'" 
+        ,`note`="'.$note.'" 
+        ,`ip`="'.$ip.'" 
+        ,`receipt`="'.$receipt.'" 
+        WHERE `id`="'.$id.'" &&  `user_id` = "'.$user.'";';
+        
+        // var_dump($str_Sql);
+        // exit;
+        
+        //=====================================================================================
+        //進行連線
+        //=====================================================================================
+        
+        $db = new DB();
+        $db->connect_db($_DB['host'], $_DB['username'], $_DB['password'], $_DB['dbname']);
+        
+        $result = $db->query($str_Sql);
+        
+        if($result){
+        	return '{"isTrue":1,"data":""}';
+        }else{
+        	return '{"isTrue":0,"data":"'. mysql_error().'"}';
+    	}
+        
+        $db->closeDB();
+        exit();
+    }
 }
-$id = str_SQL_replace($_POST['id']);
-if(!filter_var($id, FILTER_VALIDATE_INT))
-    die('{"isTrue":0,"data":"資料格式錯誤!"}');
-    
-#user id檢查 數字型態
-if( !isset($_POST['user']) || empty($_POST['user']))
-{
-    echo '{"isTrue":0,"data":"資料傳輸失敗!"}';
-	exit();
-}
-$user = str_SQL_replace($_POST['user']);
-if(!filter_var($user, FILTER_VALIDATE_INT))
-    die('{"isTrue":0,"data":"資料格式錯誤!"}');
-
-#檢查是否為本人，或者是Admin
-if($_SESSION['id'] != $user && $_SESSION['IsAdmin'] == 0 ){
-    echo '{"isTrue":0,"data":"權限不足!"}';
-    exit();
-}
-
-# 時間
-if( !isset($_POST['date']) || empty($_POST['date']))
-{
-    echo '{"isTrue":0,"data":"資料傳輸失敗!"}';
-	exit();
-}
-$data = str_SQL_replace($_POST['date']);
-if(!filter_var($data,  FILTER_SANITIZE_STRING))
-    die('{"isTrue":0,"data":"資料格式錯誤!"}');
-
-#項目檢查 數字型態
-if( !isset($_POST['items']) || empty($_POST['items']))
-{
-    echo '{"isTrue":0,"data":"資料傳輸失敗!"}';
-	exit();
-}
-$items = str_SQL_replace($_POST['items'] );
-if(!filter_var($items, FILTER_VALIDATE_INT))
-    die('{"isTrue":0,"data":"資料格式錯誤!"}');
-
-#金錢檢查 數字型態 不能小於零
-if( !isset($_POST['buy']) || empty($_POST['buy']) || $_POST['buy'] <= 0)
-{
-    echo '{"isTrue":0,"data":"資料傳輸失敗!"}';
-	exit();
-}
-$buy = str_SQL_replace($_POST['buy'] );
-if(!filter_var($buy, FILTER_VALIDATE_INT))
-    die('{"isTrue":0,"data":"資料格式錯誤!"}');
 
 
-
-#統一發票號碼檢查 字串型態 允許空值
-if(!isset($_POST['receipt']))
-{
-    echo '{"isTrue":0,"data":"資料傳輸失敗!"}';
-	exit();
-}
-$receipt = str_SQL_replace($_POST['receipt'] );
-if($receipt != ""){
-    if(!filter_var($receipt, FILTER_SANITIZE_STRING))
-        die('{"isTrue":0,"data":"資料格式錯誤!"}');
-}
-
-#備註檢查 字串型態 允許空值
-if(!isset($_POST['note']))
-{
-    echo '{"isTrue":0,"data":"資料傳輸失敗!"}';
-	exit();
-}
-$note = str_SQL_replace($_POST['note'] );
-if($note != "" && $note != "0"){
-    if(!filter_var($note, FILTER_SANITIZE_STRING))
-        die('{"isTrue":0,"data":"資料格式錯誤!"}');
-}
-$ip = getIP();
- 
-$str_Sql='UPDATE `charge` 
-SET `date`="'.$data.'"
-,`buy`="'.$buy.'" 
-,`items`="'.$items.'" 
-,`note`="'.$note.'" 
-,`ip`="'.$ip.'" 
-,`receipt`="'.$receipt.'" 
-WHERE `id`="'.$id.'" &&  `user_id` = "'.$user.'";';
-
-// var_dump($str_Sql);
-// exit;
-
-//=====================================================================================
-//進行連線
-//=====================================================================================
-
-$db = new DB();
-$db->connect_db($_DB['host'], $_DB['username'], $_DB['password'], $_DB['dbname']);
-
-$result = $db->query($str_Sql);
-
-if($result){
-	echo '{"isTrue":1,"data":""}';
-}else{
-	echo '{"isTrue":0,"data":"'. mysql_error().'"}';
-	}
-
-$db->closeDB();
-exit();
 
 ?>

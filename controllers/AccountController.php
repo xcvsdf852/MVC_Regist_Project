@@ -70,7 +70,8 @@ class AccountController extends Controller{
         // exit;
         $user = $this->model("isset_user");
         $user->account = $_POST['account'];
-        $user->check_account_isset();
+        $json_return = $user->check_account_isset();
+        $this->view("show_json",$json_return);
     }
     
     #顯示修改密碼頁

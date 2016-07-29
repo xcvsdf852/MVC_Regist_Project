@@ -30,7 +30,6 @@ class ch_pass{
             $arry_result['account'] = $this->e_mail;
             $_SESSION['error'] = $arry_result;
             return $arry_result;
-        	exit();
         }
         
         //判斷是否有值傳進來
@@ -42,7 +41,6 @@ class ch_pass{
             $arry_result['account'] = $this->e_mail;
             $_SESSION['error'] = $arry_result;
             return $arry_result;
-        	exit();
         }
         $bool_isEmailtrue = preg_match('/^([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})$/', $this->e_mail);
         if(!$bool_isEmailtrue)
@@ -53,7 +51,6 @@ class ch_pass{
             $arry_result['account'] = $this->e_mail;
             $_SESSION['error'] = $arry_result;
             return $arry_result;
-        	exit();
         }
         
         
@@ -69,7 +66,6 @@ class ch_pass{
             $arry_result['account'] = $this->e_mail;
             $_SESSION['error'] = $arry_result;
             return $arry_result;
-        	exit();
         }
         //密碼正規表示法檢查
         $bool_isPasstrue1 = preg_match('/^[A-Za-z0-9]*[A-Za-z]+[A-Za-z0-9]*$/', $this->pw);
@@ -86,7 +82,6 @@ class ch_pass{
             $arry_result['account'] = $this->e_mail;
             $_SESSION['error'] = $arry_result;
             return $arry_result;
-        	exit();
         }
         
         //不符合格式
@@ -98,7 +93,6 @@ class ch_pass{
             $arry_result['account'] = $this->e_mail;
             $_SESSION['error'] = $arry_result;
             return $arry_result;
-        	exit();
         }
         
         //---------------------------------
@@ -136,7 +130,6 @@ class ch_pass{
             $arry_result['account'] = $this->e_mail;
             $_SESSION['error'] = $arry_result;
             return $arry_result;
-            exit();
         }
         $count = $db->fetch_array($result);
         
@@ -147,7 +140,6 @@ class ch_pass{
             $arry_result['account'] = $this->e_mail;
             $_SESSION['error'] = $arry_result;
             return $arry_result;
-            exit();
         }
         
         #檢查是否為本人，或者是Admin
@@ -158,7 +150,6 @@ class ch_pass{
             $arry_result['account'] = $this->e_mail;
             $_SESSION['error'] = $arry_result;
             return $arry_result;
-            exit();
         }
         
         
@@ -175,7 +166,6 @@ class ch_pass{
             $arry_result['account'] = $this->e_mail;
             $_SESSION['error'] = $arry_result;
             return $arry_result;
-            exit();
         }
         
         $db->closeDB();
@@ -183,7 +173,6 @@ class ch_pass{
         $arry_result["errorCod"] = 1;
         $arry_result["mesg"] = "密碼修改完成!";
         return $arry_result;
-        exit();
     }
 }
 

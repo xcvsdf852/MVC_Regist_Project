@@ -28,7 +28,6 @@ class user_insert{
             $arry_result["e_mail"] = $this->e_mail;
             $_SESSION['error'] = $arry_result;
             return $arry_result;
-        	exit();
         }
         
         //判斷是否有值傳進來
@@ -43,7 +42,6 @@ class user_insert{
             $arry_result["e_mail"] = $this->e_mail;
             $_SESSION['error'] = $arry_result;
             return $arry_result;
-        	exit();
         }
         //e_mail正規表示法檢查
         $bool_isEmailtrue = preg_match('/^([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})$/', $this->e_mail);
@@ -58,7 +56,6 @@ class user_insert{
             $arry_result["e_mail"] = $this->e_mail;
             $_SESSION['error'] = $arry_result;
             return $arry_result;
-        	exit();
         }
         
         
@@ -75,7 +72,6 @@ class user_insert{
             $arry_result["e_mail"] = $this->e_mail;
             $_SESSION['error'] = $arry_result;
             return $arry_result;
-        	exit();
         }
         //密碼正規表示法檢查
         $bool_isPasstrue1 = preg_match('/^[A-Za-z0-9]*[0-9]+[A-Za-z0-9]*$/', $this->pw);
@@ -96,7 +92,6 @@ class user_insert{
             $arry_result["e_mail"] = $this->e_mail;
             $_SESSION['error'] = $arry_result;
             return $arry_result;
-        	exit();
         }
         
         //不符合格式
@@ -111,7 +106,6 @@ class user_insert{
             $arry_result["e_mail"] = $this->e_mail;
             $_SESSION['error'] = $arry_result;
             return $arry_result;
-        	exit();
         }
         
         //檢查暱稱
@@ -126,7 +120,6 @@ class user_insert{
             $arry_result["e_mail"] = $this->e_mail;
             $_SESSION['error'] = $arry_result;
             return $arry_result;
-        	exit();
         }
         $str_nickname = str_SQL_replace($this->nickname);
         if(!filter_var($str_nickname,  FILTER_SANITIZE_STRING)){
@@ -139,7 +132,6 @@ class user_insert{
             $arry_result["e_mail"] = $this->e_mail;
             $_SESSION['error'] = $arry_result;
             return $arry_result;
-        	exit();
         }
         //---------------------------------
         
@@ -174,8 +166,6 @@ class user_insert{
             $arry_result["errorCod"] = 1;
             $arry_result["mesg"] = "新增會員成功!";
             return $arry_result;
-            
-        	exit();
         }else{
             $arry_result["isTrue"] = false;
             $arry_result["errorCod"] = 2;
@@ -186,7 +176,6 @@ class user_insert{
             $arry_result["e_mail"] = $this->e_mail;
             $_SESSION['error'] = $arry_result;
             return $arry_result;
-        	exit();
         }
         $db->closeDB();
     }

@@ -46,8 +46,9 @@
                   return false;
                 }
                 
-                $.post("/homework0721_MVC/models/statistics_json.php",{"time_str":time_str,"time_end":time_end,"user_id":user_id},function(d){
+                $.post("Paint_Pie",{"time_str":time_str,"time_end":time_end,"user_id":user_id},function(d){
                     // console.log(d);
+                    // return;
                     if(d.isTrue){
                         $('#container').highcharts({
                             chart: {

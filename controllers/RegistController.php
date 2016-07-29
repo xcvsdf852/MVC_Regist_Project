@@ -2,7 +2,7 @@
 
 class RegistController extends Controller {
     
-     #顯示記帳頁面
+    #顯示記帳頁面
     function regist_index(){ 
         $this->view("Regist/regist_index");
     }
@@ -25,9 +25,31 @@ class RegistController extends Controller {
             $this->view("Regist/regist_index",$arry_return);//導回首頁
         }
     }
-    
+    #顯示記帳紀錄
     function show_list(){
         $this->view("Regist/regist_list_index");
+    }
+    
+    #搜尋消費紀錄
+    function search(){
+        $user = $this->model("regist_list");
+        $user->POST_data = $_POST;
+        $json_return = $user->search_regist_list();
+        $this->view("show_json",$json_return);
+    }
+    #修改
+    function list_save(){
+        $user = $this->model("regist_list_save");
+        $user->POST_data = $_POST;
+        $json_return = $user->regist_update();
+        $this->view("show_json",$json_return);
+    }
+    #刪除
+    function list_delete(){
+        $user = $this->model("regist_list_delete");
+        $user->POST_data = $_POST;
+        $json_return = $user->regist_delete();
+        $this->view("show_json",$json_return);
     }
     
 }

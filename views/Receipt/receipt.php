@@ -13,6 +13,11 @@
  
   <script type="text/javascript">
   $(document).ready(function(){
+    if(window.attachEvent)
+    {window.attachEvent('onload', init);}
+    else
+    {window.addEventListener('load', init, false);}
+  
     var today = new Date();
     // today_year = today.getFullYear()+1; //西元年份
     // today_month = today.getMonth()-4; //一年中的第幾月
@@ -47,17 +52,19 @@
   });
   
     //取得今年民國年  
-     function getCurrentYear(){ 
+    function getCurrentYear(){ 
         var date = new Date();  
         return date.getFullYear() - 1911;    
-     } 
-    
+    } 
+    //自動兌獎
     function check_receipt(d){
+        showloading();
         $("#content").html("");
-        $.post("/homework0721_MVC/models/get_receipt.php",
+        $.post("check_numbers",
             {"date":d},
             function(result){
-               i=0;
+                init();
+                i=0;
                     $.each(result.data, function(i){
                          if(result.isTrue == 1){
                             // console.log(result.data[i]);
@@ -71,13 +78,28 @@
                                 }).setType(BootstrapDialog.TYPE_DANGER);
                            }           
                         });
-                    
-                
             },"json");
     }
-   
+    
+    function showloading(){
+       document.getElementById('loading').style.display = 'block';
+    }
+    function init(){
+      document.getElementById("loading").style.display = "none";
+    }
     
   </script>
+  <style>
+      div.loadingdiv{
+           height:100%; /*100%覆蓋網頁內容, 避免user在loading時進行其他操作*/
+           width:100%;
+           position:absolute;
+           z-index:90; /*須大於網頁內容*/
+           top:50%;
+           left:50%;
+           display:block; 
+       }
+  </style>
 </head>
 <body>
 <?php include_once('views/header.html');?>
@@ -101,10 +123,13 @@
   </div>
   <div class="col-md-6">
 <!----------內容位置-------------->
-    <hr>
-    <div style="width:100%;" id="content">
-    
+    <div class="loadingdiv" id="loading">
+       <img class="loading" src="/homework0721_MVC/views/img/loading.gif" alt="">
     </div>
+    <hr>
+    
+    <div style="width:100%;" id="content"></div>
+    
     
     
     

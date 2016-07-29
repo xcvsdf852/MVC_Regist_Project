@@ -14,8 +14,9 @@ class isset_user {
         if(isset($this->account)){
           $EmpAccount = $this->account;
              if (!preg_match('/^([.0-9a-z]+)@([0-9a-z]+).([.0-9a-z]+)$/i', $EmpAccount)){ //過濾Email;
-                echo '{"callback":0}';
-                exit();
+                // echo '{"callback":0}';
+                // exit();
+                return '{"callback":0}';
              }
         //=====================================================================================
         //進行連線
@@ -31,10 +32,12 @@ class isset_user {
         $count = $db->fetch_array($result);
         
         if($count['C'] >0 ){
-            echo '{"callback":0}';
+            // echo '{"callback":0}';
+            return '{"callback":0}';
         }
         else{
-        	echo '{"callback":1}';
+        // 	echo '{"callback":1}';
+            return '{"callback":1}';
         	}
         $db->closeDB();
         }

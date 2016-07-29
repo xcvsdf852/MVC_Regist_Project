@@ -1,4 +1,3 @@
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -35,17 +34,79 @@
       }).setType(BootstrapDialog.TYPE_DANGER);;
       return false;
     }
-    $("#content").load("/homework0721_MVC/models/regist_list.php?P="+P+"&P_number="+P_number,{
+    // $("#content").load("/homework0721_MVC/models/regist_list.php?P="+P+"&P_number="+P_number,{
+  		// "time_str":time_str,
+  		// "time_end":time_end,
+  		// "select_value":select_value,
+  		// "text_value":text_value
+  		// },function(){
+    // 		$("#P").val(P);
+    // 		$("#P_number").val(P_number);
+    // 		var c=$("#count").val();
+    // 		$("#tage").load('/homework0721_MVC/models/package/Tage.php?P='+P+'&P_number='+P_number+'&count_num='+c+'&function=list_load');
+  	 // });
+  	 $.post("search",{
+  	  "P":P,
+  	  "P_number":P_number,
   		"time_str":time_str,
   		"time_end":time_end,
   		"select_value":select_value,
   		"text_value":text_value
-  		},function(){
-  		$("#P").val(P);
-  		$("#P_number").val(P_number);
-  		var c=$("#count").val();
-  		$("#tage").load('/homework0721_MVC/models/package/Tage.php?P='+P+'&P_number='+P_number+'&count_num='+c+'&function=list_load');
-  	});
+  		},function(d){
+  		  // console.log(d);
+  		  if(d.isTrue){
+    		  i=0;
+    		  $("#content").html("");
+    		  $.each(d.date,function(){
+    		    $("#content").append(
+      		      '<tr>'
+                      +'<th scope="row"></th>'
+                      +'<td><input style = "line-height: 100%;" type="date" id="date_'+d.date[i].id+'" value ="'+d.date[i].date+'" /></td>'
+                      +'<td>'
+                        +'<select id= "items_'+d.date[i].id+'" >'
+                            +'<option value = "1">食</option>'   
+                            +'<option value = "2">衣</option>'
+                            +'<option value = "3">住</option>'
+                            +'<option value = "4">行</option>'
+                            +'<option value = "5">育</option>'
+                            +'<option value = "6">樂</option>'
+                        +'</select>'
+                      +'</td>'
+                      +'<td>'
+                        +'<input type = "text" id="buy_'+d.date[i].id+'" size = "10" value ="'+d.date[i].buy+'"/>'
+                      +'</td>'
+                      +'<td>'
+                        +'<input type = "text" id="receipt_'+d.date[i].id+'" size = "10" value ="'+d.date[i].receipt+'"/>'
+                      +'</td>'
+                      +'<td>'
+                       +'<input type = "textarea" id="note_'+d.date[i].id+'" size = "15" value ="'+d.date[i].note+'" />'
+                      +'</td>'
+                      +'<td>'
+                        +'<button class="btn btn-warning" onClick="save('+d.date[i].id+');" >修改</button>'
+                      +'</td>'
+                      +'<td>'
+                        +'<button class="btn btn-danger" onClick="remove_data('+d.date[i].id+');" >刪除</button>'
+                        +'<input type = "hidden" id="user_'+d.date[i].id+'" value ="'+d.date[i].user_id+'" />'
+                      +'</td>'
+                    +'</tr>'
+              );
+              $("#items_"+d.date[i].id).val(d.date[i].items);
+              i++;
+    		    });
+  		  }else{
+  		    BootstrapDialog.show({
+            title: 'Oops 系統發生錯誤!',
+            message: d.mesg
+          }).setType(BootstrapDialog.TYPE_DANGER);;
+          return false;
+  		  }
+  		  
+    		$("#P").val(P);
+    		$("#P_number").val(P_number);
+    		// var c=$("#count").val();
+    		var c=d.page_num;
+    		$("#tage").load('/homework0721_MVC/models/package/Tage.php?P='+P+'&P_number='+P_number+'&count_num='+c+'&function=list_load');
+  	  },"json");
   }
 
   
@@ -97,7 +158,7 @@
     }
   	
 
-    $.post('/homework0721_MVC/models/regist_list_save.php',{
+    $.post('list_save',{
   		"id":id,
   		"date":date,
   		"items":items,
@@ -159,7 +220,7 @@
   	 
   }
 function  remove_post(id,user){
-  	$.post('/homework0721_MVC/models/regist_list_delete.php',{"id":id,"user_id":user},function(date){
+  	$.post('list_delete',{"id":id,"user_id":user},function(date){
   		if(date.isTrue==1){
   		// 	alert('刪除成功');
   			BootstrapDialog.show({
@@ -215,15 +276,30 @@ function  remove_post(id,user){
   </div>
   <div class="col-md-7">
 <!----------內容位置-------------->
-    <div style="width:100%;" id="content">
     
-    </div>
-    
-    
-    <div class="pagination" id="tage" align="center" style="width:100%;">
-    
-    </div>
-    
+      
+      <table class="table table-hover">
+        <thead class="thead-inverse">
+          <tr>
+            <th>#</th>
+            <th>消費日期</th>
+            <th>項目</th>
+            <th>消費金額</th>
+            <th>統一發票</th>
+            <th>備註</th>
+            <th>修改</th>
+            <th>刪除</th>
+          </tr>
+        </thead>
+        <tbody id="content">
+   
+        </tbody>              
+      </table>
+      <input type="hidden" id="count" value="">
+      <div class="pagination" id="tage" align="center" style="width:100%;">
+      
+      </div>
+      
     
 <!----------內容位置結束-------------->
   </div>
