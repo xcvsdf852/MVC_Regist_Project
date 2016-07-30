@@ -12,8 +12,6 @@ class StatisticsController extends Controller {
         $user->POST_data = $_POST;
         // var_dump($user->POST_data);
         // exit;
-        // echo $user->get_pie_data();
-        // exit;
         $json_return = $user->get_pie_data();
         $this->view("show_json",$json_return);
         

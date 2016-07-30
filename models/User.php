@@ -15,7 +15,6 @@ class User {
         
             $EmpAccount = $this->name;
             $EmpPwd = $this->password;
-            // echo $EmpAccount;
         //=====================================================================================
         //對接收到的帳號資料先做正規化判斷
         //密碼進行MD5加密
@@ -27,8 +26,8 @@ class User {
                 $arry_result["mesg"] = "帳號格式為Email，請輸入正確格式!";
                 $arry_result['account'] = $this->name;
                 $arry_result["pwd"] = $this->password;
-                $_SESSION['error'] = $arry_result;
-                
+                // $_SESSION['error'] = $arry_result;
+                $arry_result['error'] = $arry_result;
                 $EmpAccount="";$IsError= 'EmpAccount is error';
                 return $arry_result;
              }
@@ -76,6 +75,7 @@ class User {
                 $arry_result["isTrue"] = true;
                 $arry_result["errorCod"] = 1;
                 $arry_result["mesg"] = "登入成功";
+                $arry_result['error'] = $arry_result;
                 return $arry_result;
                 
          
@@ -86,7 +86,7 @@ class User {
                     $arry_result["mesg"] = "查無該帳號!";
                     $arry_result['account'] = $this->name;
                     $arry_result["pwd"] = $this->password;
-                    $_SESSION['error'] = $arry_result;
+                    $arry_result['error'] = $arry_result;
                     return $arry_result;
         		}else if($count['ac_password']!= $EmpPwd){
                     $arry_result["isTrue"] = false;
@@ -94,7 +94,7 @@ class User {
                     $arry_result["mesg"] = "密碼有誤!";
                     $arry_result['account'] = $this->name;
                     $arry_result["pwd"] = $this->password;
-                    $_SESSION['error'] = $arry_result;
+                    $arry_result['error'] = $arry_result;
                     return $arry_result;
         		}else{
                     $arry_result["isTrue"] = false;
@@ -102,7 +102,7 @@ class User {
                     $arry_result["mesg"] = "帳密有誤!";
                     $arry_result['account'] = $this->name;
                     $arry_result["pwd"] = $this->password;
-                    $_SESSION['error'] = $arry_result;
+                    $arry_result['error'] = $arry_result;
                     return $arry_result;
         		}
                     $IsAdmin=$count['IsAdmin'];
@@ -112,7 +112,7 @@ class User {
                 $arry_result["mesg"] = "帳號無權限!";
                 $arry_result['account'] = $this->name;
                 $arry_result["pwd"] = $this->password;
-                $_SESSION['error'] = $arry_result;
+                $arry_result['error'] = $arry_result;
                 return $arry_result;
         	}
         }else{
@@ -124,7 +124,7 @@ class User {
             $arry_result["mesg"] = "資料傳輸有誤!";
             $arry_result['account'] = $this->name;
             $arry_result["pwd"] = $this->password;
-            $_SESSION['error'] = $arry_result;
+            $arry_result['error'] = $arry_result;
             return $arry_result;
         }
         	
@@ -134,7 +134,7 @@ class User {
             $arry_result["mesg"] = "登入失敗請檢查登入帳號密碼是否正確!";
             $arry_result['account'] = $this->name;
             $arry_result["pwd"] = $this->password;
-            $_SESSION['error'] = $arry_result;
+            $arry_result['error'] = $arry_result;
         }
     // 	$db->closeDB();
         $PDO->closeConnection();

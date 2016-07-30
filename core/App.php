@@ -1,14 +1,15 @@
 <?php
 
 class App {
-    private $whiteAction = array(
-                        "Account/login",
-                        "Account/regist",
-                        "Account/forget_password",
-                        "Account/forget_password_send_mail",
-                        "Account/regist_isset_user",
-                        "Account/regist_account"
-                        );
+    // private $whiteAction = array(
+    //                     "Account/login",
+    //                     "Account/regist",
+    //                     "Account/forget_password",
+    //                     "Account/forget_password_send_mail",
+    //                     "Account/regist_isset_user",
+    //                     "Account/regist_account",
+    //                     "Account/check_user"
+    //                     );
     
     public function __construct() {
         
@@ -18,15 +19,25 @@ class App {
         }
         $controllerName = "{$url[0]}Controller";
         
-        if(!in_array($_GET["url"], $this->whiteAction)){
-            if(isset($_SESSION['id']) && isset($_SESSION['EmpAccount']) && isset($_SESSION['IsAdmin']))
-            {
-                if($_SESSION['IsAdmin']==1){$user="admin";}
-                else{$user="user";}
-            }else{
-                header("Location: /homework0721_MVC/Account/login");
-            }
-        }      
+        // if(!in_array($_GET["url"], $this->whiteAction)){
+            
+            // if(isset($_SESSION['id']) && isset($_SESSION['EmpAccount']) && isset($_SESSION['IsAdmin']))
+            // {
+            //     if($_SESSION['IsAdmin']==1){$user="admin";}
+            //     else{$user="user";}
+            // }else{
+            //     header("Location: /homework0721_MVC/Account/login");
+            // }
+        // } 
+        #檢查是否登入
+        require_once "models/check_login.php";
+        $check = new check_login;
+        // var_dump($check->check());
+        // exit;
+        if(!$check->check()){
+            header("Location: /homework0721_MVC/Account/login");
+        }
+    
 
         if (!file_exists("controllers/$controllerName.php")) //判斷該資料夾內有沒有該檔案
             return;

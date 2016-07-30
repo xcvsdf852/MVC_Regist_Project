@@ -24,8 +24,16 @@
                 <ul class="nav navbar-nav navbar-right">
                     <li><a href="/homework0721_MVC/Account/change_password"><span class="glyphicon glyphicon-pencil"></span>會員資料</a></li>
                     <li><a href="/homework0721_MVC/Account/logout"><span class="glyphicon glyphicon-send"></span>Log out</a></li>
-                    <li><a href="#"><span class="glyphicon glyphicon-user"></span><?php echo $_SESSION['nick_name'];?></a></li>
+                    <li><a href="#" ><span class="glyphicon glyphicon-user" id="nick_name"></span></a></li>
                 </ul>
             </div>
         </div>
-    </nav> 
+    </nav>
+    <script type="text/javascript">
+        $(document).ready(function(){
+          $.post("/homework0721_MVC/Account/use_info",function(d){
+              $("#nick_name").html(d.nick_name);
+          },"json");
+        });
+    </script>
+    

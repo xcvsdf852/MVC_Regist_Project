@@ -60,14 +60,14 @@
              <label for="inputEmail" class="sr-only">輸入暱稱</label>
              
              <div id="name_set">
-                <input type="text" name="nickname" id="nickname" class="form-control" placeholder="輸入暱稱" autofocus="" onBlur="Checkname();" value="<?php if(is_null($_SESSION['error']['nickname'])|| !isset($_SESSION['error'])){echo "";}else{echo $_SESSION['error']['nickname'];} ?>">
+                <input type="text" name="nickname" id="nickname" class="form-control" placeholder="輸入暱稱" autofocus="" onBlur="Checkname();" value="<?php if(is_null($data['error']['nickname'])|| !isset($data['error'])){echo "";}else{echo $data['error']['nickname'];} ?>">
                 <span id='name_message'></span>
              </div>
              
              <label for="inputEmail" class="sr-only">輸入帳號</label>
              <div id="account_set">
                  <span id='account_message'></span>
-                 <input type="email" name="txtUserName" id="txtUserName" class="form-control" placeholder="輸入Email帳號" autofocus=""  onBlur="User_Isset();" value="<?php if(is_null($_SESSION['error']['e_mail'])|| !isset($_SESSION['error'])){echo "";}else{echo $_SESSION['error']['e_mail'];} ?>"> 
+                 <input type="email" name="txtUserName" id="txtUserName" class="form-control" placeholder="輸入Email帳號" autofocus=""  onBlur="User_Isset();" value="<?php if(is_null($data['error']['e_mail'])|| !isset($data['error'])){echo "";}else{echo $data['error']['e_mail'];} ?>"> 
              </div>
              
              <label for="inputPassword" class="sr-only">輸入密碼</label> 
@@ -83,7 +83,7 @@
              </div>
              
              <div style = "margin :10px 0px 10px 0px ">
-               <label class ="label label-danger"><?php echo  $_SESSION['error']['mesg'];?></label>
+               <label class ="label label-danger"><?php echo  $data['error']['mesg'];?></label>
              </div>
              
                <button class="btn btn-lg btn-success btn-block" type="button" name="btnOK" id="btnOK"  onclick ="User_Insert()">邁向理財的第一步

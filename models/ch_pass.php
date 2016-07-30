@@ -21,14 +21,13 @@ class ch_pass{
     public $check;
     
     function ch_password(){
-        // require_once("Connections/DB_config.php");
         if(!isset($this->check) || empty($this->check) || $this->check != 1 )
         {
             $arry_result["isTrue"] = false;
             $arry_result["errorCod"] = 2;
             $arry_result["mesg"] = "修改密碼失敗，資料傳輸失敗!";
             $arry_result['account'] = $this->e_mail;
-            $_SESSION['error'] = $arry_result;
+            $arry_result['error'] = $arry_result;
             return $arry_result;
         }
         
@@ -39,7 +38,7 @@ class ch_pass{
             $arry_result["errorCod"] = 3;
             $arry_result["mesg"] = "修改密碼失敗，資料傳輸失敗!";
             $arry_result['account'] = $this->e_mail;
-            $_SESSION['error'] = $arry_result;
+            $arry_result['error'] = $arry_result;
             return $arry_result;
         }
         $bool_isEmailtrue = preg_match('/^([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})$/', $this->e_mail);
@@ -49,7 +48,7 @@ class ch_pass{
             $arry_result["errorCod"] = 4;
             $arry_result["mesg"] = "修改密碼失敗，資料格式有誤!";
             $arry_result['account'] = $this->e_mail;
-            $_SESSION['error'] = $arry_result;
+            $arry_result['error'] = $arry_result;
             return $arry_result;
         }
         
@@ -64,7 +63,7 @@ class ch_pass{
             $arry_result["errorCod"] = 5;
             $arry_result["mesg"] = "修改密碼失敗，資料傳輸失敗!";
             $arry_result['account'] = $this->e_mail;
-            $_SESSION['error'] = $arry_result;
+            $arry_result['error'] = $arry_result;
             return $arry_result;
         }
         //密碼正規表示法檢查
@@ -80,7 +79,7 @@ class ch_pass{
             $arry_result["errorCod"] = 6;
             $arry_result["mesg"] = "修改密碼失敗，密碼至少8~12碼!";
             $arry_result['account'] = $this->e_mail;
-            $_SESSION['error'] = $arry_result;
+            $arry_result['error'] = $arry_result;
             return $arry_result;
         }
         
@@ -91,7 +90,7 @@ class ch_pass{
             $arry_result["errorCod"] = 7;
             $arry_result["mesg"] = "修改密碼失敗，需英數字混和!";
             $arry_result['account'] = $this->e_mail;
-            $_SESSION['error'] = $arry_result;
+            $arry_result['error'] = $arry_result;
             return $arry_result;
         }
         
@@ -135,7 +134,7 @@ class ch_pass{
             $arry_result["errorCod"] = 8;
             $arry_result["mesg"] = "修改密碼失敗，資料庫請求失敗!";
             $arry_result['account'] = $this->e_mail;
-            $_SESSION['error'] = $arry_result;
+            $arry_result['error'] = $arry_result;
             return $arry_result;
         }
         // $count = $db->fetch_array($result);
@@ -145,7 +144,7 @@ class ch_pass{
             $arry_result["errorCod"] = 9;
             $arry_result["mesg"] = "修改密碼失敗，驗證帳密有誤!";
             $arry_result['account'] = $this->e_mail;
-            $_SESSION['error'] = $arry_result;
+            $arry_result['error'] = $arry_result;
             return $arry_result;
         }
         
@@ -155,7 +154,7 @@ class ch_pass{
             $arry_result["errorCod"] = 10;
             $arry_result["mesg"] = "修改密碼失敗，修改權限有誤!";
             $arry_result['account'] = $this->e_mail;
-            $_SESSION['error'] = $arry_result;
+            $arry_result['error'] = $arry_result;
             return $arry_result;
         }
         
@@ -178,7 +177,7 @@ class ch_pass{
             $arry_result["errorCod"] = 11;
             $arry_result["mesg"] = "修改密碼失敗，驗證帳密有誤!";
             $arry_result['account'] = $this->e_mail;
-            $_SESSION['error'] = $arry_result;
+            $arry_result['error'] = $arry_result;
             return $arry_result;
         }
         
@@ -187,6 +186,7 @@ class ch_pass{
         $arry_result["isTrue"] = true;
         $arry_result["errorCod"] = 1;
         $arry_result["mesg"] = "密碼修改完成!";
+        $arry_result['error'] = $arry_result;
         return $arry_result;
     }
 }

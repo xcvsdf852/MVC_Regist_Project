@@ -108,7 +108,7 @@
          <label for="inputEmail" class="sr-only">輸入帳號</label>
          <div id="account_set">
              <span id='account_message'></span>
-             <input type="email" name="txtUserName" id="txtUserName" class="form-control" placeholder="輸入Email帳號" autofocus="" onBlur="check_mail_regist();" value = "<?php if(is_null($_SESSION['error']['account'])|| !isset($_SESSION['error'])){echo "";}else{echo $_SESSION['error']['account'];} ?>"> 
+             <input type="email" name="txtUserName" id="txtUserName" class="form-control" placeholder="輸入Email帳號" autofocus="" onBlur="check_mail_regist();" value = "<?php if(is_null($data['error']['account'])|| !isset($data['error'])){echo "";}else{echo $data['error']['account'];} ?>"> 
          </div>
          <label for="inputPassword" class="sr-only">輸入舊密碼</label> 
              <input type="password" name="oldPassword" id="oldPassword"  class="form-control" placeholder="輸入舊密碼" >
@@ -123,7 +123,7 @@
              <input type="password" name="pwCheck" id="pwCheck"  class="form-control" placeholder="輸入第二次新密碼" onBlur="PasswordCheck();" >
          </div>
          <div style = "margin :10px 0px 10px 0px ">
-           <label class ="label label-danger"><?php echo  $_SESSION['error']['mesg'];?></label>
+           <label class ="label label-danger"><?php echo  $data['error']['mesg'];?></label>
          </div>
            <input type ="button" class="btn btn-lg btn-danger btn-block" value="送出修改" onclick="ch_pass_submit()">
            <input name="check_pass" type="hidden" value="0" id="check_pass" />

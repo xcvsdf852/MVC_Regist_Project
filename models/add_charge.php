@@ -7,8 +7,6 @@ require_once('package/get_IP.php');
 ?>
 
 <?php
-// var_dump($_SESSION);
-
 // var_dump($_POST);
 // exit;
 class add_charge{
@@ -42,7 +40,7 @@ class add_charge{
                 $arry_result["isTrue"] = false;
                 $arry_result["errorCod"] = 2;
                 $arry_result["mesg"] = "新增消費紀錄失敗，資料傳輸失敗!";
-                $_SESSION['error'] = $arry_result;
+                $arry_result['error'] = $arry_result;
                 return $arry_result;    
             }
             $data = str_SQL_replace($this->POST_data['data_'.$value]);
@@ -50,7 +48,7 @@ class add_charge{
                 $arry_result["isTrue"] = false;
                 $arry_result["errorCod"] = 3;
                 $arry_result["mesg"] = "新增消費紀錄失敗，資料格式有誤!";
-                $_SESSION['error'] = $arry_result;
+                $arry_result['error'] = $arry_result;
                 return $arry_result;
             }
                 
@@ -63,7 +61,7 @@ class add_charge{
                 $arry_result["isTrue"] = false;
                 $arry_result["errorCod"] = 4;
                 $arry_result["mesg"] = "新增消費紀錄失敗，資料傳輸失敗!";
-                $_SESSION['error'] = $arry_result;
+                $arry_result['error'] = $arry_result;
                 return $arry_result;
             }
             $items = str_SQL_replace($this->POST_data['items_'.$value] );
@@ -71,7 +69,7 @@ class add_charge{
                 $arry_result["isTrue"] = false;
                 $arry_result["errorCod"] = 5;
                 $arry_result["mesg"] = "新增消費紀錄失敗，資料格式有誤!";
-                $_SESSION['error'] = $arry_result;
+                $arry_result['error'] = $arry_result;
                 return $arry_result;
             }
                 
@@ -82,7 +80,7 @@ class add_charge{
                 $arry_result["isTrue"] = false;
                 $arry_result["errorCod"] = 6;
                 $arry_result["mesg"] = "新增消費紀錄失敗，資料傳輸失敗!";
-                $_SESSION['error'] = $arry_result;
+                $arry_result['error'] = $arry_result;
                 return $arry_result;
             }
             $money = str_SQL_replace($this->POST_data['money_'.$value] );
@@ -90,7 +88,7 @@ class add_charge{
                 $arry_result["isTrue"] = false;
                 $arry_result["errorCod"] = 7;
                 $arry_result["mesg"] = "新增消費紀錄失敗，資料格式有誤!";
-                $_SESSION['error'] = $arry_result;
+                $arry_result['error'] = $arry_result;
                 return $arry_result;
             }
                 
@@ -102,7 +100,7 @@ class add_charge{
                 $arry_result["isTrue"] = false;
                 $arry_result["errorCod"] = 8;
                 $arry_result["mesg"] = "新增消費紀錄失敗，資料傳輸失敗!";
-                $_SESSION['error'] = $arry_result;
+                $arry_result['error'] = $arry_result;
                 return $arry_result;
             }
             $receipt = str_SQL_replace($this->POST_data['receipt_'.$value] );
@@ -111,7 +109,7 @@ class add_charge{
                     $arry_result["isTrue"] = false;
                     $arry_result["errorCod"] = 9;
                     $arry_result["mesg"] = "新增消費紀錄失敗，資料格式有誤!";
-                    $_SESSION['error'] = $arry_result;
+                    $arry_result['error'] = $arry_result;
                     return $arry_result;
                 }
                     
@@ -123,7 +121,7 @@ class add_charge{
                 $arry_result["isTrue"] = false;
                 $arry_result["errorCod"] = 10;
                 $arry_result["mesg"] = "新增消費紀錄失敗，資料傳輸失敗!";
-                $_SESSION['error'] = $arry_result;
+                $arry_result['error'] = $arry_result;
                 return $arry_result;
             }
             $note = str_SQL_replace($this->POST_data['note_'.$value] );
@@ -132,7 +130,7 @@ class add_charge{
                     $arry_result["isTrue"] = false;
                     $arry_result["errorCod"] = 11;
                     $arry_result["mesg"] = "新增消費紀錄失敗，資料格式有誤!";
-                    $_SESSION['error'] = $arry_result;
+                    $arry_result['error'] = $arry_result;
                     return $arry_result;
                 }
                    
@@ -151,7 +149,7 @@ class add_charge{
                 $arry_result["isTrue"] = false;
                 $arry_result["errorCod"] = 12;
                 $arry_result["mesg"] = "新增消費紀錄失敗，資料庫有誤!";
-                $_SESSION['error'] = $arry_result;
+                $arry_result['error'] = $arry_result;
                 return $arry_result;
             }
             // $sql_str .= "('".$data."','".$items."','".$money."','".$receipt."','".$note."','".$ip."','".$_SESSION['id']."',NOW()),";

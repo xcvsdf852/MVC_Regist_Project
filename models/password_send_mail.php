@@ -19,7 +19,7 @@ class password_send_mail{
             $arry_result["errorCod"] = 2;
             $arry_result["mesg"] = "帳號格式為Email，請輸入正確格式!";
             $arry_result['e_mail'] = $this->e_mail;
-            $_SESSION['error'] = $arry_result;
+            $arry_result['error'] = $arry_result;
             return $arry_result;
          }
         $this->data['mail'] = $this->e_mail;
@@ -62,7 +62,7 @@ class password_send_mail{
             $arry_result["errorCod"] = 3;
             $arry_result["mesg"] = "重置密碼失敗，請重新申請!";
             $arry_result['e_mail'] = $this->e_mail;
-            $_SESSION['error'] = $arry_result;
+            $arry_result['error'] = $arry_result;
             // $db->closeDB();
             $PDO->closeConnection();
             return $arry_result;
@@ -83,7 +83,7 @@ class password_send_mail{
                 $arry_result["errorCod"] = 1;
                 $arry_result["mesg"] = "申請成功，請至信箱收信!";
                 $arry_result['e_mail'] = $this->e_mail;
-                $_SESSION['error'] = $arry_result;
+                $arry_result['error'] = $arry_result;
                 // $db->closeDB();
                 $PDO->closeConnection();
                 return $arry_result;
@@ -92,7 +92,7 @@ class password_send_mail{
                 $arry_result["errorCod"] = 5;
                 $arry_result["mesg"] = "寄信失敗，請重新申請!";
                 $arry_result['e_mail'] = $this->e_mail;
-                $_SESSION['error'] = $arry_result;
+                $arry_result['error'] = $arry_result;
                 // $db->closeDB();
                 $PDO->closeConnection();
                 return $arry_result;
@@ -102,7 +102,7 @@ class password_send_mail{
             $arry_result["errorCod"] = 4;
             $arry_result["mesg"] = "重置密碼失敗，請重新申請!";
             $arry_result['e_mail'] = $this->e_mail;
-            $_SESSION['error'] = $arry_result;
+            $arry_result['error'] = $arry_result;
             // $db->closeDB();
             $PDO->closeConnection();
             return $arry_result;

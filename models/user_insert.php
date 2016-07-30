@@ -24,7 +24,8 @@ class user_insert{
             $arry_result["pw"] = $this->pw;
             $arry_result["pwCheck"] = $this->pwCheck;
             $arry_result["e_mail"] = $this->e_mail;
-            $_SESSION['error'] = $arry_result;
+            // $_SESSION['error'] = $arry_result;
+            $arry_result['error'] = $arry_result;
             return $arry_result;
         }
         
@@ -38,7 +39,8 @@ class user_insert{
             $arry_result["pw"] = $this->pw;
             $arry_result["pwCheck"] = $this->pwCheck;
             $arry_result["e_mail"] = $this->e_mail;
-            $_SESSION['error'] = $arry_result;
+            // $_SESSION['error'] = $arry_result;
+            $arry_result['error'] = $arry_result;
             return $arry_result;
         }
         //e_mail正規表示法檢查
@@ -52,7 +54,8 @@ class user_insert{
             $arry_result["pw"] = $this->pw;
             $arry_result["pwCheck"] = $this->pwCheck;
             $arry_result["e_mail"] = $this->e_mail;
-            $_SESSION['error'] = $arry_result;
+            // $_SESSION['error'] = $arry_result;
+            $arry_result['error'] = $arry_result;
             return $arry_result;
         }
         
@@ -68,7 +71,8 @@ class user_insert{
             $arry_result["pw"] = $this->pw;
             $arry_result["pwCheck"] = $this->pwCheck;
             $arry_result["e_mail"] = $this->e_mail;
-            $_SESSION['error'] = $arry_result;
+            // $_SESSION['error'] = $arry_result;
+            $arry_result['error'] = $arry_result;
             return $arry_result;
         }
         //密碼正規表示法檢查
@@ -88,7 +92,8 @@ class user_insert{
             $arry_result["pw"] = $this->pw;
             $arry_result["pwCheck"] = $this->pwCheck;
             $arry_result["e_mail"] = $this->e_mail;
-            $_SESSION['error'] = $arry_result;
+            // $_SESSION['error'] = $arry_result;
+            $arry_result['error'] = $arry_result;
             return $arry_result;
         }
         
@@ -102,7 +107,8 @@ class user_insert{
             $arry_result["pw"] = $this->pw;
             $arry_result["pwCheck"] = $this->pwCheck;
             $arry_result["e_mail"] = $this->e_mail;
-            $_SESSION['error'] = $arry_result;
+            // $_SESSION['error'] = $arry_result;
+            $arry_result['error'] = $arry_result;
             return $arry_result;
         }
         
@@ -116,7 +122,8 @@ class user_insert{
             $arry_result["pw"] = $this->pw;
             $arry_result["pwCheck"] = $this->pwCheck;
             $arry_result["e_mail"] = $this->e_mail;
-            $_SESSION['error'] = $arry_result;
+            // $_SESSION['error'] = $arry_result;
+            $arry_result['error'] = $arry_result;
             return $arry_result;
         }
         $str_nickname = str_SQL_replace($this->nickname);
@@ -128,7 +135,8 @@ class user_insert{
             $arry_result["pw"] = $this->pw;
             $arry_result["pwCheck"] = $this->pwCheck;
             $arry_result["e_mail"] = $this->e_mail;
-            $_SESSION['error'] = $arry_result;
+            // $_SESSION['error'] = $arry_result;
+            $arry_result['error'] = $arry_result;
             return $arry_result;
         }
         //---------------------------------
@@ -167,6 +175,7 @@ class user_insert{
             $arry_result["isTrue"] = true;
             $arry_result["errorCod"] = 1;
             $arry_result["mesg"] = "新增會員成功!";
+            $arry_result['error'] = $arry_result;
             return $arry_result;
         }else{
             $arry_result["isTrue"] = false;
@@ -176,7 +185,8 @@ class user_insert{
             $arry_result["pw"] = $this->pw;
             $arry_result["pwCheck"] = $this->pwCheck;
             $arry_result["e_mail"] = $this->e_mail;
-            $_SESSION['error'] = $arry_result;
+            // $_SESSION['error'] = $arry_result;
+            $arry_result['error'] = $arry_result;
             return $arry_result;
         }
         // $db->closeDB();

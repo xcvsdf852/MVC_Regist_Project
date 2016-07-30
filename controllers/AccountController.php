@@ -1,5 +1,11 @@
 <?php
 class AccountController extends Controller{
+    
+    #取得帳號資訊
+    function use_info(){
+        $user=$this->model("info");
+        $this->view("show_json",$user->session_info());
+    }
     #到登入頁面
     function login(){ 
         $this->view("Account/ac_login");//是View底下的路徑    
@@ -15,13 +21,9 @@ class AccountController extends Controller{
         // var_dump($arry_return);
         // exit;
         if($arry_return['isTrue']){
-            if(isset($_SESSION['error'])){
-                unset($_SESSION['error']);
-            }
-            // $this->view("Regist/regist_index");//登入成功要導入記帳頁面
             header('Location: /homework0721_MVC/Regist/regist_index');
         }else{
-             $this->view("Account/ac_login");//失敗回登入頁面
+             $this->view("Account/ac_login",$arry_return);//失敗回登入頁面
         }
     }
     
@@ -54,10 +56,6 @@ class AccountController extends Controller{
         // var_dump($arry_return);
         // exit;
         if($arry_return['isTrue']){
-            if(isset($_SESSION['error'])){
-                unset($_SESSION['error']);
-            }
-            // echo '<script>alert("'.$arry_return['mesg'].'");</script>';
             $this->view("Account/ac_login",$arry_return);//註冊成功，導入登入頁
         }else{
             $this->view("Account/ac_regist",$arry_return);//失敗繼續註冊頁
@@ -95,13 +93,9 @@ class AccountController extends Controller{
         $arry_return = $user->ch_password();
         
         if($arry_return['isTrue']){
-            if(isset($_SESSION['error'])){
-                unset($_SESSION['error']);
-            }
-            // $this->view("Account/logout");//密碼修改成功，登出
             header('Location: /homework0721_MVC/Account/logout');
         }else{
-             $this->view("Account/ac_ch_pass");//失敗繼續在修改密碼頁
+             $this->view("Account/ac_ch_pass",$arry_return);//失敗繼續在修改密碼頁
         }
     }
     
@@ -119,14 +113,8 @@ class AccountController extends Controller{
         // var_dump($arry_return);
         // exit;
         if($arry_return['isTrue']){
-            if(isset($_SESSION['error'])){
-               unset($_SESSION['error']);
-            }
-            // echo '<script>alert("'.$arry_return['mesg'].'");</script>';
             $this->view("Account/ac_login",$arry_return);///密碼修改成功，登入畫面
-            //  header('Location: /homework0721_MVC/Account/login');
         }else{ 
-            // echo '<script>alert("'.$arry_return['mesg'].'");</script>';
             $this->view("Account/ac_forget",$arry_return);//失敗回到忘記密碼頁
         }
     }
