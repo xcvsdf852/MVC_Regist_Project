@@ -52,13 +52,13 @@ class statistics_json{
         // echo $time_end."<br>";
         
         
-        $str_sql = "SELECT i.items_list, SUM(c.buy) as total
+        $str_sql = "SELECT i.`items_list`, SUM(c.`buy`) as `total`
                     FROM `charge` as c
-                    LEFT JOIN items as i
-                    ON c.items = i.items_id
-                    WHERE DATE_FORMAT(c.date,'%Y-%m-%d') BETWEEN '".$time_str."' AND '".$time_end."'
-                    AND  c.user_id = '".$user."'
-                    GROUP BY items
+                    LEFT JOIN `items` as i
+                    ON c.`items` = i.`items_id`
+                    WHERE DATE_FORMAT(c.`date`,'%Y-%m-%d') BETWEEN '".$time_str."' AND '".$time_end."'
+                    AND  c.`user_id` = '".$user."'
+                    GROUP BY `items`
                     ";
         // echo $str_sql;
         // exit;

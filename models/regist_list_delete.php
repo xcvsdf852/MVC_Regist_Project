@@ -38,7 +38,7 @@ class regist_list_delete{
         
         $str_Sql='UPDATE `charge`  
                   SET `is_enabled`=0
-                  WHERE id= ? ;';
+                  WHERE `id`= ? ;';
         
         // var_dump($str_Sql);
         // exit;

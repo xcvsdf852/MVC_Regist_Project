@@ -82,12 +82,12 @@ class get_receipt{
         //         AND DATE_FORMAT(date,'%Y-%m-%d') BETWEEN '".$arry_date[0]."' AND '".$arry_date[1]."'";
         //  echo $sql;
         //  exit;
-        $sql =" SELECT id,receipt
+        $sql =" SELECT `id`,`receipt`
                 FROM  `charge` 
-                WHERE 	is_enabled = '1'
-                AND receipt <> ''
-                AND user_id = ?
-                AND DATE_FORMAT(date,'%Y-%m-%d') BETWEEN ? AND ? ";
+                WHERE 	`is_enabled`= '1'
+                AND `receipt` <> ''
+                AND `user_id` = ?
+                AND DATE_FORMAT(`date`,'%Y-%m-%d') BETWEEN ? AND ? ";
         
         //=====================================================================================
         //進行連線

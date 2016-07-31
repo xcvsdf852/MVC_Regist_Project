@@ -117,8 +117,8 @@ class ch_pass{
         //                 str_replace("'","\'",$str_e_mail),
         //                 str_replace("'","\'",$str_oldPassword)
         //                 );
-        $sql = "SELECT COUNT(ac_id) AS C FROM  account 
-                        WHERE ac_email= ? AND ac_password = MD5( ? )";
+        $sql = "SELECT COUNT(`ac_id`) AS C FROM  `account`
+                        WHERE `ac_email` = ? AND `ac_password` = MD5( ? )";
         $stmt = $conn->prepare($sql);
         $stmt->bindValue(1, $str_e_mail, PDO::PARAM_STR);
         $stmt->bindValue(2, $str_oldPassword, PDO::PARAM_STR);
@@ -166,7 +166,7 @@ class ch_pass{
         // $result = $db->query($sql);
         // $count = $db->fetch_array($result);
         
-        $sql = "UPDATE `account` SET ac_password = MD5( ? ) WHERE ac_email= ? ";
+        $sql = "UPDATE `account` SET `ac_password` = MD5( ? ) WHERE `ac_email` = ? ";
         $stmt = $conn->prepare($sql);
         $stmt->bindValue(1, $str_pw, PDO::PARAM_STR);
         $stmt->bindValue(2, $str_e_mail, PDO::PARAM_STR);

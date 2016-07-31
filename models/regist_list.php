@@ -14,47 +14,6 @@ class regist_list{
     if(isset($this->POST_data['select_value'])){$select_value=$this->POST_data['select_value'];}else{$select_value='';}
     if(isset($this->POST_data['text_value'])){$text_value=$this->POST_data['text_value'];}else{$text_value='';}
     
-    
-    $str_where='';
-    //時間區間
-    if($time_str!="" && $time_end!=""){
-    	$str_where=$str_where.' && DATE_FORMAT(c.date,"%Y-%m-%d") BETWEEN DATE('."'".$time_str."'".') AND DATE('."'".$time_end."'".')';
-    }
-    #項目
-    if($select_value != ""){
-    	$str_where=$str_where.' && c.items='.intval($select_value);
-    }
-    
-    
-    if(trim($text_value)!=""){
-    	$RegexpString = reSet_RegexpString($text_value);
-    	$str_where=$str_where.' && ( c.receipt REGEXP "'.$RegexpString.'" || c.note REGEXP "'.$RegexpString.'" )';
-    }
-    
-    
-    #搜尋條件
-    $str_sql = "SELECT c.id, DATE_FORMAT(c.date,'%Y-%m-%d') as date, i.items_list, c.buy, c.receipt, c.note, c.items, c.user_id
-    FROM `charge` as c LEFT JOIN items as i ON c.items = i.items_id
-    WHERE c.is_enabled = 1 && c.user_id = '".$_SESSION['id']."' ".$str_where."
-    ORDER BY  c.creat_date DESC 
-    LIMIT ".(($P-1)*$P_number).",".$P_number.";";
-    
-    // echo $str_sql;
-    // exit;
-    
-    
-    #依照搜尋結果統計總筆數
-    $str_sql_c = "SELECT COUNT(c.id) AS C
-    FROM `charge` as c LEFT JOIN items as i ON c.items = i.items_id
-    WHERE c.is_enabled =1 && c.user_id = '".$_SESSION['id']."' ".$str_where.";";
-    
-    // echo $str_sql_c;
-    // exit;
-    
-    
-    // $i=$P_number * ($P-1)+1;
-    //var_dump($str_sql_c);
-    
     #輸入關鍵字進行搜尋功能
     function reSet_RegexpString($value){
         $str = trim($value);
@@ -69,6 +28,48 @@ class regist_list{
         $str_output=addslashes($str[0]).$str_output;
         return $str_output;
     }
+    
+    $str_where='';
+    //時間區間
+    if($time_str!="" && $time_end!=""){
+    	$str_where=$str_where.' && DATE_FORMAT(c.`date`,"%Y-%m-%d") BETWEEN DATE('."'".$time_str."'".') AND DATE('."'".$time_end."'".')';
+    }
+    #項目
+    if($select_value != ""){
+    	$str_where=$str_where.' && c.`items`='.intval($select_value);
+    }
+    
+    
+    if(trim($text_value)!=""){
+    	$RegexpString = reSet_RegexpString($text_value);
+    	$str_where=$str_where.' && ( c.`receipt` REGEXP "'.$RegexpString.'" || c.`note` REGEXP "'.$RegexpString.'" )';
+    }
+    
+    
+    #搜尋條件
+    $str_sql = "SELECT c.`id`, DATE_FORMAT(c.`date`,'%Y-%m-%d') as date, i.`items_list`, c.`buy`, c.`receipt`, c.`note`, c.`items`, c.`user_id`
+    FROM `charge` as c LEFT JOIN `items` as i ON c.`items` = i.`items_id`
+    WHERE c.`is_enabled` = 1 && c.`user_id` = '".$_SESSION['id']."' ".$str_where."
+    ORDER BY  c.`creat_date` DESC 
+    LIMIT ".(($P-1)*$P_number).",".$P_number.";";
+    
+    // echo $str_sql;
+    // exit;
+    
+    
+    #依照搜尋結果統計總筆數
+    $str_sql_c = "SELECT COUNT(c.`id`) AS C
+    FROM `charge` as c LEFT JOIN `items` as i ON c.`items` = i.`items_id`
+    WHERE c.`is_enabled` =1 && c.`user_id` = '".$_SESSION['id']."' ".$str_where.";";
+    
+    // echo $str_sql_c;
+    // exit;
+    
+    
+    // $i=$P_number * ($P-1)+1;
+    //var_dump($str_sql_c);
+    
+    
     
     //=====================================================================================
     //進行連線

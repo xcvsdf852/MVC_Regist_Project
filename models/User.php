@@ -50,8 +50,8 @@ class User {
             // ac_email='%s'",str_replace("'","\'",$EmpAccount));
             // echo $sql;
             // exit;
-            $sql = "SELECT ac_id,ac_nick_name,ac_email,ac_password,is_admin,is_enabled FROM  account WHERE
-            ac_email= ? ";
+            $sql = "SELECT `ac_id`,`ac_nick_name`,`ac_email`,`ac_password`,`is_admin`,`is_enabled` FROM  `account` WHERE
+            `ac_email` = ? ";
             $stmt = $conn->prepare($sql);
             
             $stmt->bindValue(1, $EmpAccount, PDO::PARAM_STR);
