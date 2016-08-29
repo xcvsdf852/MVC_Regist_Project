@@ -5,19 +5,17 @@ require_once('package/str_sql_replace.php');
 require_once('package/get_IP.php'); 
 require_once('package/receipt.php'); 
 
-// var_dump($_POST);
-// exit;
+#傳輸進來的資料
 // { 'date' => string(5) "10503" }
+
+#測試用資料
 // $_POST["date"] = "10505";
 
-// $receipt = "08513139";
-// var_dump($num);
-// exit;
+#抓取網站得到的資料
 // echo $num[0];//特別獎 Special_Award
 // echo $num[1];//特獎  Special
 // echo $num[2];//頭獎  First
 // echo $num[3];//增開六獎 Six
-
 // 0=>18498950
 // 1=>08513139
 // 2=>21881534、53050416、85174778
@@ -38,8 +36,7 @@ class get_receipt{
     #讀取資料庫發票與網頁資料對獎
     function get_db_check_numbers(){
         #項目檢查 數字型態
-        if( !isset($this->data) || empty($this->data))
-        {
+        if( !isset($this->data) || empty($this->data)){
             $return_temp['isTrue'] = 0;
             $return_temp['data'][]= "資料傳輸失敗!";
             return json_encode($return_temp);
@@ -108,16 +105,12 @@ class get_receipt{
         
         while($row = $stmt->fetch()){
             $temp[] = $this->first_Award($row['id'],$row['receipt'],$First,$six,$num[0],$num[1]);//$num[0];特別獎$num[1];特獎
-            // echo $row['id']."<br>";
-            // echo $row['receipt']."<br>";
         }
         $return_temp=array();
-
         if(empty($temp)){
             $return_temp['isTrue'] = 1;
             $return_temp['data'][]= "無發票可兌獎";
-            echo json_encode($return_temp);
-            exit;
+            return json_encode($return_temp);
         }
         
         if($temp){

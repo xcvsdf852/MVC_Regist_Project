@@ -13,10 +13,11 @@
  
   <script type="text/javascript">
   $(document).ready(function(){
-    if(window.attachEvent)
-    {window.attachEvent('onload', init);}
-    else
-    {window.addEventListener('load', init, false);}
+    if(window.attachEvent){
+        window.attachEvent('onload', init);
+    }else{
+        window.addEventListener('load', init, false);
+    }
   
     var today = new Date();
     // today_year = today.getFullYear()+1; //西元年份
@@ -71,13 +72,13 @@
                             $("#content").append('<p>'+result.data[i]+'</p>');
                             i++;
                         }else{
-                                // alert(result.data);
-                                BootstrapDialog.show({
-                                    title: 'Oops 系統發生錯誤!',
-                                    message: result.data
-                                }).setType(BootstrapDialog.TYPE_DANGER);
-                           }           
-                        });
+                            // alert(result.data);
+                            BootstrapDialog.show({
+                                title: 'Oops 系統發生錯誤!',
+                                message: result.data
+                            }).setType(BootstrapDialog.TYPE_DANGER);
+                        }           
+                    });
             },"json");
     }
     
@@ -102,7 +103,7 @@
   </style>
 </head>
 <body>
-<?php include_once('views/header.html');?>
+<?php require_once('views/header.html');?>
 
 
 
@@ -127,12 +128,7 @@
        <img class="loading" src="/homework0721_MVC/views/img/loading.gif" alt="">
     </div>
     <hr>
-    
     <div style="width:100%;" id="content"></div>
-    
-    
-    
-    
 <!----------內容位置結束-------------->
   </div>
   <div class="col-md-3">

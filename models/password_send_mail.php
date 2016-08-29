@@ -111,7 +111,6 @@ class password_send_mail{
 
         // $db->closeDB();
         $PDO->closeConnection();
-        exit();
     }
 }
 

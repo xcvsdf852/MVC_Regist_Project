@@ -21,8 +21,7 @@ class ch_pass{
     public $check;
     
     function ch_password(){
-        if(!isset($this->check) || empty($this->check) || $this->check != 1 )
-        {
+        if(!isset($this->check) || empty($this->check) || $this->check != 1 ){
             $arry_result["isTrue"] = false;
             $arry_result["errorCod"] = 2;
             $arry_result["mesg"] = "修改密碼失敗，資料傳輸失敗!";
@@ -32,8 +31,7 @@ class ch_pass{
         }
         
         //判斷是否有值傳進來
-        if(!isset($this->e_mail) || empty($this->e_mail))
-        {
+        if(!isset($this->e_mail) || empty($this->e_mail)){
             $arry_result["isTrue"] = false;
             $arry_result["errorCod"] = 3;
             $arry_result["mesg"] = "修改密碼失敗，資料傳輸失敗!";
@@ -42,8 +40,7 @@ class ch_pass{
             return $arry_result;
         }
         $bool_isEmailtrue = preg_match('/^([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})$/', $this->e_mail);
-        if(!$bool_isEmailtrue)
-        {
+        if(!$bool_isEmailtrue){
             $arry_result["isTrue"] = false;
             $arry_result["errorCod"] = 4;
             $arry_result["mesg"] = "修改密碼失敗，資料格式有誤!";
@@ -56,8 +53,7 @@ class ch_pass{
         //判斷是否有值傳進來
         if(!isset($this->pw) || empty($this->pw) ||!isset($this->pwCheck) || empty($this->pwCheck)
             ||!isset($_POST['oldPassword']) || empty($_POST['oldPassword'])
-        )
-        {
+        ){
         
             $arry_result["isTrue"] = false;
             $arry_result["errorCod"] = 5;
@@ -84,8 +80,7 @@ class ch_pass{
         }
         
         //不符合格式
-        if(!$bool_isPasstrue1 || !$bool_isPasstrue2|| !$bool_isPasstrue3)  
-        {
+        if(!$bool_isPasstrue1 || !$bool_isPasstrue2|| !$bool_isPasstrue3){
             $arry_result["isTrue"] = false;
             $arry_result["errorCod"] = 7;
             $arry_result["mesg"] = "修改密碼失敗，需英數字混和!";

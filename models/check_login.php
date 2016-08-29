@@ -13,12 +13,11 @@ class check_login{
     
     function check(){
         if(!in_array($_GET["url"], $this->whiteAction)){
-            if(isset($_SESSION['id']) && isset($_SESSION['EmpAccount']) && isset($_SESSION['IsAdmin']))
-                {
-                    return true;
-                }else{
-                    return false;
-                }
+            if(isset($_SESSION['id']) && isset($_SESSION['EmpAccount']) && isset($_SESSION['IsAdmin'])){
+                return true;
+            }else{
+                return false;
+            }
         }else{
             return true;
         }

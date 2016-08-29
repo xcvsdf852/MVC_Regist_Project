@@ -8,14 +8,12 @@ class statistics_json{
     public $POST_data;
     function get_pie_data(){
         # 時間
-        if( !isset($this->POST_data['time_str']) )
-        {
+        if( !isset($this->POST_data['time_str']) ){
             return '{"isTrue":0,"data":"資料傳輸失敗!"}';
         }
         $time_str = str_SQL_replace($this->POST_data['time_str']);
         
-        if( !isset($this->POST_data['time_end']))
-        {
+        if( !isset($this->POST_data['time_end'])){
             return '{"isTrue":0,"data":"資料傳輸失敗!"}';
         }
         $time_end = str_SQL_replace($this->POST_data['time_end']);
@@ -25,22 +23,24 @@ class statistics_json{
             return '{"isTrue":0,"data":"注意起訖時間都必須填寫!"}';
         }
         
-        if($time_str == ""){$time_str = date("Y-m-d",strtotime("-1 month"));}
-        if($time_end == ""){$time_end = date("Y-m-d");}
+        if($time_str == ""){
+            $time_str = date("Y-m-d",strtotime("-1 month"));
+        }
+        if($time_end == ""){
+            $time_end = date("Y-m-d");
+        }
         
         if(strtotime($time_str)>strtotime($time_end)){ 
             return '{"isTrue":0,"data":"起始日期不得小於結束日期!"}';
         }
         
         #user id檢查 數字型態
-        if( !isset($this->POST_data['user_id']) || empty($this->POST_data['user_id']))
-        {
+        if( !isset($this->POST_data['user_id']) || empty($this->POST_data['user_id'])){
             return '{"isTrue":0,"data":"資料傳輸失敗!"}';
         }
         
         $user = str_SQL_replace($this->POST_data['user_id']);
-        if(!filter_var($user, FILTER_VALIDATE_INT))
-        {
+        if(!filter_var($user, FILTER_VALIDATE_INT)){
             return '{"isTrue":0,"data":"資料格式錯誤!"}';
         }
         #檢查是否為本人，或者是Admin
@@ -73,7 +73,6 @@ class statistics_json{
         $conn = $PDO->getConnection();
         $stmt = $conn->prepare($str_sql);
         $result = $stmt->execute();
-        
         
         $return_json = [];
         $str_json = '';

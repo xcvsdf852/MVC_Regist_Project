@@ -13,54 +13,44 @@ class regist_list_save{
         // var_dump($this->POST_data);
         // exit;
         #修改 id檢查 數字型態
-        if( !isset($this->POST_data['id']) || empty($this->POST_data['id']))
-        {
+        if( !isset($this->POST_data['id']) || empty($this->POST_data['id'])){
             return '{"isTrue":0,"data":"資料傳輸失敗!"}';
         }
         $id = str_SQL_replace($this->POST_data['id']);
-        if(!filter_var($id, FILTER_VALIDATE_INT))
-        {
+        if(!filter_var($id, FILTER_VALIDATE_INT)){
             return '{"isTrue":0,"data":"資料格式錯誤!"}';
         }
         #user id檢查 數字型態
-        if( !isset($this->POST_data['user']) || empty($this->POST_data['user']))
-        {
+        if( !isset($this->POST_data['user']) || empty($this->POST_data['user'])){
             return '{"isTrue":0,"data":"資料傳輸失敗!"}';
         }
         $user = str_SQL_replace($this->POST_data['user']);
-        if(!filter_var($user, FILTER_VALIDATE_INT))
-        {
+        if(!filter_var($user, FILTER_VALIDATE_INT)){
             return'{"isTrue":0,"data":"資料格式錯誤!"}';
         }
         #檢查是否為本人，或者是Admin
-        if($_SESSION['id'] != $user && $_SESSION['IsAdmin'] == 0 )
-        {
+        if($_SESSION['id'] != $user && $_SESSION['IsAdmin'] == 0 ){
             return '{"isTrue":0,"data":"權限不足!"}';
         }
         
         # 時間
-        if( !isset($this->POST_data['date']) || empty($this->POST_data['date']))
-        {
+        if( !isset($this->POST_data['date']) || empty($this->POST_data['date'])){
             return '{"isTrue":0,"data":"資料傳輸失敗!"}';
         }
         $data = str_SQL_replace($this->POST_data['date']);
-        if(!filter_var($data,  FILTER_SANITIZE_STRING))
-        {
+        if(!filter_var($data,  FILTER_SANITIZE_STRING)){
             return'{"isTrue":0,"data":"資料格式錯誤!"}';
         }
         #項目檢查 數字型態
-        if( !isset($this->POST_data['items']) || empty($this->POST_data['items']))
-        {
+        if( !isset($this->POST_data['items']) || empty($this->POST_data['items'])){
             return '{"isTrue":0,"data":"資料傳輸失敗!"}';
         }
         $items = str_SQL_replace($this->POST_data['items'] );
-        if(!filter_var($items, FILTER_VALIDATE_INT))
-        {
+        if(!filter_var($items, FILTER_VALIDATE_INT)){
             return'{"isTrue":0,"data":"資料格式錯誤!"}';
         }
         #金錢檢查 數字型態 不能小於零
-        if( !isset($this->POST_data['buy']) || empty($this->POST_data['buy']) || $this->POST_data['buy'] <= 0)
-        {
+        if( !isset($this->POST_data['buy']) || empty($this->POST_data['buy']) || $this->POST_data['buy'] <= 0){
             return '{"isTrue":0,"data":"資料傳輸失敗!"}';
         }
         $buy = str_SQL_replace($this->POST_data['buy'] );
@@ -70,8 +60,7 @@ class regist_list_save{
         
         
         #統一發票號碼檢查 字串型態 允許空值
-        if(!isset($this->POST_data['receipt']))
-        {
+        if(!isset($this->POST_data['receipt'])){
             return'{"isTrue":0,"data":"資料傳輸失敗!"}';
         }
         $receipt = str_SQL_replace($this->POST_data['receipt'] );
@@ -82,8 +71,7 @@ class regist_list_save{
         }
         
         #備註檢查 字串型態 允許空值
-        if(!isset($this->POST_data['note']))
-        {
+        if(!isset($this->POST_data['note'])){
             return '{"isTrue":0,"data":"資料傳輸失敗!"}';
         }
         $note = str_SQL_replace($this->POST_data['note'] );

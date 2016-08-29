@@ -32,7 +32,7 @@ class AccountController extends Controller{
         $user = $this->model("logout");
         $user->unset_session();
         // $this->view("Account/ac_login");
-         header('Location: /homework0721_MVC/Account/login');
+        header('Location: /homework0721_MVC/Account/login');
     }
     
     #到註冊頁面

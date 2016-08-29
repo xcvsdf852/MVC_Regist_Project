@@ -17,34 +17,32 @@
   <script type="text/javascript">
   $(document).ready(function(){
       list_load(1,5);
+
+      $.get("get_items",function(d){
+        i=0;
+        $.each(d,function(){
+          $("#select_value").append("<option value = "+d[i].items_id+">"+d[i].items_list+"</option>")
+          i++;
+        })
+      })
+
   });
-  
+
   //載入列表頁
   function list_load(P,P_number){
   	var time_str=$("#time_str").val();
   	var time_end=$("#time_end").val();
   	var select_value=$("#select_value").val();
   	var text_value=$("#text_value").val();
-  	
+
   	if(Date.parse(time_str).valueOf() > Date.parse(time_end).valueOf()){
       // alert("注意開始時間不能晚於結束時間！");
       BootstrapDialog.show({
-            title: 'Oops 系統發生錯誤!',
-            message: "注意開始時間不能晚於結束時間!!"
+        title: 'Oops 系統發生錯誤!',
+        message: "注意開始時間不能晚於結束時間!!"
       }).setType(BootstrapDialog.TYPE_DANGER);;
       return false;
     }
-    // $("#content").load("/homework0721_MVC/models/regist_list.php?P="+P+"&P_number="+P_number,{
-  		// "time_str":time_str,
-  		// "time_end":time_end,
-  		// "select_value":select_value,
-  		// "text_value":text_value
-  		// },function(){
-    // 		$("#P").val(P);
-    // 		$("#P_number").val(P_number);
-    // 		var c=$("#count").val();
-    // 		$("#tage").load('/homework0721_MVC/models/package/Tage.php?P='+P+'&P_number='+P_number+'&count_num='+c+'&function=list_load');
-  	 // });
   	 $.post("search",{
   	  "P":P,
   	  "P_number":P_number,
@@ -53,7 +51,7 @@
   		"select_value":select_value,
   		"text_value":text_value
   		},function(d){
-  		  // console.log(d);
+  		  console.log(d);
   		  if(d.isTrue){
     		  i=0;
     		  $("#content").html("");
@@ -64,12 +62,7 @@
                       +'<td><input style = "line-height: 100%;" type="date" id="date_'+d.date[i].id+'" value ="'+d.date[i].date+'" /></td>'
                       +'<td>'
                         +'<select id= "items_'+d.date[i].id+'" >'
-                            +'<option value = "1">食</option>'   
-                            +'<option value = "2">衣</option>'
-                            +'<option value = "3">住</option>'
-                            +'<option value = "4">行</option>'
-                            +'<option value = "5">育</option>'
-                            +'<option value = "6">樂</option>'
+                            +d.items
                         +'</select>'
                       +'</td>'
                       +'<td>'
@@ -100,7 +93,7 @@
           }).setType(BootstrapDialog.TYPE_DANGER);;
           return false;
   		  }
-  		  
+
     		$("#P").val(P);
     		$("#P_number").val(P_number);
     		// var c=$("#count").val();
@@ -109,7 +102,7 @@
   	  },"json");
   }
 
-  
+
   function save(id){
     var date=$("#date_"+id).val();
     var items=$("#items_"+id).val();
@@ -154,9 +147,9 @@
           }).setType(BootstrapDialog.TYPE_DANGER);
          $("#receipt_"+id).focus();
          return false;
-      }        
+      }
     }
-  	
+
 
     $.post('list_save',{
   		"id":id,
@@ -182,9 +175,9 @@
         }).setType(BootstrapDialog.TYPE_DANGER);
   		}
   	},'json');
-  	
+
   }
-  
+
   //編輯刪除
   function remove_data(id){
   	var datetime = $("#date_"+id).val();
@@ -196,7 +189,7 @@
    	// 	return;
    	// }
     // remove_post(id,user);
-  
+
   	BootstrapDialog.show({
             title: 'Oops 警告!',
             message: "確定要刪除"+datetime+"金額:"+buy+"?(刪除後無法復原!!)",
@@ -217,7 +210,6 @@
                 }
             }]
       }).setType(BootstrapDialog.TYPE_WARNING);
-  	 
   }
 function  remove_post(id,user){
   	$.post('list_delete',{"id":id,"user_id":user},function(date){
@@ -226,22 +218,21 @@ function  remove_post(id,user){
   			BootstrapDialog.show({
             title: '執行操作成功!',
             message: "刪除成功!!"
-      }).setType(BootstrapDialog.TYPE_SUCCESS);
+        }).setType(BootstrapDialog.TYPE_SUCCESS);
   			list_load($("#P").val(),$("#P_number").val());
   		}else{
   		  // alert('刪除失敗!\n\r'+date.data);
   		  BootstrapDialog.show({
             title: 'Oops 系統發生錯誤!',
             message: "刪除失敗!!"
-      }).setType(BootstrapDialog.TYPE_DANGER);
-  		  
+        }).setType(BootstrapDialog.TYPE_DANGER);
   		}
   	},'json');
 }
   </script>
 </head>
 <body>
-<?php include_once('views/header.html');?>
+<?php require_once('views/header.html');?>
 
 
 
@@ -250,16 +241,10 @@ function  remove_post(id,user){
   <div class="col-md-2"></div>
   <div class="col-md-7">
     <div>
-      <input style = "line-height: 100%;" type="date" name ="time_str" id ="time_str"> ~ 
+      <input style = "line-height: 100%;" type="date" name ="time_str" id ="time_str"> ~
       <input style = "line-height: 100%;" type="date" name ="time_end" id = "time_end">
       <select name = "select_value" id = "select_value">
         <option value = ""></option>
-        <option value = "1">食</option>
-        <option value = "2">衣</option>
-        <option value = "3">住</option>
-        <option value = "4">行</option>
-        <option value = "5">育</option>
-        <option value = "6">樂</option>
       </select>
       <input style = "line-height: 100%;" type="text" name ="text_value" id="text_value"  placeholder="輸入關鍵字">
           <button onclick="list_load(1,5);" class = "btn btn-success" style = "float:right" ><span class ="glyphicon glyphicon-log-in"></span><span style = "margin:0px 0px 15px 10px; ">送出</span></button>
@@ -276,8 +261,6 @@ function  remove_post(id,user){
   </div>
   <div class="col-md-7">
 <!----------內容位置-------------->
-    
-      
       <table class="table table-hover">
         <thead class="thead-inverse">
           <tr>
@@ -292,15 +275,15 @@ function  remove_post(id,user){
           </tr>
         </thead>
         <tbody id="content">
-   
-        </tbody>              
+
+        </tbody>
       </table>
       <input type="hidden" id="count" value="">
       <div class="pagination" id="tage" align="center" style="width:100%;">
-      
+
       </div>
-      
-    
+
+
 <!----------內容位置結束-------------->
   </div>
   <div class="col-md-3">

@@ -20,13 +20,19 @@ function login(){
         		alert("登入成功!)");
         		// window.location="index.php";
         		
+        	}else if(data.callback==2){
+        		alert("登入失敗,查無該帳號)");
+        	}else if(data.callback==3){
+        		alert("登入失敗,請重新檢查密碼");
+        	}else if(data.callback==4){
+        		alert("登入失敗,請重新檢查帳號密碼");
+        	}else if(data.callback==5){
+        		alert("登入失敗,請重新檢查帳號密碼");
+        	}else if(data.callback==6){
+        		alert("登入失敗,資料傳輸失敗");
+        	}else{
+        		alert("登入失敗,未登入");
         	}
-    		else if(data.callback==2){alert("登入失敗,查無該帳號)");}
-    		else if(data.callback==3){alert("登入失敗,請重新檢查密碼");}
-    		else if(data.callback==4){alert("登入失敗,請重新檢查帳號密碼");}
-    		else if(data.callback==5){alert("登入失敗,請重新檢查帳號密碼");}
-    		else if(data.callback==6){alert("登入失敗,資料傳輸失敗");}
-    		else{alert("登入失敗,未登入");}
     	}
 	});
 }

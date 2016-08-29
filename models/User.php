@@ -1,7 +1,7 @@
 <?php
 session_start(); 
 require_once("Connections/DB_Class.php");
-
+require_once('package/str_sql_replace.php'); 
 class User {
     public $name;
     public $password;
@@ -12,14 +12,13 @@ class User {
         // echo $this->password."<br>";
         // exit;
         if(isset($this->name) && isset($this->password)){
-        
-            $EmpAccount = $this->name;
-            $EmpPwd = $this->password;
-        //=====================================================================================
-        //對接收到的帳號資料先做正規化判斷
-        //密碼進行MD5加密
-        //=====================================================================================
-            if (!preg_match('/^([.0-9a-z]+)@([0-9a-z]+).([.0-9a-z]+)$/i', $EmpAccount)){ //過濾Email;
+            $EmpAccount = str_sql_replace($this->name);
+            $EmpPwd = str_sql_replace($this->password);
+            //=====================================================================================
+            //對接收到的帳號資料先做正規化判斷
+            //密碼進行MD5加密
+            //=====================================================================================
+            if(!preg_match('/^([.0-9a-z]+)@([0-9a-z]+).([.0-9a-z]+)$/i', $EmpAccount)){ //過濾Email;
                 
                 $arry_result["isTrue"] = false;
                 $arry_result["errorCod"] = 7;
@@ -30,22 +29,22 @@ class User {
                 $arry_result['error'] = $arry_result;
                 $EmpAccount="";$IsError= 'EmpAccount is error';
                 return $arry_result;
-             }
+            }
             $EmpPwd=md5($EmpPwd);
             
-        //=====================================================================================
-        //進行連線
-        //=====================================================================================
+            //=====================================================================================
+            //進行連線
+            //=====================================================================================
             // $db = new DB();
             // $db->connect_db($_DB['host'], $_DB['username'], $_DB['password'], $_DB['dbname']);
             
             $PDO = new myPDO();
             $conn = $PDO->getConnection();
             
-        //=====================================================================================
-        //判斷讀出來的密碼是否與MD5加密後的使用者輸入密碼相同 並且IsEnabled(是否已啟用)
-        //相同將資訊存入Session
-        //=====================================================================================
+            //=====================================================================================
+            //判斷讀出來的密碼是否與MD5加密後的使用者輸入密碼相同 並且IsEnabled(是否已啟用)
+            //相同將資訊存入Session
+            //=====================================================================================
             // $sql = sprintf("SELECT ac_id,ac_nick_name,ac_email,ac_password,is_admin,is_enabled FROM  account WHERE
             // ac_email='%s'",str_replace("'","\'",$EmpAccount));
             // echo $sql;

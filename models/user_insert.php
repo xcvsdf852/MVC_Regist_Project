@@ -15,8 +15,7 @@ class user_insert{
     public $e_mail;
     
     function regist_insert(){
-        if(!isset($this->check) || empty($this->check) || $this->check != 1 )
-        {
+        if(!isset($this->check) || empty($this->check) || $this->check != 1 ){
             $arry_result["isTrue"] = false;
             $arry_result["errorCod"] = 3;
             $arry_result["mesg"] = "新增會員失敗,資料傳輸失敗!";
@@ -24,14 +23,12 @@ class user_insert{
             $arry_result["pw"] = $this->pw;
             $arry_result["pwCheck"] = $this->pwCheck;
             $arry_result["e_mail"] = $this->e_mail;
-            // $_SESSION['error'] = $arry_result;
             $arry_result['error'] = $arry_result;
             return $arry_result;
         }
         
         //判斷是否有值傳進來
-        if(!isset($this->e_mail) || empty($this->e_mail))
-        {
+        if(!isset($this->e_mail) || empty($this->e_mail)){
         	$arry_result["isTrue"] = false;
             $arry_result["errorCod"] = 4;
             $arry_result["mesg"] = "新增會員失敗,資料傳輸失敗!";
@@ -39,14 +36,12 @@ class user_insert{
             $arry_result["pw"] = $this->pw;
             $arry_result["pwCheck"] = $this->pwCheck;
             $arry_result["e_mail"] = $this->e_mail;
-            // $_SESSION['error'] = $arry_result;
             $arry_result['error'] = $arry_result;
             return $arry_result;
         }
         //e_mail正規表示法檢查
         $bool_isEmailtrue = preg_match('/^([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})$/', $this->e_mail);
-        if(!$bool_isEmailtrue)
-        {
+        if(!$bool_isEmailtrue){
             $arry_result["isTrue"] = false;
             $arry_result["errorCod"] = 5;
             $arry_result["mesg"] = "新增會員失敗,資料格式不符!";
@@ -54,7 +49,6 @@ class user_insert{
             $arry_result["pw"] = $this->pw;
             $arry_result["pwCheck"] = $this->pwCheck;
             $arry_result["e_mail"] = $this->e_mail;
-            // $_SESSION['error'] = $arry_result;
             $arry_result['error'] = $arry_result;
             return $arry_result;
         }
@@ -62,8 +56,7 @@ class user_insert{
         
         
         //判斷是否有值傳進來
-        if(!isset($this->pw) || empty($this->pw) ||!isset($this->pwCheck) || empty($this->pwCheck))
-        {
+        if(!isset($this->pw) || empty($this->pw) ||!isset($this->pwCheck) || empty($this->pwCheck)){
         	$arry_result["isTrue"] = false;
             $arry_result["errorCod"] = 6;
             $arry_result["mesg"] = "新增會員失敗,資料傳輸失敗!";
@@ -71,7 +64,6 @@ class user_insert{
             $arry_result["pw"] = $this->pw;
             $arry_result["pwCheck"] = $this->pwCheck;
             $arry_result["e_mail"] = $this->e_mail;
-            // $_SESSION['error'] = $arry_result;
             $arry_result['error'] = $arry_result;
             return $arry_result;
         }
@@ -84,7 +76,6 @@ class user_insert{
         // exit;
         
         if(strlen($this->pw) < 8 || strlen($this->pw) > 12){ #8-12碼檢查
-            
         	$arry_result["isTrue"] = false;
             $arry_result["errorCod"] = 7;
             $arry_result["mesg"] = "新增會員失敗,密碼要8-12英數字混和!";
@@ -92,14 +83,12 @@ class user_insert{
             $arry_result["pw"] = $this->pw;
             $arry_result["pwCheck"] = $this->pwCheck;
             $arry_result["e_mail"] = $this->e_mail;
-            // $_SESSION['error'] = $arry_result;
             $arry_result['error'] = $arry_result;
             return $arry_result;
         }
         
         //不符合格式
-        if(!$bool_isPasstrue1 || !$bool_isPasstrue2)  
-        {
+        if(!$bool_isPasstrue1 || !$bool_isPasstrue2)  {
         	$arry_result["isTrue"] = false;
             $arry_result["errorCod"] = 8;
             $arry_result["mesg"] = "新增會員失敗,密碼需英數字混和!";
@@ -107,14 +96,12 @@ class user_insert{
             $arry_result["pw"] = $this->pw;
             $arry_result["pwCheck"] = $this->pwCheck;
             $arry_result["e_mail"] = $this->e_mail;
-            // $_SESSION['error'] = $arry_result;
             $arry_result['error'] = $arry_result;
             return $arry_result;
         }
         
         //檢查暱稱
-        if( !isset($this->nickname) || empty($this->nickname))
-        {
+        if( !isset($this->nickname) || empty($this->nickname)){
         	$arry_result["isTrue"] = false;
             $arry_result["errorCod"] = 9;
             $arry_result["mesg"] = "新增會員失敗,資料傳輸失敗!";
@@ -122,7 +109,6 @@ class user_insert{
             $arry_result["pw"] = $this->pw;
             $arry_result["pwCheck"] = $this->pwCheck;
             $arry_result["e_mail"] = $this->e_mail;
-            // $_SESSION['error'] = $arry_result;
             $arry_result['error'] = $arry_result;
             return $arry_result;
         }
@@ -135,7 +121,6 @@ class user_insert{
             $arry_result["pw"] = $this->pw;
             $arry_result["pwCheck"] = $this->pwCheck;
             $arry_result["e_mail"] = $this->e_mail;
-            // $_SESSION['error'] = $arry_result;
             $arry_result['error'] = $arry_result;
             return $arry_result;
         }
@@ -171,7 +156,7 @@ class user_insert{
         $stmt = $conn->prepare($query);
         $result = $stmt->execute();
         // $result = $db->query($query);
-        if($result) {
+        if($result){
             $arry_result["isTrue"] = true;
             $arry_result["errorCod"] = 1;
             $arry_result["mesg"] = "新增會員成功!";
@@ -185,7 +170,6 @@ class user_insert{
             $arry_result["pw"] = $this->pw;
             $arry_result["pwCheck"] = $this->pwCheck;
             $arry_result["e_mail"] = $this->e_mail;
-            // $_SESSION['error'] = $arry_result;
             $arry_result['error'] = $arry_result;
             return $arry_result;
         }

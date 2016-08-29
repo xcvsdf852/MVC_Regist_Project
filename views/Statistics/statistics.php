@@ -18,9 +18,7 @@
     <script src="/homework0721_MVC/views/js/highcharts.js"></script>
     <script src="/homework0721_MVC/views/js/exporting.js"></script>
     <script type="text/javascript">
-
-    
-        $(document).ready(function () {
+        $(document).ready(function (){
             
             function search_post(){
                 time_str = $("#time_str").val();
@@ -97,16 +95,10 @@
             search_post();
             $("#search").click(function(){search_post()});
         });
-            
-      
-        
-        
-        
   </script>
-  
 </head>
 <body>
-<?php include_once('views/header.html');?>
+<?php require_once('views/header.html');?>
 
 
 
@@ -131,12 +123,7 @@
       <div id="container" style="min-width: 310px; height: 400px; max-width: 600px; margin: 0 auto"></div>
 
 <!----消費清單列表結束---->
-
-
 </div>
-
-
-
 
 </body>
 </html>

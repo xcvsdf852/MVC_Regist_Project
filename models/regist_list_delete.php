@@ -10,18 +10,17 @@ class regist_list_delete{
     public $POST_data;
     function regist_delete(){
         #修改 id檢查 數字型態
-        if( !isset($_POST['id']) || empty($_POST['id']))
-        {
+        if( !isset($_POST['id']) || empty($_POST['id'])){
             return '{"isTrue":0,"data":"資料傳輸失敗!"}';
         }
         $id = str_SQL_replace($_POST['id']);
-        if(!filter_var($id, FILTER_VALIDATE_INT))
+        if(!filter_var($id, FILTER_VALIDATE_INT)){
             return '{"isTrue":0,"data":"資料格式錯誤!"}';
-            
+        }    
         $user_id = str_SQL_replace($_POST['user_id']);
-        if(!filter_var($user_id, FILTER_VALIDATE_INT))
+        if(!filter_var($user_id, FILTER_VALIDATE_INT)){
             return '{"isTrue":0,"data":"資料格式錯誤!"}';
-        
+        }
         #檢查是否為本人，或者是Admin
         if($_SESSION['id'] != $user_id && $_SESSION['IsAdmin'] == 0 ){
             return '{"isTrue":0,"data":"權限不足!"}';
@@ -65,7 +64,6 @@ class regist_list_delete{
         
         // $db->closeDB();
         $PDO->closeConnection();
-        exit();
     }
 }
 

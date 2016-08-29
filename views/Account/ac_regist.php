@@ -8,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Lab - Login</title>
+    <title>註冊頁</title>
     <link href="/homework0721_MVC/views/css/bootstrap.min.css" rel="stylesheet">
     <script src="/homework0721_MVC/views/js/jquery.js"></script>
     <script src="/homework0721_MVC/views/js/bootstrap.min.js"></script>
@@ -30,22 +30,22 @@
         
         if($data['isTrue']){
             echo "<script>
-                $(document).ready(function(){
-                      BootstrapDialog.show({
-                      title: '執行操作成功!',
-                      message: '".$data['mesg']."'
-                      }).setType(BootstrapDialog.TYPE_SUCCESS);
-                });
+                    $(document).ready(function(){
+                        BootstrapDialog.show({
+                            title: '執行操作成功!',
+                            message: '".$data['mesg']."'
+                        }).setType(BootstrapDialog.TYPE_SUCCESS);
+                    });
                   </script>
                   ";
         }else{
             echo "<script>
-                $(document).ready(function(){
-                      BootstrapDialog.show({
-                      title: 'Oops 系統發生錯誤!',
-                      message: '".$data['mesg']."'
-                      }).setType(BootstrapDialog.TYPE_DANGER);
-                });
+                    $(document).ready(function(){
+                        BootstrapDialog.show({
+                            title: 'Oops 系統發生錯誤!',
+                            message: '".$data['mesg']."'
+                        }).setType(BootstrapDialog.TYPE_DANGER);
+                     });
                   </script>
                   ";
         }

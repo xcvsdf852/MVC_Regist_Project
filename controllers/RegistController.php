@@ -1,11 +1,19 @@
 <?php
 
 class RegistController extends Controller {
-    
+
     #顯示記帳頁面
-    function regist_index(){ 
+    function regist_index(){
         $this->view("Regist/regist_index");
     }
+
+    #取得消費項目
+    function get_items(){
+        $user = $this->model("items_list");
+        $json_return = $user->get_items_list();
+        $this->view("show_json",$json_return);
+    }
+
     #新增消費紀錄
     function insert_charge(){
         $user = $this->model("add_charge");
@@ -24,7 +32,7 @@ class RegistController extends Controller {
     function show_list(){
         $this->view("Regist/regist_list_index");
     }
-    
+
     #搜尋消費紀錄
     function search(){
         $user = $this->model("regist_list");
@@ -46,7 +54,7 @@ class RegistController extends Controller {
         $json_return = $user->regist_delete();
         $this->view("show_json",$json_return);
     }
-    
+
 }
 
 ?>

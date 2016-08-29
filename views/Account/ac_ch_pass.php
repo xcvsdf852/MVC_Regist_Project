@@ -2,7 +2,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Lab - Login</title>
+    <title>修改密碼</title>
     <link href="/homework0721_MVC/views/css/bootstrap.min.css" rel="stylesheet">
     <script src="/homework0721_MVC/views/js/jquery.js"></script>
     <script src="/homework0721_MVC/views/js/bootstrap.min.js"></script>
@@ -22,8 +22,8 @@
         	if($("#check").val() != 1){
         // 		alert("請確實填寫帳號");
                 BootstrapDialog.show({
-				title: 'Oops 系統發生錯誤!',
-				message: '請確實填寫帳號'
+    				title: 'Oops 系統發生錯誤!',
+    				message: '請確實填寫帳號'
 				}).setType(BootstrapDialog.TYPE_DANGER);
         		$("#txtUserName").focus();
         		istrue=false;
@@ -33,8 +33,8 @@
         	if($("#oldPassword").val()==""){
                 // alert("請填寫舊密碼！");
                 BootstrapDialog.show({
-				title: 'Oops 系統發生錯誤!',
-				message: '請填寫舊密碼'
+    				title: 'Oops 系統發生錯誤!',
+    				message: '請填寫舊密碼'
 				}).setType(BootstrapDialog.TYPE_DANGER);
                 $("#oldPassword").focus();
                 istrue=false;
@@ -44,8 +44,8 @@
         	if($("#check_pass").val() != 1){
         // 		alert("請確實填寫密碼");
                 BootstrapDialog.show({
-				title: 'Oops 系統發生錯誤!',
-				message: '請確實填寫密碼'
+    				title: 'Oops 系統發生錯誤!',
+    				message: '請確實填寫密碼'
 				}).setType(BootstrapDialog.TYPE_DANGER);
         		$("#pw").focus();
         		istrue=false;
@@ -56,18 +56,18 @@
         	if($("#pw").val()!=$("#pwCheck").val()){ 
                 // alert("請確實填寫資料！");
                 BootstrapDialog.show({
-				title: 'Oops 系統發生錯誤!',
-				message: '請確實填寫資料！'
+    				title: 'Oops 系統發生錯誤!',
+    				message: '請確實填寫資料！'
 				}).setType(BootstrapDialog.TYPE_DANGER);
                 $("#pw").focus();
         		istrue=false;
         		return false;
         	
-        	    }else{
-        	        istrue=true;
-            		return istrue;
-        	    }
-    		}
+    	    }else{
+    	        istrue=true;
+        		return istrue;
+    	    }
+		}
         //-------------------------------------------------------------------
         //提示密碼確認
         //-------------------------------------------------------------------	
@@ -101,7 +101,7 @@
   </head>
 
 <body>
-<?php include_once('views/header.html');?>
+<?php require_once('views/header.html');?>
  <div class="container">
      <form class="form-signin" action = "ch_pass" method="post" id="ch_pass_form">
          <h2 class="form-signin-heading" style= "text-align : center">修改密碼</h2>

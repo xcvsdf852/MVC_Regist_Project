@@ -7,8 +7,6 @@ require_once('package/get_IP.php');
 ?>
 
 <?php
-// var_dump($_POST);
-// exit;
 class add_charge{
     public $POST_data; 
     
@@ -35,8 +33,7 @@ class add_charge{
             // var_dump($this->POST_data['data_'.$value]);
             // exit;
             # 時間
-            if( !isset($this->POST_data['data_'.$value]) || empty($this->POST_data['data_'.$value]))
-            {
+            if( !isset($this->POST_data['data_'.$value]) || empty($this->POST_data['data_'.$value])){
                 $arry_result["isTrue"] = false;
                 $arry_result["errorCod"] = 2;
                 $arry_result["mesg"] = "新增消費紀錄失敗，資料傳輸失敗!";
@@ -56,8 +53,7 @@ class add_charge{
             
             
             #項目檢查 數字型態
-            if( !isset($this->POST_data['items_'.$value]) || empty($this->POST_data['items_'.$value]))
-            {
+            if( !isset($this->POST_data['items_'.$value]) || empty($this->POST_data['items_'.$value])){
                 $arry_result["isTrue"] = false;
                 $arry_result["errorCod"] = 4;
                 $arry_result["mesg"] = "新增消費紀錄失敗，資料傳輸失敗!";
@@ -75,8 +71,7 @@ class add_charge{
                 
             
             #金錢檢查 數字型態 不能小於零
-            if( !isset($this->POST_data['money_'.$value]) || empty($this->POST_data['money_'.$value]) || $this->POST_data['money_'.$value] <= 0)
-            {
+            if( !isset($this->POST_data['money_'.$value]) || empty($this->POST_data['money_'.$value]) || $this->POST_data['money_'.$value] <= 0){
                 $arry_result["isTrue"] = false;
                 $arry_result["errorCod"] = 6;
                 $arry_result["mesg"] = "新增消費紀錄失敗，資料傳輸失敗!";
@@ -95,8 +90,7 @@ class add_charge{
             
         
             #統一發票號碼檢查 字串型態 允許空值
-            if( !isset($this->POST_data['receipt_'.$value]))
-            {
+            if( !isset($this->POST_data['receipt_'.$value])){
                 $arry_result["isTrue"] = false;
                 $arry_result["errorCod"] = 8;
                 $arry_result["mesg"] = "新增消費紀錄失敗，資料傳輸失敗!";
@@ -116,8 +110,7 @@ class add_charge{
             }
             // echo $_POST['receipt_'.$value]."<br>";
             #備註檢查 字串型態 允許空值
-            if( !isset($this->POST_data['note_'.$value]))
-            {
+            if( !isset($this->POST_data['note_'.$value])){
                 $arry_result["isTrue"] = false;
                 $arry_result["errorCod"] = 10;
                 $arry_result["mesg"] = "新增消費紀錄失敗，資料傳輸失敗!";
